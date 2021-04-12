@@ -16,12 +16,16 @@ use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\LoginController as LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
-Route::view('/', 'welcome');
+// Route::view('/', 'home');
+Route::get('/', 'App\Http\Controllers\CartController@shop')->name('shop');
 Auth::routes();
 
 // user register
 Route::post('users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 Route::get('users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+
+// more-about
+Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
 
 Route::get('/login/digiso-admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/login/blogger', [LoginController::class,'showBloggerLoginForm']);

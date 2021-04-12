@@ -50,7 +50,7 @@ class CartController extends Controller
         $more_about = CMSAdminManage::where('page_type', 'more-about')->first();
         $category = "cate-1";
         $collection = "collection";
-        return view('shop', compact('category','collection','main_title','more_about','news'))->withTitle('E-COMMERCE STORE | SHOP')->with(['products' => $products]);
+        return view('home', compact('category','collection','main_title','more_about','news'))->withTitle('E-COMMERCE STORE | SHOP')->with(['products' => $products]);
     }
 
     public function cart()  
