@@ -1,63 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Blogger Signup
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel multi auth](https://raw.githubusercontent.com/siddharth018/laravel8multiauth/master/bloggersignup.png)](https://www.youtube.com/watch?v=EFrLm307RD8&t=2s)
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<img src="https://raw.githubusercontent.com/siddharth018/laravel8multiauth/master/bloggersignup.png" width="100%">
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+# Blogger Login
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<img src="https://raw.githubusercontent.com/siddharth018/laravel8multiauth/master/blogger%20login.png" width="100%">
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Admin Signup
 
-## Laravel Sponsors
+<img src="https://raw.githubusercontent.com/siddharth018/laravel8multiauth/master/admin%20signup.png" width="100%">
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Blogger Dashboard
 
-### Premium Partners
+<img src="https://raw.githubusercontent.com/siddharth018/laravel8multiauth/master/dashboard%20blogger.png" width="100%">
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+# Laravel Multiple Authentication
+Laravel Multiple Authentication
 
-## Contributing
+A simple implementation of multiple authentication in Laravel.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Set up
 
-## Code of Conduct
+To set up this project, first clone the repositiory
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+$ git clone https://github.com/siddharth018/laravel8multiauth.git
+Change your working directory into the project directory
 
-## Security Vulnerabilities
+$ cd laravel8multiauth
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Then install dependencies using Composer
 
-## License
+composer install
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# compare-laravel
+Run the application with the following command
+
+$ php artisan serve
+
+Remember to visit http://127.0.0.1:8000/books
+
+Built With
+Laravel - The PHP Framework For Web Artisans.
+
+Mysql - A relational database management system.
+
+Remember to visit http://localhost:8000/register/blogger 
+
+http://localhost:8000/register/admin to register bloggers and admins respectively. 
+
+Then visit http://localhost:8000/login/blogger  
+
+http://localhost:8000/login/admin 
+
+log in the bloggers and admins respectively.
+
+Built With
+Laravel - The PHP Framework For Web Artisans.
+
+Mysql - A relational database management system.
+
+## Youtube
+Join in youtube
+(https://www.youtube.com/channel/UCVSvNQjV5gwKIP9ZgaXSU1w?view_as=subscriber).
+
+## Facebook
+Join in Facebook
+(https://www.facebook.com/siddharthshukla181992/?modal=admin_todo_tour)
+
+## Instagram
+Join in Instagram
+(https://www.instagram.com/siddharth_shukla018/)
+
+## Linkedin
+Join in Linkedin
+(https://www.linkedin.com/in/siddharth-shukla-32873659/)
+"# laravel8_2Auth" 
