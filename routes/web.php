@@ -19,6 +19,10 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::view('/', 'welcome');
 Auth::routes();
 
+// user register
+Route::post('users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+Route::get('users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+
 Route::get('/login/digiso-admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/login/blogger', [LoginController::class,'showBloggerLoginForm']);
 
