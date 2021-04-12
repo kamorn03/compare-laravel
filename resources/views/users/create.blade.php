@@ -10,7 +10,7 @@
                     <h2>Create an Account</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                    <a class="btn btn-primary" href=""> Back</a>
                 </div>
             </div>
         </div>
@@ -26,7 +26,6 @@
                 </ul>
             </div>
         @endif
-
 
 
         {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
@@ -53,19 +52,6 @@
                 <div class="form-group">
                     <strong>Confirm Password:</strong>
                     {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group" style="display: none">
-                    <strong>Role:</strong>
-                    <select class="form-control" name="roles" id="roles">
-                        @foreach ($roles as $role)
-                            <option value="{{ $role }}" {{ $role == 'Customer' ? 'selected' : '' }}>
-                                {{ $role }}</option>
-                            {{-- {!! $userRole !!} --}}
-                            {{-- <option>{{ $role->name }}</option> --}}
-                        @endforeach
-                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

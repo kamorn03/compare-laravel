@@ -17,7 +17,7 @@ use App\Http\Controllers\LoginController as LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
 // Route::view('/', 'home');
-Route::get('/', 'App\Http\Controllers\CartController@shop')->name('shop');
+Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
 Auth::routes();
 
 // user register
@@ -45,6 +45,9 @@ Route::group(['middleware' => 'auth:blogger'], function () {
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/digiso-admin', 'admin');
+
+
+    // admin path
 });
 
 Route::get('logout', [AuthLoginController::class,'logout']);
