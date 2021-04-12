@@ -44,8 +44,16 @@ class LoginController extends Controller
 
 
     public function logout(Request $request) {
+        $isAdmin = Auth::guard('admin')->check();
+       
         Auth::logout();
         Session::flush();
-        return redirect('/login');
+      
+        if($isAdmin){
+            return redirect('/login/digiso-admin');
+        }else{
+            return redirect('/login');
+        }
+      
     }
 }
