@@ -6,7 +6,7 @@
             <div class="mx-auto">
                 <div class="h-100 justify-content-center">
                     <div>
-                        <label> <a href="/">Home</a> > <a href="/contact">Contact Us</a></label>
+                        <label> Home > Contact Us</label>
                         <h1>Contact Us</h1>
                     </div>
                 </div>
@@ -24,6 +24,7 @@
                 </button>
             </div>
         @endif
+        
         @if (session()->has('alert_msg'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {{ session()->get('alert_msg') }}

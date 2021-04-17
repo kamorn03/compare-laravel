@@ -42,12 +42,12 @@
                         <div>
                             <a class="pl-0" href=""><img src="{{ asset('img/dist/Vector.png') }}" alt="Vector"
                                     style="width: 20;"></a>
-                            <a class="pl-2"  href=""><img src="{{ asset('img/dist/Vector (1).png') }}" alt="Vector (1)"
+                            <a class="pl-2" href=""><img src="{{ asset('img/dist/Vector (1).png') }}" alt="Vector (1)"
                                     style="width: 20;"></a>
-                            <a class="pl-2"  href=""><img src="{{ asset('img/dist/Vector (2).png') }}" alt="Vector (2)"
+                            <a class="pl-2" href=""><img src="{{ asset('img/dist/Vector (2).png') }}" alt="Vector (2)"
                                     style="width: 20;"></a>
-                            <a class="pl-2"  href=""><img src="{{ asset('img/dist/Vector (3).png') }}" alt="Vector (3)"
-                                    style="width: 20;"></a>
+                            <a class="pl-2" href=""><img src="{{ asset('img/dist/Vector (3).png') }}"
+                                    alt="Vector (3)" style="width: 20;"></a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4 mb-3">
@@ -140,7 +140,11 @@
 
     </script>
     <style>
-           .btn-green {
+        body {
+            font-family: 'Open Sans';
+        }
+
+        .btn-green {
             /* padding: 0.375rem 2.75rem; */
             background: #81D8D0;
             border: 1px solid #81D8D0;
@@ -156,6 +160,40 @@
             text-align: center;
             text-transform: uppercase;
             color: #FFFFFF;
+        }
+
+        .header-green {
+
+            /* 
+            font-style: normal;
+            font-weight: normal;
+            font-size: 30px;
+            line-height: 41px;
+            text-align: center;
+            text-transform: uppercase; 
+            */
+
+            background: rgba(129, 216, 208, 0.1);
+        }
+
+        .header-green label {
+            color: #797979;
+            font-size: 14px;
+            line-height: 19px;
+            margin-top: 2em;
+        }
+
+        .header-green h1 {
+            /* color: #797979; */
+            /* font-size: 14px;
+            line-height: 19px; */
+            font-size: 30px;
+            line-height: 41px;
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 10px;
+            color: #000000;
+            margin-bottom: 1em;
         }
 
     </style>

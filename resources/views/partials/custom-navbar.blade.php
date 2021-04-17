@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white flex-row">
-    <span class="navbar-text d-none d-md-block" style="width: 5%">
+    <span class="navbar-text d-none d-md-block">
         {{-- before brand --}}
         <div></div>
     </span>
