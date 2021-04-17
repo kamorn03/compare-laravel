@@ -60,31 +60,36 @@ Route::group(['middleware' => 'auth:blogger'], function () {
 
 
 Route::group(['middleware' => 'auth:admin'], function () {
+    /* admin path */
     Route::get('digiso-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
-    Route::get('digiso-admin/main-title',[App\Http\Controllers\MainTitleController::class, 'index'])->name('admin.main-title');
+    Route::namespace('Admin')->as('admin.')->group(function () {
+        // main-title
+        Route::get('digiso-admin/main-title',[App\Http\Controllers\MainTitleController::class, 'index'])->name('main-title');
+        // more-about 
+        Route::get('digiso-admin/more-about', [App\Http\Controllers\MoreAboutController::class, 'index'])->name('more-about');
+        // contact 
+        Route::get('digiso-admin/contact', [App\Http\Controllers\ContactController::class, 'updateContact'])->name('contact');
+        // users
+        Route::get('digiso-admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
+        // category
+        Route::get('digiso-admin/category', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
+        // collection
+        Route::get('digiso-admin/collection', [App\Http\Controllers\AdminController::class, 'collection'])->name('collection');
+        // product 
+        Route::get('digiso-admin/product', [App\Http\Controllers\AdminController::class, 'product'])->name('product');
+        // order
+        Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
+        // news
+        Route::get('digiso-admin/news', [App\Http\Controllers\NewsController::class, 'show'])->name('news');
 
-    Route::get('digiso-admin/more-about', [App\Http\Controllers\MoreAboutController::class, 'index'])->name('admin.more-about');
+        Route::get('digiso-admin/news-add', [App\Http\Controllers\NewsController::class, 'newsAdd'])->name('news.add');
+        Route::get('digiso-admin/news-list', [App\Http\Controllers\NewsController::class, 'newsList'])->name('news.list');
 
-    // contact 
-    Route::get('digiso-admin/contact', [App\Http\Controllers\ContactController::class, 'updateContact'])->name('admin.contact');
+    });
 
-    Route::get('digiso-admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
-
-    Route::get('digiso-admin/category', [App\Http\Controllers\AdminController::class, 'category'])->name('admin.category');
-
-    Route::get('digiso-admin/collection', [App\Http\Controllers\AdminController::class, 'collection'])->name('admin.collection');
-
-    // product api
-    Route::get('digiso-admin/product', [App\Http\Controllers\AdminController::class, 'product'])->name('admin.product');
-
-    // order
-    Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('admin.order');
-
-    Route::get('digiso-admin/news', [App\Http\Controllers\NewsController::class, 'show'])->name('admin.news');
-    Route::get('digiso-admin/news-add', [App\Http\Controllers\NewsController::class, 'newsAdd'])->name('news.add');
-    Route::get('digiso-admin/news-list', [App\Http\Controllers\NewsController::class, 'newsList'])->name('news.list');
-    // admin path
+    
+  
 });
 
 Route::get('logout', [AuthLoginController::class,'logout']);
