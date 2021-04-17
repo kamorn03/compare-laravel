@@ -27,6 +27,13 @@ Route::get('users/create', [App\Http\Controllers\UserController::class, 'create'
 // more-about
 Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
 
+// news 
+Route::get('news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
+Route::get('news/{id}/more', [App\Http\Controllers\NewsController::class, 'newsMore'])->name('news.more');
+
+// contact
+Route::get('contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+
 Route::get('/login/digiso-admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/login/blogger', [LoginController::class,'showBloggerLoginForm']);
 
@@ -41,7 +48,16 @@ Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
 
 Route::group(['middleware' => 'auth:blogger'], function () {
     Route::view('/blogger', 'blogger');
+
+
+
+
+
 });
+
+
+
+
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/digiso-admin', 'admin');
