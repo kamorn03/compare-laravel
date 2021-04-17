@@ -9,7 +9,6 @@
     <span class="navbar-text d-none d-md-block">
         <div class="collapse navbar-collapse" id="navbarSupportedContent" f>
             <ul class="navbar-nav ml-auto">
-         
                 <!-- Authentication Links -->
                 {{-- {{ dd(Auth::user()) }} --}}
                 @if (Auth::guest() || Auth::user()->hasRole('Admin'))
@@ -153,6 +152,12 @@
         left: 100%;
         margin-left: .1rem;
         margin-right: .1rem;
+    }
+
+    .nav-item a {
+        color: #797979;
+        text-decoration: none;
+        background-color: transparent;
     }
 
 </style>

@@ -2,6 +2,9 @@
 
 @section('content')
     <header>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+
+        </div>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
             <div class="carousel-inner" role="listbox">
@@ -16,11 +19,8 @@
                         </div>
                     @endforeach
                 @else
-                    <div class="carousel-item active"
-                        style="background-image: url({{ asset('img/home-title.png') }})">
-                        <div class="carousel-caption d-none d-md-block">
-                            {{-- {!! $value->description !!} --}}
-                        </div>
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="{{ asset('img/home-title.png') }}" alt="First slide">
                     </div>
                 @endif
                 {{-- if is null mock 1 image !! --}}
@@ -43,7 +43,7 @@
                     <div class="col-lg-4">
                         <div class="row">
                             <div class="col-lg-12 text-center">
-                                <h4 style="text-transform: uppercase;">New Arrivals Are Here</h4>
+                                <h4 style="text-transform: uppercase;margin-bottom: 3.5rem;">New Arrivals Are Here</h4>
                             </div>
                         </div>
                         @foreach ($products as $key => $pro)
@@ -141,24 +141,6 @@
                     </div>
                 </div>
             @endforeach
-            {{-- <div class="col-xs-12 col-sm-4 col-md-4">
-                <img src="{{ asset('img/dist/traditional-gold-earrings-set 1.png') }}"
-                    alt="traditional-gold-earrings-set 1">
-                <h5 class="mt-3">Holiday Inspiration : The Night Sky</h5>
-                <p>
-                    The journey to creative inspiration can be an infinitely fulfilling one. When we are in alignment and
-                    our creativity is flowing, it seems as if…...
-                </p>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <img src="{{ asset('img/dist/traditional-gold-earrings-set 1.png') }}"
-                    alt="traditional-gold-earrings-set 1">
-                <h5 class="mt-3">Holiday Inspiration : The Night Sky</h5>
-                <p>
-                    The journey to creative inspiration can be an infinitely fulfilling one. When we are in alignment and
-                    our creativity is flowing, it seems as if…...
-                </p>
-            </div> --}}
         </div>
     </div>
 @endsection
