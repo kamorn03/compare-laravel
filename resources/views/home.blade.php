@@ -3,10 +3,10 @@
 @section('content')
     <header>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-           
+
             <div class="carousel-inner" role="listbox">
                 <!-- Slide One - Set the background image for this slide in the line below -->
-                @if (isset($main_title))
+                @if (isset($main_title) && sizeof($main_title) > 0)
                     @foreach ($main_title as $key => $value)
                         <div class="carousel-item {{ $key === 0 ? 'active' : '' }}"
                             style="background-image: url({{ asset($value->image_path) }})">
@@ -15,9 +15,16 @@
                             </div>
                         </div>
                     @endforeach
+                @else
+                    <div class="carousel-item active"
+                        style="background-image: url({{ asset('img/home-title.png') }})">
+                        <div class="carousel-caption d-none d-md-block">
+                            {{-- {!! $value->description !!} --}}
+                        </div>
+                    </div>
                 @endif
                 {{-- if is null mock 1 image !! --}}
-                
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -73,7 +80,7 @@
                                                     alt="{{ $pro->image_path }}"></a>
                                             <div class="card-body custom-card-home mt-3">
                                                 <h6 class="card-title fw-bold">{{ $pro->name }}</h6>
-                                                <p style="font-weight: bold;color: black;">  {{ $pro->price }} ฿ </p>
+                                                <p style="font-weight: bold;color: black;"> {{ $pro->price }} ฿ </p>
                                             </div>
                                         </div>
                                     </div>
