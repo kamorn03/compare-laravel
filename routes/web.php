@@ -42,7 +42,6 @@ Route::get('/register/digiso-admin', [RegisterController::class,'showAdminRegist
 Route::get('/register/blogger', [RegisterController::class,'showBloggerRegisterForm']);
 
 Route::post('/login/digiso-admin', [LoginController::class,'adminLogin']);
-Route::post('/login/blogger', [LoginController::class,'bloggerLogin']);
 
 
 // slug show product paginate
@@ -61,10 +60,12 @@ Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->name('ca
 
 // register blogger
 Route::post('/register/digiso-admin', [RegisterController::class,'createAdmin']);
+
+Route::post('/login/blogger', [LoginController::class,'bloggerLogin'])->name('blogger.login');;
 Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
 
 
-Route::group(['middleware' => 'auth:users'], function () {
+Route::group(['middleware' => 'auth:blogger'], function () {
     Route::view('/blogger', 'blogger');
     Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
 });

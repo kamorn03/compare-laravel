@@ -11,11 +11,11 @@
                     @isset($url)
                     {{-- {{$url}} --}}
                     @php
-                        $url == 'admin' ? 'digiso-admin' : '1admin';   
+                        $url == 'admin' ? 'digiso-admin' : 'admin';   
                     @endphp
                     <form method="POST" action='{{ url("login/digiso-admin") }}' aria-label="{{ __('Login') }}">
                     @else
-                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                    <form method="POST" action="{{ route('blogger.login') }}" aria-label="{{ __('Login') }}">
                     @endisset
                         @csrf
 
