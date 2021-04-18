@@ -11,11 +11,13 @@
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 @if (isset($main_title) && sizeof($main_title) > 0)
                     @foreach ($main_title as $key => $value)
-                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}"
+                        {{-- <div class="carousel-item {{ $key === 0 ? 'active' : '' }}"
                             style="background-image: url({{ asset($value->image_path) }})">
                             <div class="carousel-caption d-none d-md-block">
-                                {{-- {!! $value->description !!} --}}
                             </div>
+                        </div> --}}
+                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                            <img class="d-block w-100" src="{{ asset($value->image_path) }}" alt="First slide">
                         </div>
                     @endforeach
                 @else

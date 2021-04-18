@@ -70,8 +70,6 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
 });
 
-
-
 // api
 Route::post('product/add', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
 Route::post('product/update',  [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
@@ -130,8 +128,6 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     });
 
-    
-  
 });
 
 Route::get('logout', [AuthLoginController::class,'logout']);
