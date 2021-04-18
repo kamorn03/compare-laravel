@@ -5,7 +5,7 @@
         <div class="row justify-content-center" style="margin-top:50px;">
             <div class="col-md-8">
                 {{-- <div class="card"> --}}
-                <span class="sign-text"> {{ isset($url) ? $url : "" }} Sign In</span>
+                <span class="sign-text"> {{ isset($url) ? $url : '' }} Sign In</span>
                 {{-- <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div> --}}
                 {{-- <div class="card-body"> --}}
                 @isset($url)
@@ -21,10 +21,9 @@
                         <div class="form-group row">
                             {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="off"
-                                    placeholder="E-mail">
+                                    name="email" required autocomplete="off" value="" placeholder="E-mail">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -37,10 +36,9 @@
                         <div class="form-group row">
                             {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
-                            <div class="col-md-6">
-                                <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password" required
-                                    autocomplete="off" placeholder="Password">
+                            <div class="col-md-8">
+                                <input id="password" type="password" class="form-control" name="password" required
+                                    autocomplete="off" value=""  placeholder="Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -88,10 +86,11 @@
             font-size: 36px;
             line-height: 49px;
             text-transform: uppercase;
-            
+
             color: #797979;
         }
-        form{
+
+        form {
             margin-top: 40px;
         }
 

@@ -89,8 +89,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/main-title',[App\Http\Controllers\MainTitleController::class, 'index'])->name('main-title');
         // more-about 
         Route::get('digiso-admin/more-about', [App\Http\Controllers\MoreAboutController::class, 'index'])->name('more-about');
+        Route::post('digiso-admin/more-about/update', [App\Http\Controllers\MoreAboutController::class, 'update'])->name('more-about.update');
+
         // contact 
         Route::get('digiso-admin/contact', [App\Http\Controllers\ContactController::class, 'updateContact'])->name('contact');
+        Route::post('digiso-admin/contact/{id}/update', [App\Http\Controllers\ContactController::class, 'update'])->name('contact.update');
+
+
         // users
         Route::get('digiso-admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
         // category

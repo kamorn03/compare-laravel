@@ -23,7 +23,7 @@ class CMSAdminManage extends Model
     ];
 
     protected $casts = [
-        'contact' => 'array',
+        'contact' => 'json',
     ];
 
 }

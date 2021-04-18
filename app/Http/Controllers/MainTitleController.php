@@ -61,13 +61,6 @@ class MainTitleController extends Controller
         <div class="col-md-12" style="margin-bottom:16px;" align="center">
                     <label for="" class="col-sm-2 col-form-label text-left">รูปที่ '.$number.'</label>
                     <img src="'.asset($image->image_path).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
-                   
-                    <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label text-right">ข้อความ</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="title-ck-'.$image->id.'"  id="title-ck-'.$image->id.'">'.$image->description.'</textarea>
-                        </div>
-                    </div>
                     <button type="button" class="btn btn-link save_title" id="main-title-'.$image->id.'">save</button>
                     <button type="button" class="btn btn-link remove_image" id="'.$image->id.'">Remove</button>
                 </div>

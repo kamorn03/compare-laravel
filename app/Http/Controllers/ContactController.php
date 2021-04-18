@@ -57,7 +57,7 @@ class ContactController extends Controller
             'meta_keyword' => $request->meta_keyword,
             'page_type' => 'contact',
             // 'slug' => SlugService::createSlug(Product::class, 'slug', $request->title),
-            'contact' => $contact,
+            'contact' => json_encode($contact),
         ];
 
         if(isset($cms)){
