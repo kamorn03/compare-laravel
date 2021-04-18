@@ -43,7 +43,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 <br>
-                <h2>Shopping Cart</h2>
+                <h2 class="text-header">Shopping Cart</h2>
 
                 @foreach ($cartCollection as $item)
                     <div class="row">
@@ -51,9 +51,7 @@
                             <img src="/img/cards/{{ $item->attributes->image }}" width="200" height="200">
                         </div>
                         <div class="col-lg-7">
-                            <p>
-                                <b><a
-                                        href="/shop/rings/Judaica-Jewelry/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
+                            <p> <b>{{ $item->name }}</b><br>
                             <form action="{{ route('cart.update') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{-- {{$item}} --}}
@@ -105,20 +103,19 @@
                 <div class="col-lg-5">
                     <div class="card bg-light text-dark">
                         <div class="card-body">
-                            <h2>Cart totals</h2>
+                            <h2 class="text-header">Cart totals</h2>
 
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><b>ราคา : </b>{{ \Cart::getTotal() }} ฿ </li>
-                                <li class="list-group-item"><b>ทั้งหมด : </b>{{ \Cart::getTotal() }} ฿ </li>
+                                <li class="list-group-item"><b>Subtotal : </b>{{ \Cart::getTotal() }} ฿ </li>
+                                <li class="list-group-item"><b>Total : </b>{{ \Cart::getTotal() }} ฿ </li>
                             </ul>
 
                             <div>
-                                <a href="/" class="btn btn-default"><button
-                                        class="btn btn-warning">กลับไปเลือกสินค้า</button></a>
+                                <a href="/" class="btn btn-default"><button class="btn btn-warning">Update Cart</button></a>
                                 @guest
-                                    <a href="/checkout" class="btn btn-success">ดำเนินการต่อ</a>
+                                    <a href="/checkout" class="btn btn-success">Check Out</a>
                                 @else
-                                    <a href="/shipping" class="btn btn-success">ดำเนินการต่อ</a>
+                                    <a href="/shipping" class="btn btn-success">Check Out</a>
                                 @endguest
                             </div>
 
@@ -164,6 +161,15 @@
     <style>
         .card {
             border: none;
+        }
+
+        .text-header {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 36px;
+            line-height: 49px;
+            text-transform: uppercase;
+            color: #797979;
         }
 
     </style>

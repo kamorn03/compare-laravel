@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// api
+Route::post('category/add', 'App\Http\Controllers\CategoryController@store')->name('category.store');
+Route::post('category/update', 'App\Http\Controllers\CategoryController@update')->name('category.update');
+
+// api
+Route::post('collection/add', [App\Http\Controllers\CollectionController::class, 'store'])->name('collection.store');
+Route::post('collection/update',  [App\Http\Controllers\CollectionController::class, 'update'])->name('collection.update');
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

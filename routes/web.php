@@ -65,9 +65,10 @@ Route::post('/login/blogger', [LoginController::class,'bloggerLogin'])->name('bl
 Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth:user'], function () {
     Route::view('/blogger', 'blogger');
     Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
+    Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
 });
 
 // api
@@ -108,6 +109,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
         // category
         Route::get('digiso-admin/category', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
 
+        
+
         Route::get('digiso-admin/category-list', [App\Http\Controllers\AdminController::class, 'categoryList'])->name('category.list');
         Route::get('digiso-admin/category/add', [App\Http\Controllers\CategoryController::class, 'categoriesAdd'])->name('category.add');
         Route::get('digiso-admin/category/{id}/edit', [App\Http\Controllers\CategoryController::class, 'categoryEdit'])->name('category.edit');
@@ -132,6 +135,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
+
+
+        Route::get('digiso-admin/banner', [App\Http\Controllers\AdminController::class, 'category'])->name('banner');
+
+
         // news
         Route::get('digiso-admin/news', [App\Http\Controllers\NewsController::class, 'show'])->name('news');
 

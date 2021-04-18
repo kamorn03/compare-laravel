@@ -10921,6 +10921,54 @@ a.text-dark:focus {
     }
 }
 
+/* Slider */
+
+.carousel-item {
+    height: 65vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    .carousel-item {
+        height: 30vh;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .dropdown-menu {
+        border: 0px;
+    }
+
+    .dropright .dropdown-menu {
+        top: 0;
+        right: auto;
+        left: 100%;
+        margin-top: 0;
+        margin-left: 2rem;
+    }
+}
+
+.carousel-caption {
+    right: auto;
+    left: 5%;
+    bottom: 90px;
+    text-align: left;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    display: none;
+    width: 5%;
+}
+
+.carousel-indicators {
+    display: none;
+}
+
 .card {
     border: 0;
 }

@@ -234,20 +234,15 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('admin.banner') }}">
+                                <i class="iconsminds-film"></i> Banner
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('admin.news') }}">
                                 <i class="iconsminds-digital-drawing"></i> ข่าว
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="Blank.Page.html">
-                                <i class="iconsminds-bucket"></i> สินค้า
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Blank.Page.html">
-                                <i class="iconsminds-bucket"></i> ขนาดสินค้า
-                            </a>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
