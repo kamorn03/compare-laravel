@@ -24,8 +24,9 @@ class RedirectIfAuthenticated
         if ($guard == "blogger" && Auth::guard($guard)->check()) {
             return redirect('/blogger');
         }
+        // current
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/');
         }
 
         return $next($request);

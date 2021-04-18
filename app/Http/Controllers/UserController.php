@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Blogger;
 // use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
@@ -19,7 +20,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
+        $data = Blogger::orderBy('id','DESC')->paginate(5);
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -47,16 +48,16 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            // 'roles' => 'required'
         ]);
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user = Blogger::create($input);
+        // $user->assignRole($request->input('roles'));
     
-        return redirect()->route('shop')
+        return redirect()->route('home')
                         ->with('success','User created successfully');
     }
     
@@ -68,7 +69,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = Blogger::find($id);
         return view('users.show',compact('user'));
     }
     
@@ -80,11 +81,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = Blogger::find($id);
         // $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        // $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('users.edit',compact('user','roles','userRole'));
+        return view('users.edit',compact('user'));
     }
     
     /**
@@ -110,11 +111,9 @@ class UserController extends Controller
             $input = Arr::except($input,array('password'));    
         }
     
-        $user = User::find($id);
+        $user = Blogger::find($id);
         $user->update($input);
-        // DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
-        // $user->assignRole($request->input('roles'));
+
     
         return redirect()->route('users.edit', ['user' =>  $id])
                         ->with('success','แก้ไขข้อมูลสำเร็จ');
@@ -130,7 +129,7 @@ class UserController extends Controller
             'zipcode' => 'required',
         ]);
     
-        $user = User::find($id);
+        $user = Blogger::find($id);
         $input['address'] = array([
             'address' => $request->address,
             'country' =>  $request->country,
@@ -151,7 +150,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        Blogger::find($id)->delete();
         return redirect()->route('admin.users')
                         ->with('success','User deleted successfully');
     }

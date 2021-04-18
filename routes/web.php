@@ -15,14 +15,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\LoginController as LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserController;
 
 // Route::view('/', 'home');
 Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
 Auth::routes();
 
 // user register
-Route::post('users/store', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-Route::get('users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+Route::post('users/store', [UserController::class, 'store'])->name('users.store');
+Route::get('users/create', [UserController::class, 'create'])->name('users.create');
 
 // more-about
 Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
@@ -58,21 +59,27 @@ Route::post('clear', 'App\Http\Controllers\CartController@clear')->name('cart.cl
 Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
 
 
+// register blogger
 Route::post('/register/digiso-admin', [RegisterController::class,'createAdmin']);
 Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
 
-Route::group(['middleware' => 'auth:blogger'], function () {
+
+Route::group(['middleware' => 'auth:users'], function () {
     Route::view('/blogger', 'blogger');
-
-
-
-
-
+    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
 });
 
 
 
+// api
+Route::post('product/add', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
+Route::post('product/update',  [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
 
+
+Route::post('main-title/upload',[App\Http\Controllers\MainTitleController::class, 'upload'])->name('main-title.upload');
+Route::post('main-title/update', [App\Http\Controllers\MainTitleController::class, 'update'])->name('main-title.update');
+Route::get('main-title/fetch', [App\Http\Controllers\MainTitleController::class, 'fetch'])->name('main-title.fetch');
+Route::get('main-title/delete', [App\Http\Controllers\MainTitleController::class, 'delete'])->name('main-title.delete');
 
 Route::group(['middleware' => 'auth:admin'], function () {
     /* admin path */
@@ -89,10 +96,29 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
         // category
         Route::get('digiso-admin/category', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
+
+        Route::get('digiso-admin/category-list', [App\Http\Controllers\AdminController::class, 'categoryList'])->name('category.list');
+        Route::get('digiso-admin/category/add', [App\Http\Controllers\CategoryController::class, 'categoriesAdd'])->name('category.add');
+        Route::get('digiso-admin/category/{id}/edit', [App\Http\Controllers\CategoryController::class, 'categoryEdit'])->name('category.edit');
+        Route::get('digiso-admin/category/{id}/delete', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('category.delete');
+
         // collection
         Route::get('digiso-admin/collection', [App\Http\Controllers\AdminController::class, 'collection'])->name('collection');
+        Route::get('digiso-admin/collection/add', [App\Http\Controllers\CollectionController::class, 'collectionAdd'])->name('collection.add');
+        Route::get('digiso-admin/collection-list', [App\Http\Controllers\AdminController::class, 'collectionList'])->name('collection.datalist');
+        Route::post('digiso-admin/collection/{category_id}/list', [App\Http\Controllers\CollectionController::class, 'collectionGetList'])->name('collection.list');
+        Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\AdminController::class, 'collectionUpdate'])->name('collection.edit');
+        Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\CollectionController::class, 'collectionEdit'])->name('collection.edit');
+        Route::get('digiso-admin/collection/{id}/delete', [App\Http\Controllers\CollectionController::class, 'destroy'])->name('collection.delete');
+        Route::post('digiso-admin/collection/{category_id}/list', [App\Http\Controllers\CollectionController::class, 'collectionGetList'])->name('collection.list');
+
         // product 
         Route::get('digiso-admin/product', [App\Http\Controllers\AdminController::class, 'product'])->name('product');
+
+        Route::get('digiso-admin/product-list', [App\Http\Controllers\AdminController::class, 'productList'])->name('product.list');
+        Route::get('digiso-admin/product-add', [App\Http\Controllers\AdminController::class, 'productAdd'])->name('product.add');
+        Route::get('digiso-admin/product/{id}/add_image', [App\Http\Controllers\AdminController::class, 'productImage'])->name('product.add_image'); 
+
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
         // news

@@ -18,8 +18,7 @@ class CartController extends Controller
     {
         // $user = $request->user(); //getting the current logged in user
 
-        
-        // dd($user->hasRole('admin','editor')); // and so on
+    
         // $products = Category::with('products')->with('collections')->orderBy('created_at', 'asc')->get();
         // dd($products->toSql()); // Show results of log
 
