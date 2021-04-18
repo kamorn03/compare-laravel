@@ -24,7 +24,7 @@
                 </button>
             </div>
         @endif
-
+        
         @if (session()->has('alert_msg'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {{ session()->get('alert_msg') }}
@@ -47,7 +47,7 @@
         {{-- map --}}
         <div>
             <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen
-                src="https://www.google.com/maps/embed/v1/view?key=???&center={{ $contact->contact['latitude'] ?? '18' }} ,{{ $contact->contact['longitude'] ?? '99' }} &zoom=18&maptype=satellite">
+                src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBd0EV68eSZLhtek6PohrCxMuxCdZ6b61w&center={{ $contact->contact['latitude'] ?? '18' }} ,{{ $contact->contact['longitude'] ?? '99' }} &zoom=18&maptype=satellite">
             </iframe>
         </div>
         {{-- text --}}

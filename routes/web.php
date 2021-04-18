@@ -43,6 +43,21 @@ Route::get('/register/blogger', [RegisterController::class,'showBloggerRegisterF
 Route::post('/login/digiso-admin', [LoginController::class,'adminLogin']);
 Route::post('/login/blogger', [LoginController::class,'bloggerLogin']);
 
+
+// slug show product paginate
+Route::get('shop/{category}', 'App\Http\Controllers\ProductController@ShowProductCategories')->name('shop.category');
+Route::get('shop/{category}/{collection}', 'App\Http\Controllers\ProductController@ShowProductCollections')->name('shop.collection');
+Route::get('shop/{category}/{collection}/{slug}', 'App\Http\Controllers\ProductController@show')->name('shop.show');
+
+
+Route::get('cart', 'App\Http\Controllers\CartController@cart')->name('cart.index');
+Route::post('add', 'App\Http\Controllers\CartController@add')->name('cart.store');
+Route::post('update', 'App\Http\Controllers\CartController@update')->name('cart.update');
+Route::post('remove', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
+Route::post('clear', 'App\Http\Controllers\CartController@clear')->name('cart.clear');
+Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
+
+
 Route::post('/register/digiso-admin', [RegisterController::class,'createAdmin']);
 Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
 

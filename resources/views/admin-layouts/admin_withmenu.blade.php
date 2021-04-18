@@ -819,6 +819,7 @@
         <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
         <script src="{{ asset('js/dore.script.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
+        <script src="{{ asset('js/input-spinner.js') }}"></script>
         <style>
             a {
                 text-decoration: none;
