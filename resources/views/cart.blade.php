@@ -163,14 +163,7 @@
             border: none;
         }
 
-        .text-header {
-            font-style: normal;
-            font-weight: normal;
-            font-size: 36px;
-            line-height: 49px;
-            text-transform: uppercase;
-            color: #797979;
-        }
+      
 
      
 
