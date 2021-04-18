@@ -42,13 +42,12 @@
         @endif
         <div class="row justify-content-center">
             <div class="col-lg-7">
-                <br>
                 <h2 class="text-header">Shopping Cart</h2>
 
                 @foreach ($cartCollection as $item)
                     <div class="row">
                         <div class="col-lg-3">
-                            <img src="/img/cards/{{ $item->attributes->image }}" width="200" height="200">
+                            <img src="/img/cards/{{ $item->attributes->image }}" width="160" height="160">
                         </div>
                         <div class="col-lg-7">
                             <p> <b>{{ $item->name }}</b><br>
@@ -163,9 +162,13 @@
             border: none;
         }
 
-      
-
-     
+        .skin-5 .num-in span {
+            font-size: 16px;
+            width: 18px;
+            display: block;
+            line-height: 41px;
+            cursor: pointer;
+        }
 
     </style>
 @endsection

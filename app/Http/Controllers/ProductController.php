@@ -151,30 +151,16 @@ class ProductController extends Controller
     function fetch()
     {
         // where id 
-        $images = \File::allFiles(public_path('images\title'));
+        $main = ProductImage::all();
+        // $images = \File::allFiles(public_path('images\title'));
         $output = '<div class="row">';
         $number = 1;
-        foreach($images as $image)
+        foreach($main as $image)
         {
         $output .= '
         <div class="col-md-12" style="margin-bottom:16px;" align="center">
                     <label for="" class="col-sm-2 col-form-label text-left">รูปที่ '.$number.'</label>
-                    <img src="'.asset('images/title/' . $image->getFilename()).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
-                    <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label text-right">บรรทัดที่ 1</label>
-                        <div class="col-sm-10">
-                            <input type="text" id="title-line-1-'.$number.'" name="title-line-1-'.$number.'" class="form-control" placeholder="บรรทัดที่ 1">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label text-right">บรรทัดที่ 2 </label>
-                        <div class="col-sm-10">
-                            <input type="text" id="title-line-2-'.$number.'" name="title-line-2-'.$number.'" class="form-control" placeholder="บรรทัดที่ 2">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                   
-                    </div>
+                    <img src="'.asset('images/title/' . $image->getFilename()).'" class="img-thumbnail" width="175" height="175" style="height:175px;" /> 
                     <button type="button" class="btn btn-link save_title" id="main-title-'.$number.'">save</button>
                     <button type="button" class="btn btn-link remove_image" id="'.$image->getFilename().'">Remove</button>
                 </div>

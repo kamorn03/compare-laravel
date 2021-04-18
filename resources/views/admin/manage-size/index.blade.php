@@ -4,7 +4,7 @@
     <div class="col-12">
         <h1>ประเภทย่อยสินค้า</h1>
         <span class="float-right">
-            <a href="{{ route('admin.collection.add') }}"><i class="fa fa-plus"></i> เพิ่มประเภทย่อยสินค้า </a>
+            <a href="{{ route('admin.collection.add') }}"><i class="fa fa-plus"></i> เพิ่มขนาดสินค้า </a>
         </span>
         <div class="separator mb-5"></div>
     </div>

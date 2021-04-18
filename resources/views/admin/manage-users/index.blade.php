@@ -13,22 +13,13 @@
             <th>No</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Roles</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($data as $key => $user)
-            @if (!str_contains($user->getRoleNames() , 'Admin') && $user->getRoleNames() != "[]")
                 <tr>
                     <td>{{ ++$i }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    {{-- <td>
-                        @if (!empty($user->getRoleNames()))
-                            @foreach ($user->getRoleNames() as $v)
-                                <label class="badge badge-success">{{ $v }}</label>
-                            @endforeach
-                        @endif
-                    </td> --}}
                     <td>
                         <a class="btn btn-info" href="{{ route('admin.users.show', $user->id) }}">Show</a>
                         {{-- <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a> --}}
@@ -37,7 +28,6 @@
                         {!! Form::close() !!}
                     </td>
                 </tr> 
-            @endif
         @endforeach
     </table>
 
