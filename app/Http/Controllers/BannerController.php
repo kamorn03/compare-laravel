@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use Redirect;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -14,7 +15,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('admin.manage-banner.index');
+        $banner = Banner::orderBy('id', 'asc')->get();
+        return view('admin.manage-banner.index',compact('banner'));
     }
 
     /**
@@ -101,22 +103,27 @@ class BannerController extends Controller
             return Redirect::to(route('admin.banner'))->with('success','Greate! posts created successfully.');
         }else{
             $image = $request->file('image1');
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('images/banner/'), $imageName);
-            $data_banner = Banner::where('id', 1)->update([
-                'path_img' => "images/banner/".$imageName,
-                'link' => 'test',
-                'detail' => 'test',
-            ]);
+            if($image){
+                $imageName = time() . '.' . $image->extension();
+                $image->move(public_path('images/banner/'), $imageName);
+                $data_banner = Banner::where('id', 1)->update([
+                    'path_img' => "images/banner/".$imageName,
+                    'link' => 'test',
+                    'detail' => 'test',
+                ]);
+            }
+          
             $image2 = $request->file('image2');
-            $imageName2 = time() . '.' . $image2->extension();
-            $image2->move(public_path('images/banner/'), $imageName2);
-            $data_banner = Banner::where('id', 2)->update([
-                'path_img' => "images/banner/".$imageName2,
-                'link' => 'test',
-                'detail' => 'test',
-            ]);
-
+            if( $image2){
+                $imageName2 = time() . '.' . $image2->extension();
+                $image2->move(public_path('images/banner/'), $imageName2);
+                $data_banner = Banner::where('id', 2)->update([
+                    'path_img' => "images/banner/".$imageName2,
+                    'link' => 'test',
+                    'detail' => 'test',
+                ]);
+            }
+           
             return Redirect::to(route('admin.banner'))->with('success','Greate! posts created successfully.');
         }
         // $banner::in

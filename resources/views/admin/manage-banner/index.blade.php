@@ -8,6 +8,7 @@
     <div class="form-group row">
         <div class="col-12">
             <div class="panel panel-default">
+                {{-- {{$banner}} --}}
                 <form action="{{ route('admin.banner.update') }}" method="post"  enctype="multipart/form-data">
                     @csrf
                     <div class="panel-body">
@@ -15,9 +16,9 @@
                             <label for="" class="col-sm-2 col-form-label text-right">picture 1</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" name="image1" id="image1"
-                                    value="{{ isset($product) && $product->image_path ? null : 'required' }}">
+                                    value="{{ isset($banner) ? null : 'required' }}">
                                 <img class="img-thumbnail"
-                                    src="{{ isset($product) && $product->image_path ? asset('img/cards/' . $product->image_path) : asset('img/dist/default-thumbnail.jpg') }}"
+                                    src="{{ isset($banner) && $banner[0]->path_img ? asset($banner[0]->path_img) : asset('img/dist/default-thumbnail.jpg') }}"
                                     width="300" height="200" id="preview-image1">
                             </div>
                         </div>
@@ -25,9 +26,9 @@
                             <label for="" class="col-sm-2 col-form-label text-right">picture 2</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" name="image2" id="image2"
-                                    value="{{ isset($product) && $product->image_path ? null : 'required' }}">
+                                    value="{{ isset($banner) ? null : 'required' }}">
                                 <img class="img-thumbnail"
-                                    src="{{ isset($product) && $product->image_path ? asset('img/cards/' . $product->image_path) : asset('img/dist/default-thumbnail.jpg') }}"
+                                    src="{{ isset($banner) && $banner[1]->path_img ? asset($banner[1]->path_img) : asset('img/dist/default-thumbnail.jpg') }}"
                                     width="300" height="200" id="preview-image2">
                             </div>
                         </div>
