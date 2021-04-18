@@ -45,20 +45,16 @@
                 <h2 class="text-header">Shopping Cart</h2>
 
                 @foreach ($cartCollection as $item)
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-lg-3">
                             <img src="/img/cards/{{ $item->attributes->image }}" width="160" height="160">
                         </div>
-                        <div class="col-lg-7">
-                            <b>{{ $item->name }}</b><br>
+                        <div class="col-lg-9">
+                            <b class="text-product-name">{{ $item->name }}</b><br>
                             <form action="{{ route('cart.update') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{-- {{$item}} --}}
-                                <div class="form-group row">
-
-
-                                        
-
+                                <div class="form-group row mt-3">
                                     <div class="col-7">
                                         <div class="num-block skin-5 w-100">
                                             <input type="hidden" value="{{ $item->id }}" id="id" name="id">
@@ -70,7 +66,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-3 text-right">
+                                    <div class="col-3 text-right float-right">
                                         <b> {{ $item->price }} ฿ </b>
                                     </div>
                                     {{-- <div class="col-3">
@@ -78,23 +74,44 @@
                                                 class="fa fa-edit"></i></button>
                                     </div> --}}
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-7">
+                                        {{-- <div class="num-block skin-5 w-100">
+                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                            <div class="num-in w-100">
+                                                <span class="minus dis">-</span>
+                                                <input type="number w-100" class="in-num" id="quantity" name="quantity"
+                                                    value="{{ $item->quantity }}" readonly="">
+                                                <span class="plus">+</span>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+                                    <div class="col-3 text-right float-right">
+
+                                    </div>
+                                    {{-- <div class="col-3">
+                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
+                                                class="fa fa-edit"></i></button>
+                                    </div> --}}
+                                </div>
                                 <div class="row text-right float-right">
-                                    <form action="{{ route('cart.remove') }}" method="POST">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                        <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i
-                                                class="fa fa-trash"></i></button>
-                                    </form>
+                                    <div class="col-7">
+                                        <form action="{{ route('cart.remove') }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                            <a onclick="$(this).closest('form').submit();"
+                                                style="margin-right: 10px;  cursor: pointer;"><i
+                                                    class="fa fa-trash"></i></a>
+                                        </form>
+                                    </div>
                                 </div>
                             </form>
-                          
+
                             {{-- <b>ทั้งหมด: </b> {{ \Cart::get($item->id)->getPriceSum() }} ฿ <br> --}}
                             {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
-                           
+
                         </div>
-                        <div class="col-lg-2">
-                           
-                        </div>
+
                     </div>
                     <hr>
                 @endforeach
@@ -111,21 +128,35 @@
                         <div class="card-body">
                             <h2 class="text-header">Cart totals</h2>
 
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><b>Subtotal : </b>{{ \Cart::getTotal() }} ฿ </li>
-                                <li class="list-group-item"><b>Total : </b>{{ \Cart::getTotal() }} ฿ </li>
-                            </ul>
+                            <div class="row mt-5">
+                                <div class="col-6">
+                                    Subtotal
+                                </div>
+                                <div class="col-6 text-right float-right">
+                                    <b> {{ \Cart::getTotal() }} ฿ </b>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    Total
+                                </div>
+                                <div class="col-6 text-right float-right">
+                                    <b> {{ \Cart::getTotal() }} ฿ </b>
+                                </div>
+                            </div>
 
-                            <div>
-                                
-                                <a href="/" class="btn btn-default"><button class="btn btn-default">Update Cart</button></a>
-
-
-                                @guest
-                                    <a href="/checkout" class="btn btn-green">Check Out</a>
-                                @else
-                                    <a href="/shipping" class="btn btn-green">Check Out</a>
-                                @endguest
+                            <div class="row mt-5">
+                                <div class="col-12">
+                                    <a href="/"><button class="btn btn-light w-100">Update Cart</button></a>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    @guest
+                                        <a href="/checkout" class="btn btn-green-checkout w-100">Check Out</a>
+                                    @else
+                                        <a href="/shipping" class="btn btn-green-checkout w-100">Check Out</a>
+                                    @endguest
+                                </div>
                             </div>
 
                         </div>
@@ -182,6 +213,31 @@
             display: block;
             line-height: 41px;
             cursor: pointer;
+        }
+
+        .btn-green-checkout {
+            /* padding: 0.375rem 2.75rem; */
+            background: #81D8D0;
+            border: 1px solid #81D8D0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            font-family: 'Open Sans';
+            width: 250px;
+            height: auto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 19px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        .text-product-name {
+            font-size: 16px;
+            line-height: 22px;
+            /* identical to box height */
+            color: #797979;
         }
 
     </style>
