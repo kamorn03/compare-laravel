@@ -26,7 +26,7 @@ class AlterAddressToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('address');
+            // $table->dropColumn('address');
         });
     }
 }

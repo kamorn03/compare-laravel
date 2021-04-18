@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <!-- / skin 5 -->
-                                <button class=" btn btn-default btn-green" type="submit">add to cart</button>
+                                <button class=" btn btn-default btn-green w-100" type="submit">add to cart</button>
                                 {{-- <button class="like btn btn-default" type="button"><span
                                         class="fa fa-heart"></span></button> --}}
 

@@ -28,9 +28,9 @@ class AlterMetaToNews extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->dropColumn('meta_title');
-            $table->dropColumn('meta_description');
-            $table->dropColumn('meta_keyword');
+            // $table->dropColumn('meta_title');
+            // $table->dropColumn('meta_description');
+            // $table->dropColumn('meta_keyword');
         });
     }
 }

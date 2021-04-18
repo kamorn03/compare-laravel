@@ -26,7 +26,7 @@ class AlterContactToCMSAdminManages extends Migration
     public function down()
     {
         Schema::table('c_m_s_admin_manages', function (Blueprint $table) {
-            $table->dropColumn('contact');
+            // $table->dropColumn('contact');
         });
     }
 }
