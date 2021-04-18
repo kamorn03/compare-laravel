@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="container" style="margin-top: 80px">
+    <div class="container" style="margin-top: 35px">
         @if (session()->has('success_msg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session()->get('success_msg') }}
@@ -171,6 +171,8 @@
             text-transform: uppercase;
             color: #797979;
         }
+
+     
 
     </style>
 @endsection

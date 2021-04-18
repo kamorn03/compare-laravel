@@ -14,19 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\LoginController as LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\RegisterController as AuthRegisterController;
+use App\Http\Controllers\RegisterController as RegisterController;
 use App\Http\Controllers\UserController;
 
-// Route::view('/', 'home');
-Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
+
+
+// // Route::view('/', 'home');
+
 Auth::routes();
+// home
+Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
+// more-about
+Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
+
 
 // user register
 Route::post('users/store', [UserController::class, 'store'])->name('users.store');
 Route::get('users/create', [UserController::class, 'create'])->name('users.create');
 
-// more-about
-Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
 
 // news 
 Route::get('news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
@@ -39,7 +45,7 @@ Route::get('/login/digiso-admin', [LoginController::class, 'showAdminLoginForm']
 Route::get('/login/blogger', [LoginController::class,'showBloggerLoginForm']);
 
 Route::get('/register/digiso-admin', [RegisterController::class,'showAdminRegisterForm']);
-Route::get('/register/blogger', [RegisterController::class,'showBloggerRegisterForm']);
+Route::get('/register/blogger', [Regiter::class,'showBloggerRegisterForm']);
 
 Route::post('/login/digiso-admin', [LoginController::class,'adminLogin']);
 
@@ -65,12 +71,6 @@ Route::post('/login/blogger', [LoginController::class,'bloggerLogin'])->name('bl
 Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
 
 
-Route::group(['middleware' => 'auth:user'], function () {
-    Route::view('/blogger', 'blogger');
-    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
-    Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
-});
-
 // api
 Route::post('product/add', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
 Route::post('product/update',  [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
@@ -86,6 +86,22 @@ Route::get('main-title/delete', [App\Http\Controllers\MainTitleController::class
  Route::post('digiso-admin/news-update', [App\Http\Controllers\NewsController::class, 'update'])->name('news.update');
  Route::get('digiso-admin/news/{id}/edit', [App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit');
  Route::get('digiso-admin/news/{id}/delete', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.delete');
+
+
+
+
+Route::group(['middleware' => 'auth:blogger'], function () {
+    Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
+    // Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
+    Route::view('/blogger', 'blogger');
+
+    // users
+    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
+
+    Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
+});
+
+
 
 
 Route::group(['middleware' => 'auth:admin'], function () {
@@ -138,7 +154,6 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 
         Route::get('digiso-admin/banner', [App\Http\Controllers\AdminController::class, 'category'])->name('banner');
-
 
         // news
         Route::get('digiso-admin/news', [App\Http\Controllers\NewsController::class, 'show'])->name('news');

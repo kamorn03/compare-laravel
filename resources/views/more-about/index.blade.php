@@ -15,7 +15,7 @@
     </div>
 
     {{-- image --}}
-    <div style="margin-top: 50px">
+    <div>
         {{--  insert image  --}}
         <img style="width: 100%" src="{{ asset('img/landing-page/ruby-gem-diamond.png') }}" alt="ruby-gem"> 
     </div>

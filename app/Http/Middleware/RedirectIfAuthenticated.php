@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             return redirect('/digiso-admin');
         }
         if ($guard == "blogger" && Auth::guard($guard)->check()) {
-            return redirect('/blogger');
+            return redirect('/');
         }
         // current
         if (Auth::guard($guard)->check()) {

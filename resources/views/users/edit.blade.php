@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Your Account</h2>
+                    <h2 class="text-header">Your Account</h2>
                 </div>
 
                 {{-- <div class="pull-right">
@@ -52,41 +52,104 @@
 
 
         <div class="row justify-content-center">
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-3">
                         {{-- <img src="/img/cards/{{ $item->attributes->image }}" width="200" height="200"> --}}
                     </div>
                     <div class="col-lg-7">
-                        <p>Personal Information</p> 
-                        <p>Orders</p> 
-                        <p>Change Password</p> 
-                        <p>Sign out</p> 
-                    </div>
-                    <div class="col-lg-2">
+                        <p class="text-menu active">Personal Information</p> 
+                        <p class="text-menu">Orders</p> 
+                        <p class="text-menu">Change Password</p> 
+                        <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p> 
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-5">
+            {{-- First name * Last name * Company name (optional) Country / Region * Street address * Town / City * State / County * Postcode / ZIP * Phone * Email address * --}}
+            <div class="col-lg-6">
                 {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Name:</strong> --}}
-                            {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
+                            {!! Form::text('firstname', null, ['placeholder' => 'First name ', 'class' => 'form-control']) !!}
                         </div>
                     </div>
+
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
+                            {!! Form::text('lastname', null, ['placeholder' => 'Last name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('company', null, ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
 
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('country', null, ['placeholder' => 'Country', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('region', null, ['placeholder' => 'Region', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('street-address', null, ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('town', null, ['placeholder' => 'Town / City', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('state', null, ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('postcode', null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('email', null, ['placeholder' => 'Email address', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                 
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <button type="submit" class="btn btn-green">SAVE</button>
                     </div>
                 </div>
                 {!! Form::close() !!}

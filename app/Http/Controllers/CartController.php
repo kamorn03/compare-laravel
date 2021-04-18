@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
+
+    public function __construct()
+    {
+        if (array_key_exists('HTTP_AUTHORIZATION', $_SERVER)) {
+            $this->middleware('auth:blogger');
+        }
+    }
+
     public function shop(Request $request)
     {
         // $user = $request->user(); //getting the current logged in user

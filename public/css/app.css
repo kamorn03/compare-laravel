@@ -10921,6 +10921,37 @@ a.text-dark:focus {
     }
 }
 
+.form-control {
+    background: #FFFFFF;
+    border: 1px solid #81D8D0;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.text-header {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 49px;
+    text-transform: uppercase;
+    color: #797979;
+}
+
+.text-menu {
+    margin-top: 2em;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: uppercase;
+    color: #797979;
+}
+
+.text-menu.active {
+    color: #81D8D0;
+}
+
+
 /* Slider */
 
 .carousel-item {
@@ -10998,12 +11029,12 @@ a.text-dark:focus {
 
 *::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: red;
+    color: #81D8D0 !important;
 }
 
 *::placeholder {
     /* modern browser */
-    color: red;
+    color: #81D8D0 !important;
 }
 
 .image-home-banner-1 {

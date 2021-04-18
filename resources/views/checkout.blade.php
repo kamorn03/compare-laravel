@@ -1,13 +1,20 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="header-green text-center align-middle">
+        <div class="row align-items-center h-100">
+            <div class="mx-auto">
+                <div class="h-100 justify-content-center">
+                    <div>
+                        <label> Home > Checkout </label>
+                        <h1>Checkout</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container" style="margin-top: 80px">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shop</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-            </ol>
-        </nav>
+
         @if (session()->has('success_msg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session()->get('success_msg') }}
