@@ -65,7 +65,7 @@ Route::post('/login/blogger', [LoginController::class,'bloggerLogin'])->name('bl
 Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
 
 
-Route::group(['middleware' => 'auth:blogger'], function () {
+Route::group(['middleware' => 'auth'], function () {
     Route::view('/blogger', 'blogger');
     Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
 });

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 
 @section('content')
@@ -64,32 +64,8 @@
                     {!! Form::text('email', null, ['placeholder' => 'Email', 'class' => 'form-control']) !!}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Password:</strong>
-                    {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Confirm Password:</strong>
-                    {!! Form::password('confirm-password', ['placeholder' => 'Confirm Password', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12" style="display: none">
-                <div class="form-group">
-                    <strong>Role:</strong>
-                    <select class="form-control" name="roles" id="roles">
-                        @foreach ($roles as $role)
-                            <option value="{{ $role }}" {{ $role == 'Customer' ? 'selected' : '' }}>
-                                {{ $role }}</option>
-                            {{-- {!! $userRole !!} --}}
-                            {{-- <option>{{ $role->name }}</option> --}}
-                        @endforeach
-                    </select>
-                    {{-- {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!} --}}
-                </div>
-            </div>
+         
+           
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
