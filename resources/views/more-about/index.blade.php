@@ -15,6 +15,19 @@
     </div>
 
     {{-- image --}}
+    <div class="header-green text-center align-middle">
+        <div class="row align-items-center h-100">
+            <div class="mx-auto">
+                <div class="h-100 justify-content-center">
+                    <div>
+                        <label> Home > Production and fulfillment services</label>
+                        <h1>Production and fulfillment services </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div>
         {{--  insert image  --}}
         <img style="width: 100%" src="{{ asset('img/landing-page/ruby-gem-diamond.png') }}" alt="ruby-gem"> 

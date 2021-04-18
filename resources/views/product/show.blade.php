@@ -1,13 +1,24 @@
 @extends('layouts.main')
 
 @section('content')
+
     <div class="header-green text-center align-middle">
         <div class="row align-items-center h-100">
             <div class="mx-auto">
                 <div class="h-100 justify-content-center">
+                    {{-- {{$products[0]}} --}}
+                    @php
+                        $category = [];
+                        $collection = [];
+                        if (isset($products[0])) {
+                            $category = App\Models\Category::find($products[0]->category_id);
+                            $collection = App\Models\Collections::find($products[0]->collection_id);
+                        }
+                    @endphp                        
                     <div>
-                        <span class="navigation-title "> Home > rings > {{ $products[0]->name }} </span>
-                        <h1 class="product-name-title product-title mt-3">{{ $products[0]->name }}</h1>
+                        <label> Home > {{ $category->name }}  
+                            {{ $category != [] ? '  >  ' . $category->name : null }}  {{ $products[0]->name }}</label>
+                        <h1>{{ $products[0]->name }} </h1>
                     </div>
                 </div>
             </div>
@@ -187,6 +198,13 @@
 
         img {
             max-width: 100%;
+        }
+
+        .tab-pane {
+            text-align: center;
+        }
+        .tab-pane img {
+            max-width: 60%;
         }
 
         .text-product-name {

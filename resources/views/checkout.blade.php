@@ -35,7 +35,8 @@
             <div class="col-lg-6">
                 <div class="row text-center">
                     <div class="col-lg-8">
-                        <form method="POST" action="{{ route('login') }}">
+                        <h2 class="text-header text-left"> Sign In </h2>
+                        <form method="POST" action="{{ route('login') }}" style="margin-top: 2em">
                             @csrf
                             <div class="form-group row">
                                 <div class="col-md-12">
@@ -63,8 +64,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-10">
+                            <div class="form-group row text-left">
+                                <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary">Sign in</button>
                                     <a href="">Forgot your password?</a>
                                 </div>
@@ -75,57 +76,92 @@
             </div>
             @if (count($cartCollection) > 0)
                 <div class="col-lg-6">
-                    <form>
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <h2 class="text-header">Create an Accounts</h2>
+                    {!! Form::model(['method' => 'POST', 'route' => ['users.create']]) !!}
+                    <div class="row"  style="margin-top: 2em">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Name:</strong> --}}
+                                {!! Form::text('firstname', null, ['placeholder' => 'First name ', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputAddress" class="col-sm-3 col-form-label">Address</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('lastname', null, ['placeholder' => 'Last name', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputAddress2" class="col-sm-3 col-form-label">Address 2</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputAddress2"
-                                    placeholder="Apartment, studio, or floor">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('company', null, ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputCity" class="col-sm-2 col-form-label">City</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputCity">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('country', null, ['placeholder' => 'Country', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputState" class="col-sm-2 col-form-label">City</label>
-                            <div class="col-sm-10">
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                </select>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('region', null, ['placeholder' => 'Region', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputZip" class="col-sm-2 col-form-label">Zip</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputZip">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('street-address', null, ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('town', null, ['placeholder' => 'Town / City', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Sign up</button>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('state', null, ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                    </form>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('postcode', null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                {{-- <strong>Email:</strong> --}}
+                                {!! Form::text('email', null, ['placeholder' => 'Email address', 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <button type="submit" class="btn btn-green">SAVE</button>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             @endif
         </div>

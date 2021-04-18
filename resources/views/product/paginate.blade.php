@@ -1,17 +1,16 @@
 @extends('layouts.main')
 
 @section('content')
+
     <div class="header-green text-center align-middle">
         <div class="row align-items-center h-100">
             <div class="mx-auto">
                 <div class="h-100 justify-content-center">
                     <div>
-                        <span class="navigation-title">
-                            Home
+                        <label> Home
                             {{ $category ? '  >  ' . $category : null }}
-                            {{ $collection ? '  >  ' . $collection : null }}
-                        </span>
-                        <h1 class="product-name-title">{{ $collection ? $collection : $category }} </h1>
+                            {{ $collection ? '  >  ' . $collection : null }}</label>
+                        <h1>{{ $collection ? $collection : $category }} </h1>
                     </div>
                 </div>
             </div>
@@ -57,7 +56,7 @@
                                     alt="{{ $product->image_path }}"></a>
                             <div class="card-body custom-card-home">
                                 <h6 class="card-title">{{ $product->name }}</h6>
-                                <p style="font-weight: bold;color: black;">  {{ $product->price }} ฿ </p>
+                                <p style="font-weight: bold;color: black;"> {{ $product->price }} ฿ </p>
                             </div>
                         </div>
                     </div>
