@@ -74,11 +74,18 @@ Route::group(['middleware' => 'auth:blogger'], function () {
 Route::post('product/add', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
 Route::post('product/update',  [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
 
-
+// main-title
 Route::post('main-title/upload',[App\Http\Controllers\MainTitleController::class, 'upload'])->name('main-title.upload');
 Route::post('main-title/update', [App\Http\Controllers\MainTitleController::class, 'update'])->name('main-title.update');
 Route::get('main-title/fetch', [App\Http\Controllers\MainTitleController::class, 'fetch'])->name('main-title.fetch');
 Route::get('main-title/delete', [App\Http\Controllers\MainTitleController::class, 'delete'])->name('main-title.delete');
+
+ // news
+ Route::post('digiso-admin/news-store', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
+ Route::post('digiso-admin/news-update', [App\Http\Controllers\NewsController::class, 'update'])->name('news.update');
+ Route::get('digiso-admin/news/{id}/edit', [App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit');
+ Route::get('digiso-admin/news/{id}/delete', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.delete');
+
 
 Route::group(['middleware' => 'auth:admin'], function () {
     /* admin path */

@@ -10957,3 +10957,19 @@ a.text-dark:focus {
     /* modern browser */
     color: red;
 }
+
+.image-home-banner-1 {
+    background: url("../images/production3 1.png?8ab128bfda1a2794b0328b8321be955e") repeat left top;
+    width: 100%;
+    height: 60vh;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-news img {
+    width: 100%;
+    height: 250px;
+}
