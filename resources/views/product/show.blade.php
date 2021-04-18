@@ -72,9 +72,12 @@
                                     <option value="">2</option>
                                 </select>
                             </div> --}}
-
+                            <h5 class="size">size : </h5>
+                            <div class="action">
+                                <input type="number w-100" class="form-control" id="size" name="size" value="1">
+                            </div>
                             
-                            <h5 class="Quantity">Quantity: </h5>
+                            <h5 class="quantity">Quantity : </h5>
                             <div class="action">
                                 {{ csrf_field() }}
                                 <input type="hidden" value="{{ $products[0]->id }}" id="id" name="id">
@@ -97,6 +100,7 @@
                                         class="fa fa-heart"></span></button> --}}
 
                             </div>
+                            
                         </form>
                         <div style="margin-top: 15px;">
                             <p> {!! $products[0]->description !!} </p> 

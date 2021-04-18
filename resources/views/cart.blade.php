@@ -50,11 +50,15 @@
                             <img src="/img/cards/{{ $item->attributes->image }}" width="160" height="160">
                         </div>
                         <div class="col-lg-7">
-                            <p> <b>{{ $item->name }}</b><br>
+                            <b>{{ $item->name }}</b><br>
                             <form action="{{ route('cart.update') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{-- {{$item}} --}}
                                 <div class="form-group row">
+
+
+                                        
+
                                     <div class="col-7">
                                         <div class="num-block skin-5 w-100">
                                             <input type="hidden" value="{{ $item->id }}" id="id" name="id">
@@ -66,27 +70,30 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-3 text-right">
+                                        <b> {{ $item->price }} ฿ </b>
+                                    </div>
+                                    {{-- <div class="col-3">
                                         <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
                                                 class="fa fa-edit"></i></button>
-                                    </div>
+                                    </div> --}}
+                                </div>
+                                <div class="row text-right float-right">
+                                    <form action="{{ route('cart.remove') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                        <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>
                                 </div>
                             </form>
-                            <b>ราคา: </b> {{ $item->price }} ฿ <br>
-                            <b>ทั้งหมด: </b> {{ \Cart::get($item->id)->getPriceSum() }} ฿ <br>
+                          
+                            {{-- <b>ทั้งหมด: </b> {{ \Cart::get($item->id)->getPriceSum() }} ฿ <br> --}}
                             {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
-                            </p>
+                           
                         </div>
                         <div class="col-lg-2">
-                            <div class="row">
-
-                                <form action="{{ route('cart.remove') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                    <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i
-                                            class="fa fa-trash"></i></button>
-                                </form>
-                            </div>
+                           
                         </div>
                     </div>
                     <hr>
@@ -110,11 +117,14 @@
                             </ul>
 
                             <div>
-                                <a href="/" class="btn btn-default"><button class="btn btn-warning">Update Cart</button></a>
+                                
+                                <a href="/" class="btn btn-default"><button class="btn btn-default">Update Cart</button></a>
+
+
                                 @guest
-                                    <a href="/checkout" class="btn btn-success">Check Out</a>
+                                    <a href="/checkout" class="btn btn-green">Check Out</a>
                                 @else
-                                    <a href="/shipping" class="btn btn-success">Check Out</a>
+                                    <a href="/shipping" class="btn btn-green">Check Out</a>
                                 @endguest
                             </div>
 
@@ -158,6 +168,10 @@
 
     </script>
     <style>
+        hr {
+            border: 1px solid #81D8D0;
+        }
+
         .card {
             border: none;
         }
