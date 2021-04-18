@@ -161,6 +161,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 
         Route::get('digiso-admin/banner', [App\Http\Controllers\BannerController::class, 'index'])->name('banner');
+        Route::post('digiso-admin/banner/update', [App\Http\Controllers\BannerController::class, 'update'])->name('banner.update');
 
         // news
         Route::get('digiso-admin/news', [App\Http\Controllers\NewsController::class, 'show'])->name('news');
