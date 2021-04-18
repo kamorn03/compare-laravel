@@ -82,12 +82,23 @@
             </div>
            
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label text-right">picture</label>
-                <div class="col-sm-10 text-center">
+                <label for="" class="col-sm-2 col-form-label text-right">รูป หน้าแรก</label>
+                <div class="col-sm-10">
                     <input type="file" class="form-control" name="image" id="image">
                     <img class="img-thumbnail"
                         src="{{ isset($news) && $news->path_img ? asset('img/cards/' . $news->path_img) : asset('img/dist/default-thumbnail.jpg') }}"
                         width="300" height="200" id="preview-image">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label text-right">รูป รายละเอียด</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control" name="image1" id="image1"
+                        value="{{ isset($product) && $product->image_path ? null : 'required' }}">
+                    <img class="img-thumbnail"
+                        src="{{ isset($product) && $product->image_path ? asset('img/cards/' . $product->image_path) : asset('img/dist/default-thumbnail.jpg') }}"
+                        width="300" height="200" id="preview-image1">
                 </div>
             </div>
 
@@ -98,8 +109,8 @@
                         required>{{ $news->news_detail ?? '' }}</textarea>
                 </div>
             </div>
-
-            <div style="text-align: right;">
+            <hr>
+            <div class="text-center">
                 <button type="submit" class="btn btn-primary" id="submit-all">ตกลง</button>
             </div>
         </form>
@@ -120,8 +131,25 @@
                 }
             }
 
+            function readURL2(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#preview-image1').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]); // convert to base64 string
+                }
+            }
+
+
             $("#image").change(function() {
                 readURL(this);
+            });
+
+            $("#image1").change(function() {
+                readURL2(this);
             });
 
 

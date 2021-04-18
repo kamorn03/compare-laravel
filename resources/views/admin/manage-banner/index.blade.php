@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label text-right">picture 1</label>
-                        <div class="col-sm-10 text-center">
+                        <div class="col-sm-10">
                             <input type="file" class="form-control" name="image1" id="image1"
                                 value="{{ isset($product) && $product->image_path ? null : 'required' }}">
                             <img class="img-thumbnail"
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label text-right">picture 2</label>
-                        <div class="col-sm-10 text-center">
+                        <div class="col-sm-10">
                             <input type="file" class="form-control" name="image2" id="image2"
                                 value="{{ isset($product) && $product->image_path ? null : 'required' }}">
                             <img class="img-thumbnail"
@@ -53,6 +53,40 @@
             {{-- <textarea id="editor1" name="editor1"></textarea> --}}
         </div>
     </div>
-  
-   
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#preview-image1').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#preview-image2').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+
+        $("#image1").change(function() {
+            readURL(this);
+        });
+
+        $("#image2").change(function() {
+            readURL2(this);
+        });
+
+    </script>
+
 @endsection
