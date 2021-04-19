@@ -100,7 +100,7 @@
                                                         $price += $cart->price;
                                                     @endphp
                                                 @endforeach
-                                                {{ $price }}
+                                                {{ $price }} ฿ 
                                             </td>
                                             <td> <a role="button" data-toggle="collapse" data-parent="#accordionGroupOpen"
                                                     href="#collapseOpen{{ $key }}" aria-expanded="true"

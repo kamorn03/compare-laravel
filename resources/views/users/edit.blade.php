@@ -75,10 +75,11 @@
                         if ($user->name) {
                             $name = explode(' ', $user->name);
                         }
-                        // $address = [];
+                        $address[0] = [];
                         if ($user->address) {
                             $address = json_decode(json_encode($user->address)); 
                         }
+                       
                         // dd($name);
                     @endphp
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -119,7 +120,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('street-address', null, ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
+                            {!! Form::text('street-address',  Arr::get($address[0] , 'address'), ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
