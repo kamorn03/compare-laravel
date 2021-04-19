@@ -150,10 +150,6 @@
             background: #E5E5E5;
         }
 
-        body {
-            padding: 5rem;
-        }
-
         .panel,
         .panel-body {
             box-shadow: none;
