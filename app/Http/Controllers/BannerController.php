@@ -77,50 +77,66 @@ class BannerController extends Controller
         // dd($request->file('file'));
         $data_banner = Banner::first();
         if(!$data_banner){
-
             $image = $request->file('image1');
-            $imageName = time() . '.' . $image->extension();
+            $imageName = time() .$image->getClientOriginalName(). '.' . $image->extension();
             $image->move(public_path('images/banner/'), $imageName);
             // $table->string('path_img', 255)->nullable();
             // $table->text('link')->nullable();
             // $table->text('detail')->nullable();
             $data_banner = Banner::create([
                 'path_img' => "images/banner/".$imageName,
-                'link' => 'test',
-                'detail' => 'test',
+                'link' => $request->get('link1'),
+                'detail' => '-',
             ]);
             $image2 = $request->file('image2');
             $imageName2 = time() . '.' . $image2->extension();
-            $image2->move(public_path('images/banner/'), $imageName2);
+            $imageName2 = time() .$image2->getClientOriginalName(). '.' . $image2->extension();
             // $table->string('path_img', 255)->nullable();
             // $table->text('link')->nullable();
             // $table->text('detail')->nullable();
             $data_banner2 = Banner::create([
                 'path_img' => "images/banner/".$imageName2,
-                'link' => 'test',
-                'detail' => 'test',
+                'link' => $request->get('link2'),
+                'detail' => '-',
             ]);
             return Redirect::to(route('admin.banner'))->with('success','Greate! posts created successfully.');
         }else{
             $image = $request->file('image1');
+            $link1 = $request->get('link1');
+
+           
             if($image){
-                $imageName = time() . '.' . $image->extension();
+                // dd( $image->extension());
+                $imageName = time() .$image->getClientOriginalName(). '.' . $image->extension();
                 $image->move(public_path('images/banner/'), $imageName);
                 $data_banner = Banner::where('id', 1)->update([
                     'path_img' => "images/banner/".$imageName,
-                    'link' => 'test',
-                    'detail' => 'test',
+                    'link' => $request->get('link1'),
+                    'detail' => '-',
                 ]);
             }
-          
+            if(isset($link1)){
+                $data_banner = Banner::where('id', 1)->update([
+                    'link' => $request->get('link1'),
+                ]);
+            }
+
+            
             $image2 = $request->file('image2');
-            if( $image2){
-                $imageName2 = time() . '.' . $image2->extension();
+            $link2 = $request->get('link2');
+            if($image2){
+                $imageName2 = time() .$image2->getClientOriginalName(). '.' . $image2->extension();
                 $image2->move(public_path('images/banner/'), $imageName2);
                 $data_banner = Banner::where('id', 2)->update([
                     'path_img' => "images/banner/".$imageName2,
-                    'link' => 'test',
-                    'detail' => 'test',
+                    'link' => $request->get('link2'),
+                    'detail' => '-',
+                ]);
+            }
+
+            if(isset($link2)){
+                $data_banner = Banner::where('id', 2)->update([
+                    'link' => $request->get('link2'),
                 ]);
             }
            

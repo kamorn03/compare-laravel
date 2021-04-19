@@ -54,7 +54,6 @@
                                 <div class="card custom-card-home mt-3" style="height: auto;">
                                     @php
                                         $collection = App\Models\Collections::where('category_id', $pro->category_id)->first();
-                                        // dd($collection);
                                     @endphp
                                     <a
                                         href="/shop/{{ $pro->cate_slug }}/{{ $collection->name ?? 'collection' }}/{{ $pro->slug }}">
@@ -117,12 +116,27 @@
     <div class="container" style="margin-top: 40px">
         <div class="col-12">
             <div class="row text-left text-xs-left text-sm-left text-md-left">
-                <div class="col-xs-12 col-sm-6 col-md-6 mb-3">
-                    <img src="{{ asset('img/banners/Banner 4.png') }}" alt="Banner 4" style="width: 100%">
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <img src="{{ asset('img/banners/Banner2 2.png') }}" alt="Banner2 2" style="width: 100%">
-                </div>
+                @php
+                    $banners = App\Models\Banner::get();
+                @endphp
+                {{-- {{ $banners }} --}}
+                @if (isset($banners))
+                    @foreach ($banners as $banner)
+                        <div class="col-xs-12 col-sm-6 col-md-6 mb-3">
+                            <a href="{{ $banner->link }}">
+                                <img src="{{ asset($banner->path_img) }}" alt="{{ $banner->path_img }}"
+                                    style="width: 100%">
+                            </a>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col-xs-12 col-sm-6 col-md-6 mb-3">
+                        <img src="{{ asset('img/banners/Banner 4.png') }}" alt="Banner 4" style="width: 100%">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <img src="{{ asset('img/banners/Banner2 2.png') }}" alt="Banner2 2" style="width: 100%">
+                    </div>
+                @endif
             </div>
         </div>
     </div>

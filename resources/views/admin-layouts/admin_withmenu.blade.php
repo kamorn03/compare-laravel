@@ -239,6 +239,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('admin.banner') }}">
+                                <i class="iconsminds-maximize"></i> ขนาดสินค้า
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('admin.news') }}">
                                 <i class="iconsminds-digital-drawing"></i> ข่าว
                             </a>
