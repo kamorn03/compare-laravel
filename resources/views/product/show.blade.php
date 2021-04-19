@@ -30,32 +30,35 @@
                 <div class="wrapper row">
                     <div class="preview col-md-6">
                         <div class="preview-pic tab-content">
+                            @php
+                                $product_image = App\Models\ProductImage::where('product_id', $products[0]->id)->get();
+                            @endphp
                             <div class="tab-pane active" id="pic-1"><img
                                     src="/img/cards/{{ $products[0]->image_path }}" /></div>
-                            <div class="tab-pane" id="pic-2"><img src="/img/cards/{{ $products[0]->image_path }}" />
-                            </div>
-                            <div class="tab-pane" id="pic-3"><img src="/img/cards/{{ $products[0]->image_path }}" />
+
+                            @foreach ($product_image as $key => $item)
+                                <div class="tab-pane" id="pic-{{ $key + 2 }}"><img
+                                        src="{{ asset($item->filepath) }}" />
+                                </div>
+                            @endforeach
+                            {{-- <div class="tab-pane" id="pic-3"><img src="/img/cards/{{ $products[0]->image_path }}" />
                             </div>
                             <div class="tab-pane" id="pic-4"><img src="/img/cards/{{ $products[0]->image_path }}" />
                             </div>
                             <div class="tab-pane" id="pic-5"><img src="/img/cards/{{ $products[0]->image_path }}" />
-                            </div>
+                            </div> --}}
                         </div>
                         <ul class="preview-thumbnail nav nav-tabs">
                             <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
-                                        src="/img/cards/{{ $products[0]->image_path }}" /></a></li>
-                            <li><a data-target="#pic-2" data-toggle="tab"><img
-                                        src="/img/cards/{{ $products[0]->image_path }}" /></a>
+                                        src="/img/cards/{{ $products[0]->image_path }}" />
+                                </a>
                             </li>
-                            <li><a data-target="#pic-3" data-toggle="tab"><img
-                                        src="/img/cards/{{ $products[0]->image_path }}" /></a>
-                            </li>
-                            <li><a data-target="#pic-4" data-toggle="tab"><img
-                                        src="/img/cards/{{ $products[0]->image_path }}" /></a>
-                            </li>
-                            <li><a data-target="#pic-5" data-toggle="tab"><img
-                                        src="/img/cards/{{ $products[0]->image_path }}" /></a>
-                            </li>
+                            @foreach ($product_image as $key => $item)
+                                <li class="active"><a data-target="#pic-{{ $key + 2 }}" data-toggle="tab"><img
+                                            src="{{ asset($item->filepath) }}" />
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="details col-md-6">
@@ -73,12 +76,14 @@
                                     <option value="">2</option>
                                 </select>
                             </div> --}}
-                            <h5 class="title">size  </h5>
+
+
+                            <h5 class="title">size </h5>
                             <div class="action">
                                 <input type="number w-100" class="form-control" id="size" name="size" value="1">
                             </div>
 
-                            <h5 class="title">Quantity  </h5>
+                            <h5 class="title">Quantity </h5>
                             <div class="action">
                                 {{ csrf_field() }}
                                 <input type="hidden" value="{{ $products[0]->id }}" id="id" name="id">
@@ -213,7 +218,7 @@
             max-width: 60%;
         }
 
-        .title{
+        .title {
             margin-top: 10px
         }
 
@@ -236,13 +241,13 @@
             color: #797979;
         }
 
-        .btn-default-gray{
+        .btn-default-gray {
             background: #C4C4C4;
             border-radius: 5px;
             color: #fff;
         }
-        
-        .btn-default-gray:hover{
+
+        .btn-default-gray:hover {
             color: #fff;
         }
 
