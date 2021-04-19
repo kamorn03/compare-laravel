@@ -50,9 +50,9 @@ class LoginController extends Controller
         Session::flush();
       
         if($isAdmin){
-            return redirect('/login/digiso-admin');
+            return redirect('/');
         }else{
-            return redirect('/login');
+            return redirect('/');
         }
       
     }
