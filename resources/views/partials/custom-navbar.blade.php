@@ -32,7 +32,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item"
-                                href="{{ route('users.edit', ['user' =>  Auth::guard('blogger')->user()->id]) }}">Account</a>
+                                href="{{ route('users.edit', ['user' => Auth::guard('blogger')->user()->id]) }}">Account</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                                                                           document.getElementById('logout-form').submit();">
@@ -107,7 +107,8 @@
                     @foreach (Category::all() as $category)
                         @if (Collections::where('category_id', $category->id)->first())
                             <li class="dropright">
-                                <a class="dropdown-item dropdown-toggle" href="/shop/rings" data-toggle="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="/shop/{{ $category->name }}"
+                                    data-toggle="dropdown">
                                     {{ $category->name }}
                                 </a>
                                 <div class="dropdown-menu">

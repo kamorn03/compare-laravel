@@ -8,8 +8,8 @@
                 <div class="h-100 justify-content-center">
                     <div>
                         <label> Home
-                            {{ $category ? '  >  ' . $category : null }}
-                            {{ $collection ? '  >  ' . $collection : null }}</label>
+                            > <a href="/shop/{{ $category }}">{{ $category ? '  ' . $category : null }}</a>
+                            {{ $collection ? '  >  ' . $collection : null }} </label>
                         <h1>{{ $collection ? $collection : $category }} </h1>
                     </div>
                 </div>
