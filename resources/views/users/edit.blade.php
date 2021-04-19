@@ -68,7 +68,7 @@
 
             {{-- First name * Last name * Company name (optional) Country / Region * Street address * Town / City * State / County * Postcode / ZIP * Phone * Email address * --}}
             <div class="col-lg-6">
-                {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!}
+                {{-- {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!} --}}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -152,7 +152,7 @@
                         <button type="submit" class="btn btn-green">SAVE</button>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                {{-- {!! Form::close() !!} --}}
 
 
             </div>

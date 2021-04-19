@@ -14,32 +14,7 @@
         </div>
     </div>
     <div class="container" style="margin-top: 35px">
-        @if (session()->has('success_msg'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session()->get('success_msg') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
-        @if (session()->has('alert_msg'))
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ session()->get('alert_msg') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
-        @if (count($errors) > 0)
-            @foreach ($errors0 > all() as $error)
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ $error }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-            @endforeach
-        @endif
+    
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 <h2 class="text-header">Shopping Cart</h2>
@@ -87,15 +62,6 @@
                                         </div> --}}
                                     </div>
                                     <div class="col-3 text-right float-right">
-
-                                    </div>
-                                    {{-- <div class="col-3">
-                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
-                                                class="fa fa-edit"></i></button>
-                                    </div> --}}
-                                </div>
-                                <div class="row text-right float-right">
-                                    <div class="col-7">
                                         <form action="{{ route('cart.remove') }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" value="{{ $item->id }}" id="id" name="id">
@@ -104,6 +70,21 @@
                                                     class="fa fa-trash"></i></a>
                                         </form>
                                     </div>
+                                    {{-- <div class="col-3">
+                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
+                                                class="fa fa-edit"></i></button>
+                                    </div> --}}
+                                </div>
+                                <div class="row text-right float-right">
+                                    {{-- <div class="col-7">
+                                        <form action="{{ route('cart.remove') }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                            <a onclick="$(this).closest('form').submit();"
+                                                style="margin-right: 10px;  cursor: pointer;"><i
+                                                    class="fa fa-trash"></i></a>
+                                        </form>
+                                    </div> --}}
                                 </div>
                             </form>
 

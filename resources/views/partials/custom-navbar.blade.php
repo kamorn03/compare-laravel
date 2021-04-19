@@ -10,8 +10,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" f>
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-                {{-- {{ dd(Auth::check()) }} --}}
-                @if (Auth::guest())
+                {{-- {{ dd(Auth::guard('blogger')->user()) }} --}}
+                @php
+                    //  Auth::user() = Auth::guard('blogger');
+                @endphp
+                @if (Auth::guest() && !Auth::guard('blogger'))
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -27,12 +30,12 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::guard('blogger')->user()->name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item"
-                                href="{{ route('users.edit', ['user' => Auth::user()->id]) }}">Account</a>
+                                href="{{ route('users.edit', ['user' =>Auth::guard('blogger')->user()->id]) }}">Account</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                                                                           document.getElementById('logout-form').submit();">

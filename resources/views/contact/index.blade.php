@@ -145,8 +145,7 @@
                                         placeholder="Please enter your phone"> --}}
                                     <input id="phone" type="tel" class="form-control" name="phone"
                                         value="+66 (__) __-____"
-                                        pattern="^\+66(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$" //
-                                        phones at Belarus required>
+                                        pattern="^\+66(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
