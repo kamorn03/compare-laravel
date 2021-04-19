@@ -15,9 +15,12 @@
     </div>
 
     {{-- image --}}
-    <div style="margin-top: 50px">
-        <img src="{{ asset('/img/cards/'.$news->path_img)  }}" style="width:100%;height:600px;" alt="{{ $news->path_img  }}">
-    </div>
+    @if(isset($news->path_img_detail))
+        <div style="margin-top: 50px">
+            <img src="{{ asset('/img/cards/'.$news->path_img_detail)  }}" style="width:100%;height:600px;" alt="{{ $news->path_img_detail  }}">
+        </div>
+    @endif
+ 
 
     {{-- container --}}
     <div class="container" style="margin-top: 80px">

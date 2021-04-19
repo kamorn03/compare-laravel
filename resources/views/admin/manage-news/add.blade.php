@@ -36,7 +36,7 @@
 
 
         <form class="form form-horizontal"
-            action="{{ isset($news) && $news->id ? route('news.update', ['shop' => $news->id]) : route('news.store') }}"
+            action="{{ isset($news) && $news->id ? route('admin.news.update', ['shop' => $news->id]) : route('admin.news.store') }}"
             method="POST" name="add_post" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{-- @if (isset($news) && $news->id)
@@ -95,9 +95,9 @@
                 <label for="" class="col-sm-2 col-form-label text-right">รูป รายละเอียด</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control" name="image1" id="image1"
-                        value="{{ isset($product) && $product->image_path ? null : 'required' }}">
+                        value="{{ isset($news) && $news->path_img_detail ? null : 'required' }}">
                     <img class="img-thumbnail"
-                        src="{{ isset($product) && $product->image_path ? asset('img/cards/' . $product->image_path) : asset('img/dist/default-thumbnail.jpg') }}"
+                        src="{{ isset($news) && $news->path_img_detail ? asset('img/cards/' . $news->path_img_detail) : asset('img/dist/default-thumbnail.jpg') }}"
                         width="300" height="200" id="preview-image1">
                 </div>
             </div>

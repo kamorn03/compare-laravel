@@ -86,11 +86,7 @@ Route::group(['middleware' => ['guest']], function () {
     
 });
 
- // news
- Route::post('digiso-admin/news-store', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
- Route::post('digiso-admin/news-update', [App\Http\Controllers\NewsController::class, 'update'])->name('news.update');
- Route::get('digiso-admin/news/{id}/edit', [App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit');
- Route::get('digiso-admin/news/{id}/delete', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.delete');
+
 
  Route::get('product/image/fetch', [App\Http\Controllers\ProductController::class, 'fetch'])->name('product.image.fetch');
  Route::post('product/{id}/upload/image', [App\Http\Controllers\ProductController::class, 'upload'])->name('product.upload.image');
@@ -190,12 +186,19 @@ Route::group(['middleware' => 'auth:admin'], function () {
         // news
         Route::get('digiso-admin/news', [App\Http\Controllers\NewsController::class, 'show'])->name('news');
 
+        Route::post('digiso-admin/news-store', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
+        Route::post('digiso-admin/news-update', [App\Http\Controllers\NewsController::class, 'update'])->name('news.update');
+        Route::get('digiso-admin/news/{id}/edit', [App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit');
+        Route::get('digiso-admin/news/{id}/delete', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.delete');
+
+
         Route::get('digiso-admin/news-add', [App\Http\Controllers\NewsController::class, 'newsAdd'])->name('news.add');
         Route::get('digiso-admin/news-list', [App\Http\Controllers\NewsController::class, 'newsList'])->name('news.list');
 
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
         Route::get('digiso-admin/order-list/{status}', [App\Http\Controllers\AdminController::class, 'orderList'])->name('order.list');
+
 
     });
 

@@ -47,13 +47,19 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'image1' => 'required'
         ]);
 
         // dd($request);
         if($request->file()) {
-            $fileName = time().'_'.$request->image->getClientOriginalName();
-            if(!$request->image->move(public_path('/img/cards'), $fileName)) {
+            $fileName = time().'_'.$request->file('image')->getClientOriginalName();
+            if(!$request->file('image')->move(public_path('/img/cards'), $fileName)) {
+                return false;
+            }
+
+            $fileName1 = time().'_'.$request->file('image1')->getClientOriginalName();
+            if(!$request->file('image1')->move(public_path('/img/cards'), $fileName1)) {
                 return false;
             }
 
@@ -73,7 +79,8 @@ class NewsController extends Controller
                 'news_detail' => $request->description,
                 'path_img' => $fileName,
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'path_img_detail' => $fileName1 != ""? $fileName1 : $news->path_img_detail,
             ];
        
             News::insertGetId($insert);
@@ -100,9 +107,17 @@ class NewsController extends Controller
         $fileName = "";
         // dd($request);
         $news = News::where('id', $request->get('id'))->first();
-        if($request->file()) {
-            $fileName = time().'_'.$request->image->getClientOriginalName();
-            if(!$request->image->move(public_path('/img/cards'), $fileName)) {
+        if($request->file('image')) {
+            // dd($request->file('image'));
+            $fileName = time().'_'.$request->file('image')->getClientOriginalName();
+            if(!$request->file('image')->move(public_path('/img/cards'), $fileName)) {
+                return false;
+            }
+        }
+        if($request->file('image1')) {
+            // dd($request->file('image1'));
+            $fileName1 = time().'_'.$request->file('image1')->getClientOriginalName();
+            if(!$request->file('image1')->move(public_path('/img/cards'), $fileName1)) {
                 return false;
             }
         }
@@ -111,10 +126,7 @@ class NewsController extends Controller
         // $table->string('company_name', 255)->nullable();
         // $table->string('type', 255)->nullable();
         // $table->text('news_content')->nullable();
-        // $table->text('news_detail')->nullable();
-
-        // dd($fileName != "" ? $fileName : $news->path_img);
-        
+        // $table->text('news_detail')->nullable();     
         $update = [
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
@@ -125,7 +137,8 @@ class NewsController extends Controller
             'news_detail' => $request->description,
             'path_img' => $fileName != ""? $fileName : $news->path_img,
             'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s'),
+            'path_img_detail' => $fileName1 != ""? $fileName1 : $news->path_img_detail,
         ];
     
         News::where('id', $request->get('id'))->update($update);
