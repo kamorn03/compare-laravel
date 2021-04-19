@@ -18,7 +18,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                {{-- <th>Email</th> --}}
+                <th>รูป</th>
                 <th>Created At</th>
                 <th>Updated At</th>
                 <th>เพิ่มรูปภาพ</th>
@@ -56,7 +56,14 @@
                         data: 'name',
                         name: 'name'
                     },
-                    // { data: 'email', name: 'email' },
+                    {
+                        data: 'image_path',
+                        render: function(data, type, row) {
+                            var img = window.location.protocol + "//" + window.location.hostname +"/img/cards/" + row.image_path;
+                            console.log(img);
+                            return '<img src="'+ img +'" alt=' + row.image_path + ' width="160" height="160"\>'
+                        }
+                    },
                     {
                         data: 'created_at',
                         name: 'created_at'
@@ -69,14 +76,16 @@
                         data: null,
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
-                            return '<a href="/digiso-admin/product/' + row.id + '/add_image">เพิ่มรูปภาพ</a>'
+                            return '<a href="/digiso-admin/product/' + row.id +
+                                '/add_image">เพิ่มรูปภาพ</a>'
                         }
                     },
                     {
                         data: null,
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
-                            return '<a href="/digiso-admin/product/' + row.id + '/edit"><i class="fa fa-pencil" data-id="' + row.id + '"></i></a>'
+                            return '<a href="/digiso-admin/product/' + row.id +
+                                '/edit"><i class="fa fa-pencil" data-id="' + row.id + '"></i></a>'
                         }
                     },
                     {

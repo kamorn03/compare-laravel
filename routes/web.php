@@ -22,14 +22,11 @@ use App\Http\Controllers\UserController;
 
 // // Route::view('/', 'home');
 Route::group(['middleware' => ['guest']], function () {
-    // Auth::routes();
+    Auth::routes();
     // home
     Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
     // more-about
     Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
-    
-
-    
     
     // user register
     Route::post('users/store', [UserController::class, 'store'])->name('users.store');
@@ -187,6 +184,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
         Route::get('digiso-admin/news-add', [App\Http\Controllers\NewsController::class, 'newsAdd'])->name('news.add');
         Route::get('digiso-admin/news-list', [App\Http\Controllers\NewsController::class, 'newsList'])->name('news.list');
+
+        // order
+        Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
+        Route::get('digiso-admin/order-list/{status}', [App\Http\Controllers\AdminController::class, 'orderList'])->name('order.list');
 
     });
 

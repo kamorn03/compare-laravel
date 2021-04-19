@@ -320,19 +320,19 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.markets.in.th/_admin/order/2">
+                            <a href="{{ route('admin.order', ['status' => 'payment']) }}">
                                 <i class="icon-angle-right"></i> กำลังดำเนินการ
                                 {{-- <span class="badge badge-light">5</span> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.markets.in.th/_admin/order/4">
+                            <a href="{{ route('admin.order', ['status' => 'shipped']) }}">
                                 <i class="icon-angle-right"></i> ส่งสินค้าแล้ว
                                 {{-- <span class="badge badge-light">13</span> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.markets.in.th/_admin/order/-2">
+                            <a href="{{ route('admin.order', ['status' => 'wrong']) }}">
                                 <i class="icon-angle-right"></i> ชำระเงินผิด
                                 {{-- <span class="badge badge-light">1</span> --}}
                             </a>

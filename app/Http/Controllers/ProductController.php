@@ -152,18 +152,15 @@ class ProductController extends Controller
     {
         // where id 
         $main = ProductImage::all();
-        // $images = \File::allFiles(public_path('images\title'));
         $output = '<div class="row">';
         $number = 1;
         foreach($main as $image)
         {
         $output .= '
-        <div class="col-md-12" style="margin-bottom:16px;" align="center">
-                    <label for="" class="col-sm-2 col-form-label text-left">รูปที่ '.$number.'</label>
-                    <img src="'.asset('images/title/' . $image->getFilename()).'" class="img-thumbnail" width="175" height="175" style="height:175px;" /> 
-                    <button type="button" class="btn btn-link save_title" id="main-title-'.$number.'">save</button>
-                    <button type="button" class="btn btn-link remove_image" id="'.$image->getFilename().'">Remove</button>
-                </div>
+        <div class="col-md-3" style="margin-bottom:16px;" align="center">
+                <img src="'.asset($image->filepath).'" class="img-thumbnail" width="175" height="175" style="height:175px;" /> 
+                <button type="button" class="btn btn-link remove_image" id="'.$image->id.'">Remove</button>
+        </div>
         ';
         $number ++;
         }

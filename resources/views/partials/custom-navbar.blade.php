@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" f>
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-                {{-- {{ dd(Auth::user()) }} --}}
+                {{-- {{ dd(Auth::check()) }} --}}
                 @if (Auth::guest())
                     @if (Route::has('login'))
                         <li class="nav-item">

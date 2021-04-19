@@ -96,7 +96,9 @@
                                     </div>
                                 </div>
                                 <!-- / skin 5 -->
-                                <button class=" btn btn-default btn-green w-100" type="submit">add to cart</button>
+                                <button class=" btn btn-default-gray  w-100" type="submit">add to cart</button>
+
+                                {{-- <button class=" btn btn-default btn-green w-100" type="submit">add to cart</button> --}}
                                 {{-- <button class="like btn btn-default" type="button"><span
                                         class="fa fa-heart"></span></button> --}}
 
@@ -232,6 +234,16 @@
             text-align: center;
             text-transform: uppercase;
             color: #797979;
+        }
+
+        .btn-default-gray{
+            background: #C4C4C4;
+            border-radius: 5px;
+            color: #fff;
+        }
+        
+        .btn-default-gray:hover{
+            color: #fff;
         }
 
 

@@ -9,7 +9,7 @@
         <div class="icon-cards-row">
             <div class="glide dashboard-numbers">
                 <div class="glide__track" data-glide-el="track">
-                    <ul class="glide__slides">
+                    {{-- <ul class="glide__slides">
                         <li class="glide__slide">
                             <a href="#" class="card">
                                 <div class="card-body text-center">
@@ -46,7 +46,7 @@
                                 </div>
                             </a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </div>

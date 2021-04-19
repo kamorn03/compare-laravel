@@ -148,7 +148,7 @@
 
                             <div class="row mt-5">
                                 <div class="col-12">
-                                    <a href="/"><button class="btn btn-light w-100">Update Cart</button></a>
+                                    <a href="/"><button class="btn btn-default-gray w-100">Update Cart</button></a>
                                 </div>
                                 <div class="col-12 mt-3">
                                     @guest
@@ -215,6 +215,18 @@
             cursor: pointer;
         }
 
+        
+        .btn-default-gray{
+            background: #C4C4C4;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .btn-default-gray:hover{
+            color: #fff;
+        }
+
+
         .btn-green-checkout {
             /* padding: 0.375rem 2.75rem; */
             background: #81D8D0;
@@ -232,6 +244,11 @@
             text-transform: uppercase;
             color: #FFFFFF;
         }
+
+        .btn-green-checkout:hover{
+            color: #fff;
+        }
+
 
         .text-product-name {
             font-size: 16px;
