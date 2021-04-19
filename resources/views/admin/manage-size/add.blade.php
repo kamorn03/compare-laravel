@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>{{ isset($collections) ? 'แก้ไข' : 'เพิ่ม' }} ขนาดสินค้า</h1>
+        <h1>{{ isset($size) ? 'แก้ไข' : 'เพิ่ม' }} ขนาดสินค้า</h1>
         <div class="separator mb-5"></div>
     </div>
 
@@ -35,43 +35,20 @@
         @endif
 
         <form class="form form-horizontal"
-            action="{{ isset($collections) && $collections->id ? route('collection.update', ['shop' => $collections->id]) : route('collection.store') }}"
+            action="{{ isset($size) && $size->id ? route('admin.size.update', ['id' => $size->id]) : route('admin.size.store') }}"
             method="POST" name="add_post" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <input name="id" type="hidden" value="{{ isset($collections) ? $collections->id : null }}">
+            <input name="id" type="hidden" value="{{ isset($size) ? $size->id : null }}">
             {{-- using category --}}
-            <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label text-right">เลือกประเภทสินค้า</label>
-                <div class="col-sm-10">
-                    {{-- {{ $collections->category_id}} --}}
-                    <select name="category_id" id="category_id" class="form-control">
-                        @if (isset($categories))
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                    {{ isset($collections) && $category->id == $collections->category_id ? 'selected' : null }}>
-                                    {{ $category->name }}</option>
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
+           
             {{-- using name --}}
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label text-right">name</label>
+                <label for="" class="col-sm-2 col-form-label text-right">size</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" placeholder="name"
-                        value="{{ $collections->name ?? '' }}">
+                    <input type="text" name="size" class="form-control" placeholder="size"
+                        value="{{ $size->size ?? '' }}">
                 </div>
             </div>
-
-            <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label text-right">slug</label>
-                <div class="col-sm-10">
-                    <input type="text" name="slug" class="form-control" placeholder="slug"
-                        value="{{ $collections->slug ?? '' }}">
-                </div>
-            </div>
-
             <div style="text-align: right;">
                 <button type="submit" class="btn btn-primary">ตกลง</button>
             </div>

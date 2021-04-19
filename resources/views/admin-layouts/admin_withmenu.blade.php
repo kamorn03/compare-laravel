@@ -239,7 +239,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.banner') }}">
+                            <a href="{{ route('admin.size') }}">
                                 <i class="iconsminds-maximize"></i> ขนาดสินค้า
                             </a>
                         </li>

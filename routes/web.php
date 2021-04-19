@@ -110,6 +110,15 @@ Route::group(['middleware' => 'auth:blogger'], function () {
 
 
 
+// api
+Route::post('category/add', 'App\Http\Controllers\CategoryController@store')->name('category.store');
+Route::post('category/update', 'App\Http\Controllers\CategoryController@update')->name('category.update');
+
+// api
+Route::post('collection/add', [App\Http\Controllers\CollectionController::class, 'store'])->name('collection.store');
+Route::post('collection/update',  [App\Http\Controllers\CollectionController::class, 'update'])->name('collection.update');
+
+
 
 Route::group(['middleware' => 'auth:admin'], function () {
     /* admin path */
@@ -130,10 +139,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
         // users
         Route::get('digiso-admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
         Route::get('digiso-admin/users/{id}/show', [App\Http\Controllers\AdminController::class, 'userShow'])->name('users.show');
+
+
+        
         // category
         Route::get('digiso-admin/category', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
-
-    
         Route::get('digiso-admin/category-list', [App\Http\Controllers\AdminController::class, 'categoryList'])->name('category.list');
         Route::get('digiso-admin/category/add', [App\Http\Controllers\CategoryController::class, 'categoriesAdd'])->name('category.add');
         Route::get('digiso-admin/category/{id}/edit', [App\Http\Controllers\CategoryController::class, 'categoryEdit'])->name('category.edit');
@@ -159,9 +169,18 @@ Route::group(['middleware' => 'auth:admin'], function () {
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
 
-
+        // banner
         Route::get('digiso-admin/banner', [App\Http\Controllers\BannerController::class, 'index'])->name('banner');
         Route::post('digiso-admin/banner/update', [App\Http\Controllers\BannerController::class, 'update'])->name('banner.update');
+
+        // size
+        Route::post('digiso-admin/size/add', [App\Http\Controllers\SizeController::class, 'store'])->name('size.store');
+        Route::post('digiso-admin/size/update',  [App\Http\Controllers\SizeController::class, 'update'])->name('size.update');
+        Route::get('digiso-admin/size', [App\Http\Controllers\SizeController::class, 'index'])->name('size');
+        Route::get('digiso-admin/size-list', [App\Http\Controllers\SizeController::class, 'sizeList'])->name('size.list');
+        Route::get('digiso-admin/size/add', [App\Http\Controllers\SizeController::class, 'sizeAdd'])->name('size.add');
+        Route::get('digiso-admin/size/{id}/edit', [App\Http\Controllers\SizeController::class, 'sizeEdit'])->name('size.edit');
+        Route::get('digiso-admin/size/{id}/delete', [App\Http\Controllers\SizeController::class, 'destroy'])->name('size.delete');
 
         // news
         Route::get('digiso-admin/news', [App\Http\Controllers\NewsController::class, 'show'])->name('news');

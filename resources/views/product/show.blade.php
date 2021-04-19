@@ -14,10 +14,10 @@
                             $category = App\Models\Category::find($products[0]->category_id);
                             $collection = App\Models\Collections::find($products[0]->collection_id);
                         }
-                    @endphp                        
+                    @endphp
                     <div>
-                        <label> Home > {{ $category->name }}  
-                            {{ $category != [] ? '  >  ' . $category->name : null }}  {{ $products[0]->name }}</label>
+                        <label> Home > {{ $category->name }}
+                            {{ $category != [] ? '  >  ' . $category->name : null }} {{ $products[0]->name }}</label>
                         <h1>{{ $products[0]->name }} </h1>
                     </div>
                 </div>
@@ -60,11 +60,12 @@
                     </div>
                     <div class="details col-md-6">
                         <form action="{{ route('cart.store') }}" method="POST">
-                            <h3 class="">{{ $products[0]->name }}</h3>
-                           
-                            <h3 class="product-title" style="font-weight: bold;color: black;"> {{ $products[0]->price }} ฿ </h3>
+                            <h3 class="text-name">{{ $products[0]->name }}</h3>
 
-                           
+                            <h3 class="product-title" style="font-weight: bold;color: black;"> {{ $products[0]->price }}
+                                ฿ </h3>
+
+
                             {{-- <h5 class="sizes">sizes: </h5>
                             <div class="num-block w-100">
                                 <select class="form-control" name="" id="">
@@ -72,12 +73,12 @@
                                     <option value="">2</option>
                                 </select>
                             </div> --}}
-                            <h5 class="size">size : </h5>
+                            <h5 class="title">size  </h5>
                             <div class="action">
                                 <input type="number w-100" class="form-control" id="size" name="size" value="1">
                             </div>
-                            
-                            <h5 class="quantity">Quantity : </h5>
+
+                            <h5 class="title">Quantity  </h5>
                             <div class="action">
                                 {{ csrf_field() }}
                                 <input type="hidden" value="{{ $products[0]->id }}" id="id" name="id">
@@ -100,11 +101,11 @@
                                         class="fa fa-heart"></span></button> --}}
 
                             </div>
-                            
+
                         </form>
                         <div style="margin-top: 15px;">
-                            <p> {!! $products[0]->description !!} </p> 
-                         </div>
+                            <p> {!! $products[0]->description !!} </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,13 +125,11 @@
                                         alt="{{ $product->image_path }}"></a>
                                 <div class="card-body custom-card-home">
                                     <h6 class="card-title">{{ $product->name }}</h6>
-                                    <p style="font-weight: bold;color: black;">  {{ $product->price }} ฿ </p>
+                                    <p style="font-weight: bold;color: black;"> {{ $product->price }} ฿ </p>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
-
                 </div>
             </div>
         </div>
@@ -207,8 +206,21 @@
         .tab-pane {
             text-align: center;
         }
+
         .tab-pane img {
             max-width: 60%;
+        }
+
+        .title{
+            margin-top: 10px
+        }
+
+        .text-name {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 33px;
+            color: #797979;
         }
 
         .text-product-name {

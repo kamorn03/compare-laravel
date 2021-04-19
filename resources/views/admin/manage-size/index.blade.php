@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="col-12">
-        <h1>ประเภทย่อยสินค้า</h1>
+        <h1>ขนาดสินค้า</h1>
         <span class="float-right">
-            <a href="{{ route('admin.collection.add') }}"><i class="fa fa-plus"></i> เพิ่มขนาดสินค้า </a>
+            <a href="{{ route('admin.size.add') }}"><i class="fa fa-plus"></i> เพิ่มขนาดสินค้า </a>
         </span>
         <div class="separator mb-5"></div>
     </div>
@@ -42,7 +42,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>ประเภทสินค้า</th>
+                        <th>ขนาดสินค้า</th>
                         <th>edit</th>
                         <th>remove</th>
                     </tr>
@@ -72,27 +72,27 @@
             $('#collection-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admin.collection.datalist') !!}',
+                ajax: '{!! route('admin.size.list') !!}',
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'size',
+                        name: 'size'
                     },
                     {
                         data: null,
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
-                            return '<a href="/digiso-admin/collection/' + row.id + '/edit"><i class="fa fa-pencil" data-id="' + row.id + '"></i></a>'
+                            return '<a href="/digiso-admin/size/' + row.id + '/edit"><i class="fa fa-pencil" data-id="' + row.id + '"></i></a>'
                         }
                     },
                     {
                         data: null,
                         className: "dt-center editor-delete",
                         render: function(data, type, row) {
-                            return  '<a href="/digiso-admin/collection/' + row.id + '/delete"><i class="fa fa-trash" data-id="' + row.id + '"></i></a>'
+                            return  '<a href="/digiso-admin/size/' + row.id + '/delete"><i class="fa fa-trash" data-id="' + row.id + '"></i></a>'
                         }
                     }
                 ]
