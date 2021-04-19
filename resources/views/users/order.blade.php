@@ -71,7 +71,7 @@
             {{-- First name * Last name * Company name (optional) Country / Region * Street address * Town / City * State / County * Postcode / ZIP * Phone * Email address * --}}
             <div class="col-lg-6 ">
                 <div class="panel-group" id="accordionGroupOpen" role="tablist" aria-multiselectable="true">
-                    <table class="table table-striped w-100 bg-gray">
+                    <table class="table  w-100 bg-gray">
                         <th>
                         <td>Order :</td>
                         <td>Date :</td>
@@ -84,9 +84,8 @@
                     @foreach ($order as $key => $item)
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading{{ $key }}">
-                                <h4 class="panel-title">
 
-                                    <table class="table w-100 bg-gray">
+                                    <table class="table table-striped w-100 bg-gray">
                                         <tr>
                                             <td>#{{ $item->order_no }}</td>
                                             <td>{{ $item->created_at }}</td>
@@ -108,7 +107,7 @@
                                             </th>
                                     </table>
                                     </a>
-                                </h4>
+                                
                             </div>
                             <div id="collapseOpen{{ $key }}" class="panel-collapse collapse in mb-3"
                                 role="tabpanel" aria-labelledby="heading{{ $key }}">
@@ -170,6 +169,7 @@
     <style>
         table {
             font-size: 14px;
+            margin-bottom: 0 !important;
         }
 
         a {
