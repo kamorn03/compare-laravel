@@ -45,6 +45,28 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
+                {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
+
+                <div class="form-group">
+                    <input id="password" type="password" placeholder="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
+
+                <div class="form-group">
+                    <input id="confirm-password" type="password" placeholder="password confirm" class="form-control" name="confirm-password" required autocomplete="confirm-password">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     {{-- <strong>Email:</strong> --}}
                     {!! Form::text('company', null, ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
