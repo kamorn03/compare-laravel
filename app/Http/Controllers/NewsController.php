@@ -80,7 +80,7 @@ class NewsController extends Controller
                 'path_img' => $fileName,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-                'path_img_detail' => $fileName1 != ""? $fileName1 : $news->path_img_detail,
+                'path_img_detail' => $fileName1 != "" ? $fileName1 : $news->path_img_detail,
             ];
        
             News::insertGetId($insert);
@@ -105,6 +105,7 @@ class NewsController extends Controller
             // 'image' => 'required'
         ]);
         $fileName = "";
+        $fileName1 = "";
         // dd($request);
         $news = News::where('id', $request->get('id'))->first();
         if($request->file('image')) {

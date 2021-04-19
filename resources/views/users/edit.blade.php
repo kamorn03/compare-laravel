@@ -69,18 +69,29 @@
             {{-- First name * Last name * Company name (optional) Country / Region * Street address * Town / City * State / County * Postcode / ZIP * Phone * Email address * --}}
             <div class="col-lg-6">
                 {{-- {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!} --}}
+                {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update' , $user->id]]) !!}
                 <div class="row">
+                    @php
+                        if ($user->name) {
+                            $name = explode(' ', $user->name);
+                        }
+                        // $address = [];
+                        if ($user->address) {
+                            $address = json_decode(json_encode($user->address)); 
+                        }
+                        // dd($name);
+                    @endphp
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Name:</strong> --}}
-                            {!! Form::text('firstname', null, ['placeholder' => 'First name ', 'class' => 'form-control']) !!}
+                            {!! Form::text('firstname', $name[0], ['placeholder' => 'First name ', 'value' => $name[0], 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('lastname', null, ['placeholder' => 'Last name', 'class' => 'form-control']) !!}
+                            {!! Form::text('lastname', $name[1], ['placeholder' => 'Last name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -122,20 +133,19 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('state', null, ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
+                            {!! Form::text('state', null , ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('postcode', null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
+                            {!! Form::text('postcode',  null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
                             {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -152,7 +162,7 @@
                         <button type="submit" class="btn btn-green">SAVE</button>
                     </div>
                 </div>
-                {{-- {!! Form::close() !!} --}}
+                {!! Form::close() !!}
 
 
             </div>

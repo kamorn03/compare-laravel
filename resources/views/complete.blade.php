@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="header-green text-center align-middle">
@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h1>สรุปรายการสั่งชื้อ</h1>
+                        <h1 class="text-header">SUMMARY</h1>
                     </div>
                 </div>
                 @php

@@ -84,7 +84,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = Blogger::find($id);
+        // dd($user);
         // $roles = Role::pluck('name','name')->all();
         // $userRole = $user->roles->pluck('name','name')->all();
 
@@ -117,21 +118,39 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            // 'roles' => 'required'
+            // 'address' => 'required',
+            // 'country' => 'required',
+            // 'city' => 'required',
+            // 'zipcode' => 'required'
+        ]);
+
+
+    
+        // $input = $request->all();
+        // if(!empty($input['password'])){ 
+        //     $input['password'] = Hash::make($input['password']);
+        // }else{
+        //     $input = Arr::except($input,array('password'));    
+        // }
+    
+        $user = Blogger::find($id);
+        // $user->update($input);
+        $user->update([
+            'name' =>$request->firstname." ".$request->lastname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'address' => array([
+                'address' => $request->get('street-address'),
+                'country' =>  $request->get('state'),
+                'zip' =>  $request->get('postcode'),
+                'city' =>   $request->get('town'),
+                // 'state' => 'STATE',
+            ])
         ]);
     
-        $input = $request->all();
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
-        }
-    
-        $user = User::find($id);
-        $user->update($input);
         // DB::table('model_has_roles')->where('model_id',$id)->delete();
     
         // $user->assignRole($request->input('roles'));

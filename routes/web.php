@@ -26,6 +26,8 @@ Route::group(['middleware' => ['guest']], function () {
     Auth::routes();
     // home
     Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
+
+    Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
     // more-about
     Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
     
@@ -104,7 +106,7 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     
     Route::get('users/cart/order',  [App\Http\Controllers\UserController::class, 'showOrder'])->name('users.cart.order');
   
-    Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
+   
     Route::post('confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
     Route::get('complete',  [App\Http\Controllers\CartController::class, 'complete'])->name('cart.complete');
 

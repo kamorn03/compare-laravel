@@ -36,7 +36,7 @@
                 <div class="row text-center">
                     <div class="col-lg-8">
                         <h2 class="text-header text-left"> Sign In </h2>
-                        <form method="POST" action="{{ route('login') }}" style="margin-top: 2em">
+                        <form method="POST" action="{{ route('blogger.login') }}" aria-label="{{ __('Login') }}">
                             @csrf
                             <div class="form-group row">
                                 <div class="col-md-12">
@@ -77,7 +77,8 @@
             @if (count($cartCollection) > 0)
                 <div class="col-lg-6">
                     <h2 class="text-header">Create an Accounts</h2>
-                    {!! Form::model(['method' => 'POST', 'route' => ['register']]) !!}
+                  
+                    {!! Form::model(['method' => 'POST', 'route' => ['users.store']]) !!}
                     <div class="row"  style="margin-top: 2em">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">

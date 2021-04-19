@@ -71,17 +71,16 @@ class LoginController extends Controller
     public function bloggerLogin(Request $request)
     {
 
-        Auth::logout();
-        Session::flush();
+        // Auth::logout();
+        // Session::flush();
 
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
     
-
+        // dd($request);
         if (Auth::guard('blogger')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            // dd(Auth::guard('blogger')->user());
             return redirect()->intended('/');
         }
         return back()->withInput($request->only('email', 'remember'));

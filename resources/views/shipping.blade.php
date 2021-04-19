@@ -47,13 +47,13 @@
 
 
         <div class="row justify-content-center">
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="row">
-                    @if (!isset(Auth::user()->address))
+                    @if (!isset(Auth::guard('blogger')->user()->address))
                         <div class="col-lg-12">
                             <h3>Shipping Address</h3>
                             {{-- {{ Auth::user()->id }} --}}
-                            <form action="{{ route('users.update.address', ['id' => Auth::user()->id]) }}" method="post">
+                            <form action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}" method="post">
                                 @csrf
                                 <div class="form">
                                     <label class="field">
@@ -90,12 +90,48 @@
                         </div>
                     @else
                         <div class="col-lg-12">
-                            <h3>Shipping Address</h3>
+                            <h3 class="text-header"> Shipping Address</h3>
+                            <form class="form-address" style="display: none" action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}" method="post">
+                                @csrf
+                                <div class="form">
+                                    <label class="field">
+                                        <span class="field__label" for="address">Address</span>
+                                        <input class="form-control" type="text" name="address" id="address" />
+                                    </label>
+                                    <label class="field">
+                                        <span class="field__label" for="country">Country</span>
+                                        <select class="form-control" name="country" id="country">
+                                            <option value=""></option>
+                                            <option value="unitedstates">United States</option>
+                                        </select>
+                                    </label>
+                                    <div class="fields fields--3">
+                                        <label class="field">
+                                            <span class="field__label" for="city">City</span>
+                                            <input class="form-control" name="city" type="text" id="" />
+                                        </label>
+                                        <label class="field">
+                                            <span class="field__label" for="zipcode">Zip code</span>
+                                            <input class="form-control" name="zipcode" type="text" id="zipcode" />
+                                        </label>
+
+                                        {{-- <label class="field">
+                                        <span class="field__label" for="state">State</span>
+                                        <select class="form-control" id="state">
+                                            <option value=""></option>
+                                        </select>
+                                    </label> --}}
+                                    </div>
+                                </div>
+                                <button class="btn btn-green">บันทึก</button>
+                            </form>
+
+
                             @php
                                 $address = Auth::guard('blogger')->user()->address;
                             @endphp
                             @foreach ($address as $locate)
-                                <div class="card" style="width: 18rem;">
+                                <div class="card data-address" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">ที่อยู่</h5>
                                         {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
@@ -106,17 +142,19 @@
                                     </div>
                                 </div>
                             @endforeach
+                           
 
+                            <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
                         </div>
                     @endif
                 </div>
             </div>
             @if (count($cartCollection) > 0)
-                <div class="col-lg-6">
-                    <h1>Order Summary</h1>
+                <div class="col-lg-5 bg-gray">
+                    <h1 class="text-header text-center">Order Summary</h1>
 
                     @foreach ($cartCollection as $item)
-                        <div class="row">
+                        <div class="row mt-5">
                             <div class="col-lg-3">
                                 <img src="/img/cards/{{ $item->attributes->image }}" class="img-thumbnail" width="200"
                                     height="200">
@@ -154,15 +192,15 @@
                         <hr>
                     @endforeach
                     {{-- {{ Auth::user()->address }} --}}
-                    @if (isset(Auth::user()->address))
+                    @if (isset(Auth::guard('blogger')->user()->address))
                         @if (count($cartCollection) > 0)
                             <form action="{{ route('cart.confirm') }}" method="POST">
                                 {{ csrf_field() }}
-                                <button class="btn btn-secondary btn-md">Confirm</button>
+                                <button class="btn btn-green w-100 btn-md">CONTINUE</button>
                             </form>
                         @endif
                     @else
-                        <button class="btn btn-secondary btn-md" onclick="alertAddress()">Confirm</button>
+                        <button class="btn btn-green w-100 btn-md" onclick="alertAddress()">CONTINUE</button>
                     @endif
                 </div>
             @endif
@@ -189,7 +227,9 @@
         .bg-dark {
             background-color: #81D8D0 !important;
         }
-
+        .bg-gray {
+            background: #FAFAFA
+        }
     </style>
 @endsection
 

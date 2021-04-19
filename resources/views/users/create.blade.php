@@ -2,12 +2,27 @@
 
 
 @section('content')
+    <div class="header-green text-center align-middle">
+        <div class="row align-items-center h-100">
+            <div class="mx-auto">
+                <div class="h-100 justify-content-center">
+                    <div>
+                        <label> Home > account</label>
+                        <h1>Account</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="container" style="margin-top: 80px">
+
+
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left text-center">
-                    <h2 class="text-header">Create an Account</h2>
+                    <h2 class="text-header text center">Create an Account</h2>
                 </div>
                 <div class="pull-right">
                     {{-- <a class="btn btn-primary" href=""> Back</a> --}}
@@ -27,114 +42,123 @@
             </div>
         @endif
 
+        <div class="col-12 mb-5">
+            <div class="col-xs-2 col-sm-2 col-md-2"></div>
+            <div class="col-sm-8 col-md-8 text-center mt-4 " style="margin: 0 auto;">
 
-        {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
-        <div class="row text-center">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Name:</strong> --}}
-                    {!! Form::text('firstname', null, ['placeholder' => 'First name ', 'class' => 'form-control']) !!}
+
+                {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+                <div class="row text-center">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Name:</strong> --}}
+                            {!! Form::text('firstname', null, ['placeholder' => 'First name ', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('lastname', null, ['placeholder' => 'Last name', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
+
+                        <div class="form-group">
+                            <input id="password" type="password" placeholder="password"
+                                class="form-control @error('password') is-invalid @enderror" name="password" required
+                                autocomplete="new-password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
+
+                        <div class="form-group">
+                            <input id="confirm-password" type="password" placeholder="password confirm" class="form-control"
+                                name="confirm-password" required autocomplete="confirm-password">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('company', null, ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('country', null, ['placeholder' => 'Country', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('region', null, ['placeholder' => 'Region', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('street-address', null, ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('town', null, ['placeholder' => 'Town / City', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('state', null, ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('postcode', null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            {{-- <strong>Email:</strong> --}}
+                            {!! Form::text('email', null, ['placeholder' => 'Email address', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-green">Submit</button>
+                    </div>
                 </div>
+                {!! Form::close() !!}
             </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('lastname', null, ['placeholder' => 'Last name', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
-
-                <div class="form-group">
-                    <input id="password" type="password" placeholder="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
-
-                <div class="form-group">
-                    <input id="confirm-password" type="password" placeholder="password confirm" class="form-control" name="confirm-password" required autocomplete="confirm-password">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('company', null, ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('country', null, ['placeholder' => 'Country', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('region', null, ['placeholder' => 'Region', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('street-address', null, ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('town', null, ['placeholder' => 'Town / City', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('state', null, ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('postcode', null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    {{-- <strong>Email:</strong> --}}
-                    {!! Form::text('email', null, ['placeholder' => 'Email address', 'class' => 'form-control']) !!}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-green">Submit</button>
-            </div>
+            <div class="col-2"></div>
         </div>
-        {!! Form::close() !!}
-
     </div>
 
     <style>
@@ -142,7 +166,7 @@
             border: 1px solid #81D8D0;
             box-sizing: border-box;
             border-radius: 5px;
-            color:#81D8D0;  
+            color: #81D8D0;
         }
 
     </style>
