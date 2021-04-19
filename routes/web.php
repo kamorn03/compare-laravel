@@ -19,7 +19,8 @@ use App\Http\Controllers\RegisterController as RegisterController;
 use App\Http\Controllers\UserController;
 
 
-
+Route::post('verify-payment', 'App\Http\Controllers\CartController@VerifyPayment')->name('cart.verify-payment');
+Route::get('finish', 'App\Http\Controllers\CartController@finish')->name('cart.finish');
 // // Route::view('/', 'home');
 Route::group(['middleware' => ['guest']], function () {
     Auth::routes();
@@ -48,6 +49,9 @@ Route::group(['middleware' => ['guest']], function () {
     
     Route::post('/login/digiso-admin', [LoginController::class,'adminLogin']);
     
+
+
+
     
     // slug show product paginate
     Route::get('shop/{category}', 'App\Http\Controllers\ProductController@ShowProductCategories')->name('shop.category');
@@ -98,11 +102,15 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     // Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
     // Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
     Route::view('/blogger', 'blogger');
-
+    Route::post('users/update/{id}/address', [App\Http\Controllers\UserController::class, 'updateAddress'])->name('users.update.address');
     // users
     Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
 
+  
     Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
+    Route::post('confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
+    Route::get('complete',  [App\Http\Controllers\CartController::class, 'complete'])->name('cart.complete');
+
 });
 
 

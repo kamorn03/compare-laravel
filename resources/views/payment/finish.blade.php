@@ -1,0 +1,53 @@
+@extends('layouts.main')
+
+@section('content')
+    <div class="header-green text-center align-middle">
+        <div class="row align-items-center h-100">
+            <div class="mx-auto">
+                <div class="h-100 justify-content-center">
+                    <div>
+                        <label> Home > Cart > Checkout > Shipping > Order Complete </label>
+                        <h1>finished payment</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 80px">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1>ชำระเงินสำเร็จ</h1>
+                    </div>
+                </div>
+               
+                
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .btn {
+            padding: 0.375rem 2.75rem;
+            background: #81D8D0;
+            border: 1px solid #81D8D0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 19px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        .bg-dark {
+            background-color: #81D8D0 !important;
+        }
+
+    </style>
+@endsection

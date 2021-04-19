@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.main')
 @section('content')
+
     <div class="header-green text-center align-middle">
-        <div class="row align-items-center h-100">
+        <div class="row align-items-center ">
             <div class="mx-auto">
                 <div class="h-100 justify-content-center">
                     <div>
@@ -12,6 +13,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <div class="container" style="margin-top: 80px">
         @if (session()->has('success_msg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -39,6 +44,8 @@
                 </div>
             @endforeach
         @endif
+
+
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="row">
@@ -85,7 +92,7 @@
                         <div class="col-lg-12">
                             <h3>Shipping Address</h3>
                             @php
-                                $address = Auth::user()->address;
+                                $address = Auth::guard('blogger')->user()->address;
                             @endphp
                             @foreach ($address as $locate)
                                 <div class="card" style="width: 18rem;">
@@ -93,7 +100,8 @@
                                         <h5 class="card-title">ที่อยู่</h5>
                                         {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
                                         <p class="card-text">{{ $locate['address'] ?? $locate['address'] }}</p>
-                                        <p>จังหวัด {{ $locate['country'] ?? $locate['country'] }} อำเภอ {{ $locate['city'] ?? $locate['city'] }}</p>
+                                        <p>จังหวัด {{ $locate['country'] ?? $locate['country'] }} อำเภอ
+                                            {{ $locate['city'] ?? $locate['city'] }}</p>
                                         <p>รหัส {{ $locate['zip'] ?? $locate['zip'] }}</p>
                                     </div>
                                 </div>

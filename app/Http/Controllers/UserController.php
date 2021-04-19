@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Blogger;
 // use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
@@ -130,7 +131,7 @@ class UserController extends Controller
             'zipcode' => 'required',
         ]);
     
-        $user = User::find($id);
+        $user = Blogger::find($id);
         $input['address'] = array([
             'address' => $request->address,
             'country' =>  $request->country,

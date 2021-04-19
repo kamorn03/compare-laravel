@@ -12,7 +12,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
         protected $guard = 'bloggers';
 
         protected $fillable = [
-            'name', 'email', 'password',
+            'name', 'email', 'password','address',
+        ];
+
+        protected $casts = [
+            'address' => 'json',
         ];
 
         protected $hidden = [

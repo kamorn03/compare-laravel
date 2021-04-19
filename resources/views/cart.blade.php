@@ -132,11 +132,11 @@
                                     <a href="/"><button class="btn btn-default-gray w-100">Update Cart</button></a>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    @guest
+                                    @if(!Auth::guard('blogger'))
                                         <a href="/checkout" class="btn btn-green-checkout w-100">Check Out</a>
                                     @else
                                         <a href="/shipping" class="btn btn-green-checkout w-100">Check Out</a>
-                                    @endguest
+                                    @endif
                                 </div>
                             </div>
 
