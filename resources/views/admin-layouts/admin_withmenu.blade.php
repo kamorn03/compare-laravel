@@ -238,11 +238,7 @@
                                 <i class="iconsminds-film"></i> Banner
                             </a>
                         </li>
-                        <li>
-                            <a href="{{ route('admin.size') }}">
-                                <i class="iconsminds-maximize"></i> ขนาดสินค้า
-                            </a>
-                        </li>
+                       
                         <li>
                             <a href="{{ route('admin.news') }}">
                                 <i class="iconsminds-digital-drawing"></i> ข่าว
@@ -296,6 +292,11 @@
                                 <i class="simple-icon-basket-loaded"></i> <span class="d-inline-block">สินค้า</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.size') }}">
+                                <i class="iconsminds-maximize"></i> ขนาดสินค้า
+                            </a>
+                        </li>
                     </ul>
                     <ul class="list-unstyled" data-link="order">
                         <li>
@@ -320,7 +321,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'payment']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'pending']) }}">
                                 <i class="icon-angle-right"></i> กำลังดำเนินการ
                                 {{-- <span class="badge badge-light">5</span> --}}
                             </a>
@@ -697,40 +698,7 @@
                     </ul>
 
                     <ul class="list-unstyled" data-link="menu" id="menuTypes">
-                        <li>
-                            <a href="#" data-toggle="collapse" data-target="#collapseMenuTypes" aria-expanded="true"
-                                aria-controls="collapseMenuTypes" class="rotate-arrow-icon">
-                                <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Menu Types</span>
-                            </a>
-                            <div id="collapseMenuTypes" class="collapse show" data-parent="#menuTypes">
-                                <ul class="list-unstyled inner-level-menu">
-                                    <li>
-                                        <a href="Menu.Default.html">
-                                            <i class="simple-icon-control-pause"></i> <span
-                                                class="d-inline-block">Default</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="Menu.Subhidden.html">
-                                            <i class="simple-icon-arrow-left mi-subhidden"></i> <span
-                                                class="d-inline-block">Subhidden</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="Menu.Hidden.html">
-                                            <i class="simple-icon-control-start mi-hidden"></i> <span
-                                                class="d-inline-block">Hidden</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="Menu.Mainhidden.html">
-                                            <i class="simple-icon-control-rewind mi-hidden"></i> <span
-                                                class="d-inline-block">Mainhidden</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                       
                         <li>
                             <a href="#" data-toggle="collapse" data-target="#collapseMenuLevel" aria-expanded="true"
                                 aria-controls="collapseMenuLevel" class="rotate-arrow-icon collapsed">
