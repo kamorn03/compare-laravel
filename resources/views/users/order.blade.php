@@ -69,35 +69,63 @@
             </div>
 
             {{-- First name * Last name * Company name (optional) Country / Region * Street address * Town / City * State / County * Postcode / ZIP * Phone * Email address * --}}
-            <div class="col-lg-6 bg-gray">
+            <div class="col-lg-6 ">
                 <div class="panel-group" id="accordionGroupOpen" role="tablist" aria-multiselectable="true">
-
+                    <table class="table table-striped w-100 bg-gray">
+                        <th>
+                        <td>Order :</td>
+                        <td>Date :</td>
+                        <td>Status :</td>
+                        <td>Total :</td>
+                        <td>View : </td>
+                        </th>
+                    </table>
                     {{-- {{ $order }} --}}
-                    @foreach ($order as $key =>$item)
+                    @foreach ($order as $key => $item)
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="heading{{$key}}">
+                            <div class="panel-heading" role="tab" id="heading{{ $key }}">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordionGroupOpen"
-                                        href="#collapseOpen{{$key}}" aria-expanded="true" aria-controls="collapseOpen{{$key}}">
-                                        order #{{ $item->order_no }}
+
+                                    <table class="table w-100 bg-gray">
+                                        <tr>
+                                            <td>#{{ $item->order_no }}</td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>
+                                                @php
+                                                    $price = 0;
+                                                @endphp
+                                                @foreach (json_decode($item->cart) as $cart)
+                                                    @php
+                                                        $price += $cart->price;
+                                                    @endphp
+                                                @endforeach
+                                                {{ $price }}
+                                            </td>
+                                            <td> <a role="button" data-toggle="collapse" data-parent="#accordionGroupOpen"
+                                                    href="#collapseOpen{{ $key }}" aria-expanded="true"
+                                                    aria-controls="collapseOpen{{ $key }}"></td>
+                                            </th>
+                                    </table>
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseOpen{{$key}}" class="panel-collapse collapse in mb-3" role="tabpanel"
-                                aria-labelledby="heading{{$key}}">
+                            <div id="collapseOpen{{ $key }}" class="panel-collapse collapse in mb-3"
+                                role="tabpanel" aria-labelledby="heading{{ $key }}">
                                 <div class="panel-body">
                                     @foreach (json_decode($item->cart) as $cart)
 
                                         <div class="row">
                                             <div class="col-lg-3">
-                                                <img src="/img/cards/{{ $cart->attributes->image }}" class="img-thumbnail"
-                                                    width="200" height="200">
+                                                <img src="/img/cards/{{ $cart->attributes->image }}"
+                                                    class="img-thumbnail" width="200" height="200">
                                             </div>
                                             <div class="col-lg-9">
                                                 <p>
-                                                    <b><a href="/shop/{{ $cart->attributes->slug }}">{{ $cart->name }}</a></b><br>
+                                                    <b><a
+                                                            href="/shop/{{ $cart->attributes->slug }}">{{ $cart->name }}</a></b><br>
                                                     {{ $cart->price }} ฿ <br>
-                                                
+
                                                 </p>
                                             </div>
                                         </div>
@@ -140,6 +168,10 @@
     </div>
 
     <style>
+        table {
+            font-size: 14px;
+        }
+
         a {
             color: #797979;
             text-decoration: none;
