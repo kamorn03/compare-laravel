@@ -58,10 +58,10 @@
                         {{-- <img src="/img/cards/{{ $item->attributes->image }}" width="200" height="200"> --}}
                     </div>
                     <div class="col-lg-7">
-                        <p class="text-menu active">Personal Information</p> 
-                        <p class="text-menu">Orders</p> 
-                        <p class="text-menu">Change Password</p> 
-                        <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p> 
+                        <p class="text-menu active">Personal Information</p>
+                        <p class="text-menu"><a href="{{ route('users.cart.order') }}">Orders </a></p>
+                        <p class="text-menu">Change Password</p>
+                        <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
 
-                 
+
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <button type="submit" class="btn btn-green">SAVE</button>
                     </div>
@@ -162,4 +162,12 @@
 
 
     </div>
+    <style>
+        a {
+            color: #797979;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+    </style>
 @endsection

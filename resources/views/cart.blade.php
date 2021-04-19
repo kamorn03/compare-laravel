@@ -66,7 +66,7 @@
                                             {{ csrf_field() }}
                                             <input type="hidden" value="{{ $item->id }}" id="id" name="id">
                                             <a onclick="$(this).closest('form').submit();"
-                                                style="margin-right: 10px;  cursor: pointer;"><i
+                                                style=" cursor: pointer;"><i
                                                     class="fa fa-trash"></i></a>
                                         </form>
                                     </div>

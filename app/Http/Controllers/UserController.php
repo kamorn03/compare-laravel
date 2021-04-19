@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Blogger;
 // use Spatie\Permission\Models\Role;
 use DB;
@@ -84,10 +85,26 @@ class UserController extends Controller
         $user = User::find($id);
         // $roles = Role::pluck('name','name')->all();
         // $userRole = $user->roles->pluck('name','name')->all();
-    
+
         return view('users.edit',compact('user'));
     }
-    
+
+      /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showOrder()
+    {
+        $order = Order::all();
+        // $roles = Role::pluck('name','name')->all();
+        // $userRole = $user->roles->pluck('name','name')->all();
+        // dd('1');
+        return view('users.order',compact('order'));
+    }
+  
+
     /**
      * Update the specified resource in storage.
      *

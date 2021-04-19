@@ -58,102 +58,78 @@
                         {{-- <img src="/img/cards/{{ $item->attributes->image }}" width="200" height="200"> --}}
                     </div>
                     <div class="col-lg-7">
-                        <p class="text-menu active">Personal Information</p> 
-                        <p class="text-menu">Orders</p> 
-                        <p class="text-menu">Change Password</p> 
-                        <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p> 
+                        <p class="text-menu"><a
+                                href="{{ route('users.edit', ['user' => Auth::guard('blogger')->user()->id]) }}">Personal
+                                Information </a></p>
+                        <p class="text-menu active">Orders</p>
+                        <p class="text-menu">Change Password</p>
+                        <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p>
                     </div>
                 </div>
             </div>
 
             {{-- First name * Last name * Company name (optional) Country / Region * Street address * Town / City * State / County * Postcode / ZIP * Phone * Email address * --}}
-            <div class="col-lg-6">
-                {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Name:</strong> --}}
-                            {!! Form::text('firstname', null, ['placeholder' => 'First name ', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
+            <div class="col-lg-6 bg-gray">
+                <div class="panel-group" id="accordionGroupOpen" role="tablist" aria-multiselectable="true">
 
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('lastname', null, ['placeholder' => 'Last name', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
+                    {{-- {{ $order }} --}}
+                    @foreach ($order as $key =>$item)
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading{{$key}}">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordionGroupOpen"
+                                        href="#collapseOpen{{$key}}" aria-expanded="true" aria-controls="collapseOpen{{$key}}">
+                                        order #{{ $item->order_no }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOpen{{$key}}" class="panel-collapse collapse in mb-3" role="tabpanel"
+                                aria-labelledby="heading{{$key}}">
+                                <div class="panel-body">
+                                    @foreach (json_decode($item->cart) as $cart)
 
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('company', null, ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <img src="/img/cards/{{ $cart->attributes->image }}" class="img-thumbnail"
+                                                    width="200" height="200">
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <p>
+                                                    <b><a href="/shop/{{ $cart->attributes->slug }}">{{ $cart->name }}</a></b><br>
+                                                    {{ $cart->price }} ฿ <br>
+                                                
+                                                </p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('country', null, ['placeholder' => 'Country', 'class' => 'form-control']) !!}
+                    @endforeach
+                    {{-- <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionGroupOpen"
+                                    href="#collapseOpenThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Collapsible Group Item #3 Closed on Load
+                                </a>
+                            </h4>
                         </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('region', null, ['placeholder' => 'Region', 'class' => 'form-control']) !!}
+                        <div id="collapseOpenThree" class="panel-collapse collapse" role="tabpanel"
+                            aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                                excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore
+                                sustainable VHS.
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('street-address', null, ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('town', null, ['placeholder' => 'Town / City', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('state', null, ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('postcode', null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('email', null, ['placeholder' => 'Email address', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                 
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <button type="submit" class="btn btn-green">SAVE</button>
-                    </div>
+                    </div> --}}
                 </div>
-                {!! Form::close() !!}
-
 
             </div>
         </div>
@@ -162,4 +138,46 @@
 
 
     </div>
+
+    <style>
+        a {
+            color: #797979;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        .bg-gray {
+            background: #E5E5E5;
+        }
+
+        body {
+            padding: 5rem;
+        }
+
+        .panel,
+        .panel-body {
+            box-shadow: none;
+        }
+
+        .panel-group .panel-heading {
+            padding: 0;
+        }
+
+        .panel-group .panel-heading a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .panel-group .panel-heading a:after {
+            content: '-';
+            float: right;
+        }
+
+        .panel-group .panel-heading a.collapsed:after {
+            content: '+';
+        }
+
+    </style>
 @endsection

@@ -100,8 +100,9 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     Route::view('/blogger', 'blogger');
     Route::post('users/update/{id}/address', [App\Http\Controllers\UserController::class, 'updateAddress'])->name('users.update.address');
     // users
-    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store']]);
-
+    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store' ,'showOrder']]);
+    
+    Route::get('users/cart/order',  [App\Http\Controllers\UserController::class, 'showOrder'])->name('users.cart.order');
   
     Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
     Route::post('confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
@@ -136,13 +137,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/contact', [App\Http\Controllers\ContactController::class, 'updateContact'])->name('contact');
         Route::post('digiso-admin/contact/{id}/update', [App\Http\Controllers\ContactController::class, 'update'])->name('contact.update');
 
-
         // users
         Route::get('digiso-admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
         Route::get('digiso-admin/users/{id}/show', [App\Http\Controllers\AdminController::class, 'userShow'])->name('users.show');
 
-
-        
         // category
         Route::get('digiso-admin/category', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
         Route::get('digiso-admin/category-list', [App\Http\Controllers\AdminController::class, 'categoryList'])->name('category.list');
