@@ -144,15 +144,20 @@
                             @endforeach
                            
 
-                            <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
+                          
                         </div>
                     @endif
+                </div>
+                <div class="row w-100 text-right float-right">
+                    <div class="col-10"> 
+                        <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
+                    </div>
+                   
                 </div>
             </div>
             @if (count($cartCollection) > 0)
                 <div class="col-lg-5 bg-gray">
                     <h1 class="text-header text-center">Order Summary</h1>
-
                     @foreach ($cartCollection as $item)
                         <div class="row mt-5">
                             <div class="col-lg-3">

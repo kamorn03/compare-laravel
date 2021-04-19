@@ -105,7 +105,7 @@
 
         function load_images() {
             $.ajax({
-                url: "{{ route('product.image.fetch') }}",
+                url: "{{ route('product.image.fetch', ['id' => $product->id ]) }}",
                 success: function(data) {
                     $('#uploaded_image').html(data);
                 }

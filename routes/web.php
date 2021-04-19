@@ -35,7 +35,6 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('users/store', [UserController::class, 'store'])->name('users.store');
     Route::get('users/create', [UserController::class, 'create'])->name('users.create');
     
-    
     // news 
     Route::get('news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
     Route::get('news/{id}/more', [App\Http\Controllers\NewsController::class, 'newsMore'])->name('news.more');
@@ -52,9 +51,6 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('/login/digiso-admin', [LoginController::class,'adminLogin']);
     
 
-
-
-    
     // slug show product paginate
     Route::get('shop/{category}', 'App\Http\Controllers\ProductController@ShowProductCategories')->name('shop.category');
     Route::get('shop/{category}/{collection}', 'App\Http\Controllers\ProductController@ShowProductCollections')->name('shop.collection');
@@ -75,7 +71,6 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('/login/blogger', [LoginController::class,'bloggerLogin'])->name('blogger.login');;
     Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
     
-    
     // api
     Route::post('product/add', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
     Route::post('product/update',  [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
@@ -85,14 +80,16 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('main-title/update', [App\Http\Controllers\MainTitleController::class, 'update'])->name('main-title.update');
     Route::get('main-title/fetch', [App\Http\Controllers\MainTitleController::class, 'fetch'])->name('main-title.fetch');
     Route::get('main-title/delete', [App\Http\Controllers\MainTitleController::class, 'delete'])->name('main-title.delete');
+
+    Route::get('product/image/{id}/fetch', [App\Http\Controllers\ProductController::class, 'fetch'])->name('product.image.fetch');
+    Route::post('product/{id}/upload/image', [App\Http\Controllers\ProductController::class, 'upload'])->name('product.upload.image');
+    Route::get('product/image/delete', [App\Http\Controllers\MainTitleController::class, 'delete'])->name('product.image.delete');
     
 });
 
 
 
- Route::get('product/image/fetch', [App\Http\Controllers\ProductController::class, 'fetch'])->name('product.image.fetch');
- Route::post('product/{id}/upload/image', [App\Http\Controllers\ProductController::class, 'upload'])->name('product.upload.image');
- Route::get('product/image/delete', [App\Http\Controllers\MainTitleController::class, 'delete'])->name('product.image.delete');
+
  
 
 
@@ -106,7 +103,6 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     
     Route::get('users/cart/order',  [App\Http\Controllers\UserController::class, 'showOrder'])->name('users.cart.order');
   
-   
     Route::post('confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
     Route::get('complete',  [App\Http\Controllers\CartController::class, 'complete'])->name('cart.complete');
 
@@ -156,13 +152,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/collection-list', [App\Http\Controllers\AdminController::class, 'collectionList'])->name('collection.datalist');
         Route::post('digiso-admin/collection/{category_id}/list', [App\Http\Controllers\CollectionController::class, 'collectionGetList'])->name('collection.list');
         Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\AdminController::class, 'collectionUpdate'])->name('collection.edit');
-        Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\CollectionController::class, 'collectionEdit'])->name('collection.edit');
+        // Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\CollectionController::class, 'collectionEdit'])->name('collection.edit');
         Route::get('digiso-admin/collection/{id}/delete', [App\Http\Controllers\CollectionController::class, 'destroy'])->name('collection.delete');
         Route::post('digiso-admin/collection/{category_id}/list', [App\Http\Controllers\CollectionController::class, 'collectionGetList'])->name('collection.list');
 
         // product 
         Route::get('digiso-admin/product', [App\Http\Controllers\AdminController::class, 'product'])->name('product');
-
+        // product api
+        Route::get('digiso-admin/product', [App\Http\Controllers\AdminController::class, 'product'])->name('product');
+        Route::get('digiso-admin/product/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
         Route::get('digiso-admin/product-list', [App\Http\Controllers\AdminController::class, 'productList'])->name('product.list');
         Route::get('digiso-admin/product-add', [App\Http\Controllers\AdminController::class, 'productAdd'])->name('product.add');
         Route::get('digiso-admin/product/{id}/add_image', [App\Http\Controllers\AdminController::class, 'productImage'])->name('product.add_image'); 

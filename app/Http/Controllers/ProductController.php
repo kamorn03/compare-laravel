@@ -131,7 +131,7 @@ class ProductController extends Controller
         return view('admin.product.add', compact('categories','product'));
     }
 
-    function upload(Request $request ,$id)
+    public function upload(Request $request ,$id)
     {
         $image = $request->file('file');
 
@@ -148,10 +148,10 @@ class ProductController extends Controller
     }
 
 
-    function fetch()
+    public function fetch($id)
     {
         // where id 
-        $main = ProductImage::all();
+        $main = ProductImage::where('product_id', $id)->get();
         $output = '<div class="row">';
         $number = 1;
         foreach($main as $image)
