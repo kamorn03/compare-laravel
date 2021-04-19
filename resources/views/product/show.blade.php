@@ -119,7 +119,7 @@
         </div>
         <hr>
         <div>
-            <h1 class="text-center"> You May Also Like </h1>
+            <h1 class="text-product-name text-center"> You May Also Like </h1>
             <div>
                 <div class="row">
                     @foreach ($wish_list as $product)
@@ -128,7 +128,7 @@
                                 <a
                                     href="/shop/{{ $product->cate_slug }}/{{ $product->collect_slug ?? 'non-collection' }}/{{ $product->slug }}"><img
                                         src="/img/cards/{{ $product->image_path }}" class="card-img-top mx-auto"
-                                        style="height: 200px; width: 250px;display: block;"
+                                        style="height :160px; width: 200px;display: block;"
                                         alt="{{ $product->image_path }}"></a>
                                 <div class="card-body custom-card-home">
                                     <h6 class="card-title">{{ $product->name }}</h6>
