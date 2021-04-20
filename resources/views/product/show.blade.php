@@ -64,23 +64,19 @@
                     <div class="details col-md-6">
                         <form action="{{ route('cart.store') }}" method="POST">
                             <h3 class="text-name">{{ $products[0]->name }}</h3>
-
                             <h3 class="product-title" style="font-weight: bold;color: black;"> {{ $products[0]->price }}
                                 ฿ </h3>
-
-
-                            {{-- <h5 class="sizes">sizes: </h5>
-                            <div class="num-block w-100">
-                                <select class="form-control" name="" id="">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                </select>
-                            </div> --}}
-
-
                             <h5 class="title">size </h5>
                             <div class="action">
-                                <input type="number w-100" class="form-control" id="size" name="size" value="1">
+                                @php
+                                    $sizes = App\Models\Size::get();
+                                @endphp
+                                <select class="form-control" name="size" id="size">
+                                    @foreach ($sizes as $item)
+                                        <option value="{{ $item->id }}">{{ $item->size }}</option>
+                                    @endforeach
+                                </select>
+                                {{-- <input type="number w-100" class="form-control" id="size" name="size" value="1"> --}}
                             </div>
 
                             <h5 class="title">Quantity </h5>
