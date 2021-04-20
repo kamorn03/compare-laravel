@@ -77,7 +77,6 @@ class CartController extends Controller
     public function shipping()  
     {
         $cartCollection = \Cart::getContent();
-        // dd($cartCollection);
         return view('shipping')->withTitle('E-COMMERCE STORE | SHIPPING')->with(['cartCollection' => $cartCollection]);;
     }
 

@@ -14,9 +14,6 @@
         </div>
     </div>
 
-
-
-
     <div class="container" style="margin-top: 80px">
         @if (session()->has('success_msg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -44,7 +41,6 @@
                 </div>
             @endforeach
         @endif
-
 
         <div class="row justify-content-center">
             <div class="col-lg-7">
@@ -126,26 +122,22 @@
                                 <button class="btn btn-green">บันทึก</button>
                             </form>
 
-
                             @php
                                 $address = Auth::guard('blogger')->user()->address;
                             @endphp
-                            {{-- {{ json_decode($address) }} --}}
+                            {{-- {{ json_encode($address) }} --}}
                         
                             <div class="card data-address" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">ที่อยู่</h5>
                                     {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
-                                    {{-- <p class="card-text">{{ $address->address ?? $address->address  }}</p>
-                                    <p>จังหวัด {{ $address->country ?? $address->country}} อำเภอ --}}
-                                        {{-- {{ $locate['city'] ?? $locate['city'] }}</p>
-                                    <p>รหัส {{ $locate['zip'] ?? $locate['zip'] }}</p> --}}
+                                    <p class="card-text">{{  Arr::get($address , 'address')  }}</p>
+                                    <p>จังหวัด {{  Arr::get($address , 'country') }} อำเภอ
+                                        {{ Arr::get($address , 'city')  }}</p>
+                                    <p>รหัส {{ Arr::get($address , 'zip') }}</p>
                                 </div>
                             </div>
                    
-                           
-
-                          
                         </div>
                     @endif
                 </div>

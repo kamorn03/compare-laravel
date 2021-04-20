@@ -26,7 +26,7 @@ Route::group(['middleware' => ['guest']], function () {
     Auth::routes();
     // home
     Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
-
+    // shipping
     Route::get('shipping', [App\Http\Controllers\CartController::class, 'shipping'])->name('cart.shipping');
     // more-about
     Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
@@ -64,10 +64,8 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('clear', 'App\Http\Controllers\CartController@clear')->name('cart.clear');
     Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
     
-    
     // register blogger
-    Route::post('/register/digiso-admin', [RegisterController::class,'createAdmin']);
-    
+    // Route::post('/register/digiso-admin', [RegisterController::class,'createAdmin']);
     Route::post('/login/blogger', [LoginController::class,'bloggerLogin'])->name('blogger.login');;
     Route::post('/register/blogger', [RegisterController::class,'createBlogger']);
     
@@ -88,11 +86,6 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 
-
-
- 
-
-
 Route::group(['middleware' => 'auth:blogger'], function () {
     // Route::get('/', 'App\Http\Controllers\CartController@shop')->name('home');
     // Route::get('more-about', [App\Http\Controllers\MoreAboutController::class, 'show'])->name('more-about');
@@ -108,8 +101,6 @@ Route::group(['middleware' => 'auth:blogger'], function () {
 
 });
 
-
-
 // api
 Route::post('category/add', 'App\Http\Controllers\CategoryController@store')->name('category.store');
 Route::post('category/update', 'App\Http\Controllers\CategoryController@update')->name('category.update');
@@ -117,8 +108,6 @@ Route::post('category/update', 'App\Http\Controllers\CategoryController@update')
 // api
 Route::post('collection/add', [App\Http\Controllers\CollectionController::class, 'store'])->name('collection.store');
 Route::post('collection/update',  [App\Http\Controllers\CollectionController::class, 'update'])->name('collection.update');
-
-
 
 Route::group(['middleware' => 'auth:admin'], function () {
     /* admin path */

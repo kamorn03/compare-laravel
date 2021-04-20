@@ -133,7 +133,6 @@ class UserController extends Controller
         }
     
         $user = Blogger::find($id);
-        // $user->update($input);
         $user->update([
             'name' =>$request->firstname." ".$request->lastname,
             'email' => $request->email,
@@ -146,13 +145,7 @@ class UserController extends Controller
                 // 'state' => 'STATE',
             )
         ]);
-    
-        // DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
-        // $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('users.edit', ['user' =>  $id])
-                        ->with('success','แก้ไขข้อมูลสำเร็จ');
+        return redirect()->route('users.edit', ['user' =>  $id])->with('success','แก้ไขข้อมูลสำเร็จ');
     }
 
     public function updateAddress(Request $request, $id)
