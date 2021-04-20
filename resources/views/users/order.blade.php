@@ -85,7 +85,10 @@
                         $order = App\Models\Order::where('user_id', Auth::guard('blogger')->user()->id)->get();
                     @endphp
                     {{-- {{ $order }} --}}
-
+                    @if (!sizeOf($order) > 0)
+                    {{-- {{sizeOf($order)}} --}}
+                        <h5 class="text-center mt-5"> Your order is empty!!</h5>
+                    @endif
 
                     @foreach ($order as $key => $item)
                         <div class="panel panel-default">
