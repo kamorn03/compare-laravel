@@ -22,7 +22,7 @@ class MainTitleController extends Controller
     {
         $image = $request->file('file');
 
-        $imageName = time() . '.' . $image->extension();
+        $imageName = time() .$image->getClientOriginalName(). '.' . $image->extension();
 
         $image->move(public_path('images/title/'), $imageName);
 
