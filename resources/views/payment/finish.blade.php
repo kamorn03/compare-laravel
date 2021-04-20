@@ -71,7 +71,7 @@
             background-color: #81D8D0 !important;
         }
 
-        @media (min-width: 1200px) {
+        /* @media (min-width: 1200px) {
 
             .container-xl,
             .container-lg,
@@ -80,7 +80,7 @@
             .container {
                 max-width: 1090px;
             }
-        }
+        } */
 
     </style>
 @endsection
