@@ -123,14 +123,14 @@ class AdminController extends Controller
     public function order($status)
     {
         $submit_url = "/api/home_manage";
+        
         // watting_payment -> รอการชำระเงิน
         // successful_payment -> ชำระเงินเสร็จสิ้น (รอจัดส่ง)
         // waiting_delivery -> ระหว่างจัดส่ง
         // successful_delivery ->จัดส่งเสร็จสิ้น
         // cancel -> ยกเลิก
-        $order_wait = Order::where('status','wait')->count();
-        $order_payment = Order::where('status','payment')->count();
-        return view('admin.manage-order-status.wait', compact('submit_url','order_wait','order_payment','status'));
+
+        return view('admin.manage-order-status.wait', compact('submit_url','status'));
     }
 
     public function mainTitle()

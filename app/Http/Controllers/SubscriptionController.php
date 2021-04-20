@@ -36,7 +36,7 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-           // $table->string('email', 255)->nullable();
+        // $table->string('email', 255)->nullable();
         // $table->jsonb('contact', 255)->nullable();
         // $table->text('message')->nullable();
         // $table->timestamps();
@@ -48,8 +48,7 @@ class SubscriptionController extends Controller
             'email' => $request->email,
             'message' => $request->message
         ]);
-    
-    
+
         return redirect()->route('contact')
                         ->with('success','User created successfully');
     }
