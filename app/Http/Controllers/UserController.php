@@ -115,11 +115,11 @@ class UserController extends Controller
      */
     public function showOrder()
     {
-        $order = Order::all();
+        // $order = Order::all();
         // $roles = Role::pluck('name','name')->all();
         // $userRole = $user->roles->pluck('name','name')->all();
         // dd('1');
-        return view('users.order',compact('order'));
+        return view('users.order');
     }
   
 
