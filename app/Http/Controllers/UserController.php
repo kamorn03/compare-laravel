@@ -120,23 +120,22 @@ class UserController extends Controller
         $this->validate($request, [
             'firstname' => 'required',
             'lastname' => 'required',
+            // 'password' => 'required|same:confirm-password',
             'email' => 'required|email|unique:users,email,'.$id,
         ]);
 
-
-    
-        $input = $request->all();
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
-        }
+        // $input = $request->all();
+        // if(!empty($input['password'])){ 
+        //     $input['password'] = Hash::make($input['password']);
+        // }else{
+        //     $input = Arr::except($input,array('password'));    
+        // }
     
         $user = Blogger::find($id);
         $user->update([
             'name' =>$request->firstname." ".$request->lastname,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            // 'password' => Hash::make($request->password),
             'address' => array(
                 'address' => $request->get('street-address'),
                 'country' =>  $request->get('state'),

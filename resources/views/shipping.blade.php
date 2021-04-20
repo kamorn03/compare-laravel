@@ -87,6 +87,8 @@
                     @else
                         <div class="col-lg-12">
                             <h3 class="text-header"> Shipping Address</h3>
+
+                                
                             <form class="form-address" style="display: none" action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}" method="post">
                                 @csrf
                                 <div class="form">
