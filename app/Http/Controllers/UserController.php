@@ -57,6 +57,17 @@ class UserController extends Controller
             'name' =>$request->firstname." ".$request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'address' => array(
+                'company' => $request->get('street-address'),
+                'country' =>  $request->get('country '),
+                'address' => $request->get('street-address'),
+                'city' =>   $request->get('town'),
+                'state' =>  $request->get('state'),
+                'zip' =>  $request->get('postcode'),
+                'phone' =>  $request->get('phone'),
+                'email' =>   $request->get('email'),
+                // 'state' => 'STATE',
+            )
         ]);
     
     
@@ -137,10 +148,14 @@ class UserController extends Controller
             'email' => $request->email,
             // 'password' => Hash::make($request->password),
             'address' => array(
+                'company' => $request->get('street-address'),
+                'country' =>  $request->get('country '),
                 'address' => $request->get('street-address'),
-                'country' =>  $request->get('state'),
-                'zip' =>  $request->get('postcode'),
                 'city' =>   $request->get('town'),
+                'state' =>  $request->get('state'),
+                'zip' =>  $request->get('postcode'),
+                'phone' =>  $request->get('phone'),
+                'email' =>   $request->get('email'),
                 // 'state' => 'STATE',
             )
         ]);
