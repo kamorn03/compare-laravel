@@ -196,6 +196,10 @@
                         @if (count($cartCollection) > 0)
                             <form action="{{ route('cart.confirm') }}" method="POST">
                                 {{ csrf_field() }}
+                                {{-- PLACE ORDER AND NAME IN THIS FROM --}}
+
+
+
                                 <button class="btn btn-green w-100 btn-md">CONTINUE</button>
                             </form>
                         @endif

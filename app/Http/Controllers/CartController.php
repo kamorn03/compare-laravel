@@ -108,9 +108,9 @@ class CartController extends Controller
         $order = new Order();
         $order->user_id = Auth::id();
         $order->cart = $cartCollection;
-        $order->address = "address";
-        $order->name = "name";
-        $order->status = "wait";
+        $order->address = "address"; // address
+        $order->name = "name"; // name
+        $order->status = "watting_payment";
         $order->payment_id = "2";
         $order->order_no = $this->generateRandomString(2).$this->generateRandomNumber(6);
         $order->save();
@@ -124,7 +124,7 @@ class CartController extends Controller
     {
         $order = Order::find($request->get('id'));
         $order->update([
-            'status' => 'payment'
+            'status' => 'successful_payment'
         ]);
         return redirect()->route('cart.finish')->with('success_msg', 'Order finish!')->with('order', $order);
     }
