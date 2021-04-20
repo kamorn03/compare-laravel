@@ -174,7 +174,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                      document.getElementById('logout-form').submit();">
+                                                                                                                                              document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -287,12 +287,12 @@
                     </ul>
                     <ul class="list-unstyled" data-link="order">
                         <li>
-                            <a href="Dashboard.Content.html">
+                            <a href="#">
                                 <i class="simple-icon-doc"></i> <span class="d-inline-block">คำสั่งซื้อ</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'wait']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'watting_payment']) }}">
                                 <i class="icon-angle-right"></i> รอการชำระเงิน
                                 @if (isset($order_wait) && $order_wait > 0)
                                     <span class="badge badge-light">{{ $order_wait }}</span>
@@ -300,7 +300,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'payment']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'successful_payment']) }}">
                                 <i class="icon-angle-right"></i> แจ้งชำระเงินแล้ว รอตรวจสอบ
                                 @if (isset($order_wait) && $order_payment > 0)
                                     <span class="badge badge-light">{{ $order_payment }}</span>
@@ -308,19 +308,19 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'pending']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'waiting_delivery']) }}">
                                 <i class="icon-angle-right"></i> กำลังดำเนินการ
                                 {{-- <span class="badge badge-light">5</span> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'shipped']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'successful_delivery']) }}">
                                 <i class="icon-angle-right"></i> ส่งสินค้าแล้ว
                                 {{-- <span class="badge badge-light">13</span> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'wrong']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'cancel']) }}">
                                 <i class="icon-angle-right"></i> ชำระเงินผิด
                                 {{-- <span class="badge badge-light">1</span> --}}
                             </a>

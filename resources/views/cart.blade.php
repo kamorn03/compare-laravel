@@ -45,10 +45,10 @@
                                     <div class="col-3 text-right float-right">
                                         <b> {{ $item->price }} ฿ </b>
                                     </div>
-                                    {{-- <div class="col-3">
+                                    <div class="col-3">
                                         <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
                                                 class="fa fa-edit"></i></button>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-7">
@@ -111,7 +111,7 @@
 
                             <div class="row mt-5">
                                 <div class="col-12">
-                                    <a href="/"><button class="btn btn-default-gray w-100">Update Cart</button></a>
+                                    <button class="btn btn-default-gray w-100">Update Cart</button>
                                 </div>
                                 <div class="col-12 mt-3">
                                     @if (!Auth::guard('blogger')->user())

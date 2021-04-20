@@ -77,9 +77,8 @@
             @if (count($cartCollection) > 0)
                 <div class="col-lg-6">
                     <h2 class="text-header">Create an Accounts</h2>
-                  
-                    {!! Form::model(['method' => 'POST', 'route' => ['users.store']]) !!}
-                    <div class="row"  style="margin-top: 2em">
+                    {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+                    <div class="row" style="margin-top: 2em">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 {{-- <strong>Name:</strong> --}}
@@ -94,13 +93,13 @@
                             </div>
                         </div>
 
-
-                        
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
                             <div class="form-group">
-                                <input id="password" type="password" placeholder="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" placeholder="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -114,7 +113,8 @@
                             {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
 
                             <div class="form-group">
-                                <input id="password-confirm" type="password" placeholder="password confirm" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="confirm-password" type="password" placeholder="password confirm"
+                                    class="form-control" name="confirm-password" required autocomplete="confirm-password">
                             </div>
                         </div>
 
