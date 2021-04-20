@@ -56,7 +56,7 @@ class UserController extends Controller
         if($request->get('street-address')) {
             $address = array(
                 'company' => $request->get('company'),
-                'country' =>  $request->get('country '),
+                'country' =>  $request->get('country'),
                 'address' => $request->get('street-address'),
                 'city' =>   $request->get('town'),
                 'state' =>  $request->get('state'),
@@ -151,7 +151,7 @@ class UserController extends Controller
         if($request->get('street-address')) {
             $address = array(
                 'company' => $request->get('company'),
-                'country' =>  $request->get('country '),
+                'country' =>  $request->get('country'),
                 'address' => $request->get('street-address'),
                 'city' =>   $request->get('town'),
                 'state' =>  $request->get('state'),
@@ -170,6 +170,34 @@ class UserController extends Controller
         return redirect()->route('users.edit', ['user' =>  $id])->with('success','แก้ไขข้อมูลสำเร็จ');
     }
 
+
+      /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function changePassword(Request $request, $id)
+    {
+        $user = Blogger::find($id);
+        return view('users.change-pass', compact('user'));
+    }
+
+    
+    public function updatePassword(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'required|same:confirm-password',
+            'newpassword' => 'required',
+        ]);
+        $user = Blogger::find($id);
+        $user->update([
+            'password' => Hash::make($request->newpassword),
+        ]);
+        return redirect()->route('users.change.password', ['user' =>  $id])->with('success','แก้ไขข้อมูลสำเร็จ');
+    }
+
     public function updateAddress(Request $request, $id)
     {      
 
@@ -182,10 +210,13 @@ class UserController extends Controller
     
         $user = Blogger::find($id);
         $input['address'] = array(
+            'company' => $request->company,
             'address' => $request->address,
             'country' =>  $request->country,
             'zip' =>  $request->zipcode,
             'city' =>  $request->city,
+            'phone' =>  $request->phone,
+            'email' =>  $request->email,
             // 'state' => 'STATE',
         );
         $user->update($input);

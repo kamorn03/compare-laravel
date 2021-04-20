@@ -60,7 +60,7 @@
                     <div class="col-lg-7">
                         <p class="text-menu active">Personal Information</p>
                         <p class="text-menu"><a href="{{ route('users.cart.order') }}">Orders </a></p>
-                        <p class="text-menu">Change Password</p>
+                        <p class="text-menu"><a href="{{ route('users.change.password', ['user' => Auth::guard('blogger')->user()->id]) }}">Change Password</a></p>
                         <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('country', null, ['placeholder' => 'Country / Region ', 'class' => 'form-control']) !!}
+                            {!! Form::text('country', Arr::get($address , 'country'), ['placeholder' => 'Country / Region ', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 

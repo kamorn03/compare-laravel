@@ -61,7 +61,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('add', 'App\Http\Controllers\CartController@add')->name('cart.store');
     Route::post('update', 'App\Http\Controllers\CartController@update')->name('cart.update');
 
-    Route::post('update/all', 'App\Http\Controllers\CartController@update')->name('cart.update.all');
+    Route::post('update/all', 'App\Http\Controllers\CartController@updateAll')->name('cart.update.all');
 
     Route::post('remove', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
     Route::post('clear', 'App\Http\Controllers\CartController@clear')->name('cart.clear');
@@ -95,8 +95,9 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     Route::view('/blogger', 'blogger');
     Route::post('users/update/{id}/address', [App\Http\Controllers\UserController::class, 'updateAddress'])->name('users.update.address');
     // users
-    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store' ,'showOrder']]);
-    
+    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store' ,'showOrder','changePassword','updatePassword']]);
+    Route::get('users/change/{user}/password',  [App\Http\Controllers\UserController::class, 'changePassword'])->name('users.change.password');
+    Route::post('users/update/{id}/password',  [App\Http\Controllers\UserController::class, 'updatePassword'])->name('users.update.password');
     Route::get('users/cart/order',  [App\Http\Controllers\UserController::class, 'showOrder'])->name('users.cart.order');
   
     Route::post('confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');

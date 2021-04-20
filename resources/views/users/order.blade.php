@@ -62,7 +62,7 @@
                                 href="{{ route('users.edit', ['user' => Auth::guard('blogger')->user()->id]) }}">Personal
                                 Information </a></p>
                         <p class="text-menu active">Orders</p>
-                        <p class="text-menu">Change Password</p>
+                        <p class="text-menu"><a href="{{ route('users.change.password', ['user' => Auth::guard('blogger')->user()->id]) }}">Change Password</a></p>
                         <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p>
                     </div>
                 </div>
