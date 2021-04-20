@@ -168,7 +168,6 @@
                                                         <b> {{ $cart->price * $cart->quantity }} ฿ </b>
                                                     </div>
                                                     <div class="col-2">
-
                                                     </div>
                                                 </div>
                                             </div>

@@ -5,10 +5,10 @@
         @php
             $title = [
                 'watting_payment' => 'รอการชำระเงิน',
-                'successful_payment' => 'ชำระเงินเสร็จสิ้น (รอจัดส่ง)',
-                'waiting_delivery' => 'ระหว่างจัดส่ง',
-                'successful_delivery' => 'จัดส่งเสร็จสิ้น',
-                'cancel' => 'ยกเลิก',
+                'successful_payment' => 'แจ้งชำระเงินแล้ว รอตรวจสอบ',
+                'waiting_delivery' => 'กำลังดำเนินการ',
+                'successful_delivery' => 'ส่งสินค้าแล้ว',
+                'cancel' => 'ชำระเงินผิด',
             ];
         @endphp
         <h1>รายการ {{ $title[$status] }}</h1>
