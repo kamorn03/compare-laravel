@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="container" style="margin-top: 35px">
-    
+
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 <h2 class="text-header">Shopping Cart</h2>
@@ -32,11 +32,12 @@
                                 <div class="form-group row mt-3">
                                     <div class="col-7">
                                         <div class="num-block skin-5 w-100">
-                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                            <input type="hidden" value="{{ $item->id }}" id="id{{ $item->id }}"
+                                                name="id">
                                             <div class="num-in w-100">
                                                 <span class="minus dis">-</span>
-                                                <input type="number w-100" class="in-num" id="quantity" name="quantity"
-                                                    value="{{ $item->quantity }}" readonly="">
+                                                <input type="number w-100" class="in-num" id="quantity-{{ $item->id }}"
+                                                    name="quantity" value="{{ $item->quantity }}" readonly="">
                                                 <span class="plus">+</span>
                                             </div>
                                         </div>
@@ -62,37 +63,18 @@
                                         </div> --}}
                                     </div>
                                     <div class="col-3 text-right float-right">
-                                        <form action="{{ route('cart.remove') }}" method="POST">
+                                        <form class="form-remove" action="{{ route('cart.remove') }}" method="POST">
                                             {{ csrf_field() }}
-                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                            <a onclick="$(this).closest('form').submit();"
-                                                style=" cursor: pointer;"><i
-                                                    class="fa fa-trash"></i></a>
+                                            <input type="hidden" value="{{ $item->id }}" id="id-{{ $item->id }}"
+                                                name="id">
+                                            <button><i class="fa fa-trash"></i></button>
+                                            {{-- <a onclick="$('.form-remove').submit();" style=" cursor: pointer;"><i
+                                                    class="fa fa-trash"></i></a> --}}
                                         </form>
                                     </div>
-                                    {{-- <div class="col-3">
-                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
-                                                class="fa fa-edit"></i></button>
-                                    </div> --}}
-                                </div>
-                                <div class="row text-right float-right">
-                                    {{-- <div class="col-7">
-                                        <form action="{{ route('cart.remove') }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                            <a onclick="$(this).closest('form').submit();"
-                                                style="margin-right: 10px;  cursor: pointer;"><i
-                                                    class="fa fa-trash"></i></a>
-                                        </form>
-                                    </div> --}}
                                 </div>
                             </form>
-
-                            {{-- <b>ทั้งหมด: </b> {{ \Cart::get($item->id)->getPriceSum() }} ฿ <br> --}}
-                            {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
-
                         </div>
-
                     </div>
                     <hr>
                 @endforeach
@@ -132,7 +114,7 @@
                                     <a href="/"><button class="btn btn-default-gray w-100">Update Cart</button></a>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    @if(!Auth::guard('blogger')->user())
+                                    @if (!Auth::guard('blogger')->user())
                                         <a href="/checkout" class="btn btn-green-checkout w-100">Check Out</a>
                                     @else
                                         <a href="/shipping" class="btn btn-green-checkout w-100">Check Out</a>
@@ -196,14 +178,21 @@
             cursor: pointer;
         }
 
-        
-        .btn-default-gray{
+        button {
+            border: none;
+            background: none;
+            margin-right: 0;
+            padding-right: 0;
+        }
+
+
+        .btn-default-gray {
             background: #C4C4C4;
             border-radius: 5px;
             color: #fff;
         }
 
-        .btn-default-gray:hover{
+        .btn-default-gray:hover {
             color: #fff;
         }
 
@@ -226,7 +215,7 @@
             color: #FFFFFF;
         }
 
-        .btn-green-checkout:hover{
+        .btn-green-checkout:hover {
             color: #fff;
         }
 
