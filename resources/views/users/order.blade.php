@@ -134,8 +134,7 @@
                                             <div class="col-lg-9">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <b><a
-                                                                href="/shop/{{ $cart->attributes->slug }}">{{ $cart->name }}</a></b>
+                                                        <b>{{ $cart->name }}</b>
                                                         <br>
                                                     </div>
                                                 </div>
@@ -156,6 +155,8 @@
                                                                 $size = App\Models\Size::find($cart->attributes->size);
                                                             @endphp
                                                             {{ $size->size }} <br>
+                                                        @else
+                                                            -
                                                         @endif
                                                     </div>
                                                     <div class="col-2">
