@@ -77,10 +77,10 @@
                         }
                         $address[0] = [];
                         if ($user->address) {
-                            $address = json_decode(json_encode($user->address)); 
+                            $address = $user->address; 
                         }
                        
-                        // dd($name);
+                        // dd($address);
                     @endphp
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -120,28 +120,28 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('street-address',  Arr::get($address[0] , 'address'), ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
+                            {!! Form::text('street-address',  Arr::get($address , 'address'), ['placeholder' => 'Street address', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('town', null, ['placeholder' => 'Town / City', 'class' => 'form-control']) !!}
+                            {!! Form::text('town',  Arr::get($address , 'city'), ['placeholder' => 'Town / City', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('state', null , ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
+                            {!! Form::text('state', Arr::get($address , 'country') , ['placeholder' => 'State / Country', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('postcode',  null, ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
+                            {!! Form::text('postcode',  Arr::get($address , 'zip'), ['placeholder' => 'Postcode / ZIP', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 

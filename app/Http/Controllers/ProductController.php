@@ -131,6 +131,8 @@ class ProductController extends Controller
         return view('admin.product.add', compact('categories','product'));
     }
 
+    
+
     public function upload(Request $request ,$id)
     {
         $image = $request->file('file');
@@ -166,6 +168,12 @@ class ProductController extends Controller
         }
         $output .= '</div>';
         echo $output; // dont forget sweet alert !!!!
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $image = ProductImage::where('id' , $request->get('id'))->first();
+        $image->delete();
     }
    
     /**

@@ -51,15 +51,15 @@
                     myDropzone.processQueue();
                 });
 
-                this.on("sendingmultiple", function(data, xhr, formData) {
-                    // formData.append("firstname", jQuery("#firstname").val());
-                    // formData.append("lastname", jQuery("#lastname").val());
+                // this.on("sendingmultiple", function(data, xhr, formData) {
+                //     // formData.append("firstname", jQuery("#firstname").val());
+                //     // formData.append("lastname", jQuery("#lastname").val());
 
-                    formData.append("title", $("#title").val());
-                    console.log(formData)
-                    formData.append("name", $("#name").val());
-                    formData.append("price", $("#price").val());
-                });
+                //     formData.append("title", $("#title").val());
+                //     console.log(formData)
+                //     formData.append("name", $("#name").val());
+                //     formData.append("price", $("#price").val());
+                // });
                 this.on("complete", function() {
                     if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
                         var _this = this;
@@ -76,7 +76,7 @@
             },
             acceptedFiles: ".jpeg,.jpg,.png,.gif",
             addRemoveLinks: true,
-            timeout: 50000,
+            timeout: 500000,
             removedfile: function(file) {
                 var name = file.upload.filename;
                 $.ajax({
@@ -112,15 +112,12 @@
             })
         }
 
-
-
-
         $(document).on('click', '.remove_image', function() {
-            var name = $(this).attr('id');
+            var id = $(this).attr('id');
             $.ajax({
                 url: "{{ route('product.image.delete') }}",
                 data: {
-                    name: name
+                    id: id
                 },
                 success: function(data) {
                     load_images();

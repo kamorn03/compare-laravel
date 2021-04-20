@@ -19,8 +19,8 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>รูป</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <th>วันที่แก้ไข</th>
+                <th>เพิ่มขนาดสินค้า</th>
                 <th>เพิ่มรูปภาพ</th>
                 <th>edit</th>
                 <th>remove</th>
@@ -65,12 +65,15 @@
                         }
                     },
                     {
-                        data: 'created_at',
-                        name: 'created_at'
-                    },
-                    {
                         data: 'updated_at',
                         name: 'updated_at'
+                    },
+                    {
+                        data: null,
+                        className: "dt-center editor-edit",
+                        render: function(data, type, row) {
+                            return '<i class="iconsminds-maximize"></i>'
+                        }
                     },
                     {
                         data: null,

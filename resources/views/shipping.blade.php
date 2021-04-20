@@ -130,18 +130,19 @@
                             @php
                                 $address = Auth::guard('blogger')->user()->address;
                             @endphp
-                            @foreach ($address as $locate)
-                                <div class="card data-address" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">ที่อยู่</h5>
-                                        {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
-                                        <p class="card-text">{{ $locate['address'] ?? $locate['address'] }}</p>
-                                        <p>จังหวัด {{ $locate['country'] ?? $locate['country'] }} อำเภอ
-                                            {{ $locate['city'] ?? $locate['city'] }}</p>
-                                        <p>รหัส {{ $locate['zip'] ?? $locate['zip'] }}</p>
-                                    </div>
+                            {{-- {{ json_decode($address) }} --}}
+                        
+                            <div class="card data-address" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">ที่อยู่</h5>
+                                    {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
+                                    {{-- <p class="card-text">{{ $address->address ?? $address->address  }}</p>
+                                    <p>จังหวัด {{ $address->country ?? $address->country}} อำเภอ --}}
+                                        {{-- {{ $locate['city'] ?? $locate['city'] }}</p>
+                                    <p>รหัส {{ $locate['zip'] ?? $locate['zip'] }}</p> --}}
                                 </div>
-                            @endforeach
+                            </div>
+                   
                            
 
                           

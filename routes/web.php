@@ -83,7 +83,7 @@ Route::group(['middleware' => ['guest']], function () {
 
     Route::get('product/image/{id}/fetch', [App\Http\Controllers\ProductController::class, 'fetch'])->name('product.image.fetch');
     Route::post('product/{id}/upload/image', [App\Http\Controllers\ProductController::class, 'upload'])->name('product.upload.image');
-    Route::get('product/image/delete', [App\Http\Controllers\MainTitleController::class, 'delete'])->name('product.image.delete');
+    Route::get('product/image/delete', [App\Http\Controllers\ProductController::class, 'deleteImage'])->name('product.image.delete');
     
 });
 
@@ -165,13 +165,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/product-add', [App\Http\Controllers\AdminController::class, 'productAdd'])->name('product.add');
         Route::get('digiso-admin/product/{id}/add_image', [App\Http\Controllers\AdminController::class, 'productImage'])->name('product.add_image'); 
 
+        // product size api
+        Route::get('digiso-admin/product/{id}/size', [App\Http\Controllers\AdminController::class, 'productSize'])->name('product.size');
+
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
-
         // banner
         Route::get('digiso-admin/banner', [App\Http\Controllers\BannerController::class, 'index'])->name('banner');
         Route::post('digiso-admin/banner/update', [App\Http\Controllers\BannerController::class, 'update'])->name('banner.update');
-
         // size
         Route::post('digiso-admin/size/add', [App\Http\Controllers\SizeController::class, 'store'])->name('size.store');
         Route::post('digiso-admin/size/update',  [App\Http\Controllers\SizeController::class, 'update'])->name('size.update');
