@@ -153,7 +153,6 @@
                             <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
                         @endif
                     </div>
-
                 </div>
             </div>
             @if (count($cartCollection) > 0)
