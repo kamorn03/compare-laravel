@@ -22,7 +22,7 @@ use App\Http\Controllers\SubscriptionController;
 
 Route::post('subscribe/store', [SubscriptionController::class, 'store'])->name('subscribe.store');
 Route::post('verify-payment', 'App\Http\Controllers\CartController@VerifyPayment')->name('cart.verify-payment');
-Route::get('finish', 'App\Http\Controllers\CartController@finish')->name('cart.finish');
+Route::get('finish/{order}', 'App\Http\Controllers\CartController@finish')->name('cart.finish');
 // // Route::view('/', 'home');
 Route::group(['middleware' => ['guest']], function () {
     Auth::routes();
@@ -104,7 +104,7 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     Route::get('users/cart/order',  [App\Http\Controllers\UserController::class, 'showOrder'])->name('users.cart.order');
   
     Route::post('confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
-    Route::get('complete',  [App\Http\Controllers\CartController::class, 'complete'])->name('cart.complete');
+    Route::get('complete/{order}',  [App\Http\Controllers\CartController::class, 'complete'])->name('cart.complete');
 
 });
 

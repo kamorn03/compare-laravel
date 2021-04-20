@@ -117,7 +117,7 @@ class CartController extends Controller
         // save $cartCollection to db
         $this->clear();
         $order_id = $order->id;
-        return redirect()->route('cart.complete')->with('success_msg', 'Order Complete!')->with('order_id', $order_id);
+        return redirect()->route('cart.complete', ['order' => $order->order_no])->with('success_msg', 'Order Complete!')->with('order_id', $order_id);
     }
 
     public function VerifyPayment(Request $request)  
@@ -126,23 +126,24 @@ class CartController extends Controller
         $order->update([
             'status' => 'successful_payment'
         ]);
-        return redirect()->route('cart.finish')->with('success_msg', 'Order finish!')->with('order', $order);
+        return redirect()->route('cart.finish',['order' => $order->order_no])->with('success_msg', 'Order finish!')->with('order', $order);
     }
 
     
-    public function finish(Request $request)  
+    public function finish(Request $request, $order)  
     {
-        return view('payment.finish')->withTitle('finish');
+        $order = Order::where('order_no', $order)->first();
+        return view('payment.finish', compact('order'));
     }
 
     // show complate page 
-    public function complete()  
+    public function complete($id)  
     {
         $cartCollection = \Cart::getContent(); // order
         // dd($cartCollection);
         $user_id = Auth::id();
-        $last_order = Order::query()->where('user_id', $user_id)->orderBy('id', 'desc');
-        $data_order = $last_order->first();
+        $data_order = Order::query()->where('order_no', $id)->orderBy('id', 'desc')->first();;
+        // $data_order = $last_order->first();
 
         return view('complete',compact('data_order'))->withTitle('E-COMMERCE STORE | COMPLETE')->with(['cartCollection' => $cartCollection]);;
     }
