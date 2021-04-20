@@ -155,8 +155,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/product/{id}/add_image', [App\Http\Controllers\AdminController::class, 'productImage'])->name('product.add_image'); 
 
         // product size api
-        Route::get('digiso-admin/product/{id}/size', [App\Http\Controllers\AdminController::class, 'productSize'])->name('product.size');
-
+        Route::get('digiso-admin/product/{id}/size', [App\Http\Controllers\SizeController::class, 'index'])->name('product.size');
+        Route::get('digiso-admin/product/{id}/size/list', [App\Http\Controllers\SizeController::class, 'sizeList'])->name('product.size.list');
+        Route::get('digiso-admin/product/{id}/size/add', [App\Http\Controllers\SizeController::class, 'sizeAdd'])->name('product.size.add');
+        Route::get('digiso-admin/product/{product}/size/{id}/edit', [App\Http\Controllers\SizeController::class, 'sizeEdit'])->name('product.size.edit');
+        Route::get('digiso-admin/product/{product}/size/{id}/delete', [App\Http\Controllers\SizeController::class, 'destroy'])->name('product.size.delete');
+        // Route::get('digiso-admin/size', [App\Http\Controllers\SizeController::class, 'index'])->name('size');
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
         // banner

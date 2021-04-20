@@ -279,11 +279,11 @@
                                 <i class="simple-icon-basket-loaded"></i> <span class="d-inline-block">สินค้า</span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.size') }}">
                                 <i class="iconsminds-maximize"></i> ขนาดสินค้า
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <ul class="list-unstyled" data-link="order">
                         <li>

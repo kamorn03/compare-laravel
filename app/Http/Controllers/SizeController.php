@@ -6,29 +6,33 @@ use Illuminate\Http\Request;
 use Redirect;
 use App\Models\Size;
 use Yajra\DataTables\DataTables;
+use App\Models\Product;
 
 class SizeController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request , $id)
     {
-        return view('admin.manage-size.index');
+        $product = Product::find($id);
+        return view('admin.manage-size.index' , compact('product'));
     }
 
-    public function sizeAdd()
-    {
-        return view('admin.manage-size.add');
+    public function sizeAdd($id)
+    {   
+        $product = Product::find($id);
+        return view('admin.manage-size.add', compact('product'));
     }
 
-    public function sizeEdit(Request $request, $id)
+    public function sizeEdit(Request $request,$product, $id)
     {
         $size = Size::find($id); 
         // dd($size);
-        return view('admin.manage-size.add', compact('size'));
+        $product = Product::find($product);
+        return view('admin.manage-size.add', compact('size','product'));
     }
 
-    public function sizeList()
+    public function sizeList($id)
     {
-        return Datatables::of(Size::query())->make(true);
+        return Datatables::of(Size::query()->where('product_id' , $id))->make(true);
     }
 
 
@@ -42,15 +46,16 @@ class SizeController extends Controller
     {
         $request->validate([
             'size' => 'required',
-            // 'file' => 'required'
+            'product_id' => 'required'
         ]);
         $insert = [
             'size' => $request->size,
-            'type' => '-'
+            'type' => '-',
+            'product_id' => $request->product_id,
         ];
 
         Size::insertGetId($insert);
-        return Redirect::to(route('admin.size'))->with('success','Greate! posts created successfully.');
+        return Redirect::to(route('admin.product.size', ['id' => $request->product_id]))->with('success','Greate! posts created successfully.');
     }
 
       /**
@@ -65,7 +70,6 @@ class SizeController extends Controller
         $size =  Size::find($request->get('id'));
         $request->validate([
             'size' => 'required',
-            
         ]);
 
         $insert = [
@@ -74,14 +78,15 @@ class SizeController extends Controller
         ];
 
         $size->update($insert);
-        return Redirect::to(route('admin.size'))->with('success','Greate! posts updated successfully.');
+        return Redirect::to(route('admin.product.size', ['id' => $request->product_id]))->with('success','Greate! posts updated successfully.');
     }
 
     
-    public function destroy($id)
+    public function destroy($product,$id)
     {
+        // dd($product);
         Size::find($id)->delete();
-        return redirect()->route('admin.size')
+        return redirect()->route('admin.product.size', ['id' => $product])
                         ->with('success','User deleted successfully');
     }
     
