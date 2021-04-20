@@ -184,15 +184,21 @@ class CartController extends Controller
     
     public function updateAll(Request $request)
     {
-        // dd($request->id,$request->quantity);
-        \Cart::update($request->id,
-            array(
-                'quantity' => array(
-                    'relative' => false,
-                    'value' => $request->quantity
-                ),
-            ));
-        return redirect()->route('cart.index')->with('success_msg', 'Cart is Updated!');
+        // dd($request->data);
+        if($request->data){
+            foreach($request->data as $data){
+                // dd($data);
+                \Cart::update($data['id'],
+                array(
+                    'quantity' => array(
+                        'relative' => false,
+                        'value' => $data['value']
+                    ),
+                ));
+            }
+        }
+      
+        return response()->json(['success' => true ]);
     }
 
     public function clear()

@@ -46,8 +46,8 @@
                                         <b> {{ $item->price }} ฿ </b>
                                     </div>
                                     <div class="col-3">
-                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
-                                                class="fa fa-edit"></i></button>
+                                        {{-- <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
+                                                class="fa fa-edit"></i></button> --}}
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -111,7 +111,7 @@
 
                             <div class="row mt-5">
                                 <div class="col-12">
-                                    <button class="btn btn-default-gray w-100">Update Cart</button>
+                                    <button class="btn btn-default-gray w-100" id="update-all">Update Cart</button>
                                 </div>
                                 <div class="col-12 mt-3">
                                     @if (!Auth::guard('blogger')->user())
@@ -157,8 +157,36 @@
                 return false;
             });
 
+            $('#update-all').click(function() {
+                var product = '{!! $cartCollection !!}';
+                var element = [];
+                product = JSON.parse(product);
+                if (product) {
+                    $.each(product, function(key, value) {
+                        element.push({
+                            "id": value.id,
+                            "value": $('#quantity-' + value.id).val()
+                        });
+                       
+                    });
+                }
+                // console.log(element)
+                $.ajax({
+                    url: "{{ route('cart.update.all') }}",
+                    // headers: {
+                    //     'CSRFToken': '{{ csrf_token() }}'
+                    // },
+                    method: 'post',
+                    data: {
+                        "_token": '{{ csrf_token() }}',
+                        'data': element,
+                    },
+                    success: function(data) {
+                       window.location.reload();
+                    }
+                })
+            })
         });
-        // product +/-
 
     </script>
     <style>
