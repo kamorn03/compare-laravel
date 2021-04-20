@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('img/Logo_MadameTJ.png') }}" alt="logo">
+            <img src="{{ asset('img/Logo_MadameTJ.png') }}" width="283" alt="logo">
         </a>
 
 

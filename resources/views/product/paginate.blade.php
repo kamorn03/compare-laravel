@@ -49,11 +49,8 @@
                 @foreach ($product_list as $product)
                     <div class="col-6 col-sm-2">
                         <div class="card custom-card-home" style="margin-bottom: 20px; height: auto;">
-                            <a
-                                href="/shop/{{ $product->cate_slug }}/{{ $product->collect_slug ?? 'non-collection' }}/{{ $product->slug }}"><img
-                                    src="/img/cards/{{ $product->image_path }}" class="card-img-top mx-auto"
-                                    style="height: 150px; width: 150px;display: block;"
-                                    alt="{{ $product->image_path }}"></a>
+                            <a href="/shop/{{ $product->cate_slug }}/{{ $product->collect_slug ?? 'non-collection' }}/{{ $product->slug }}">
+                                <img src="/img/cards/{{ $product->image_path }}" class="card-img-top mx-auto" style="width: 250px; height: 250px; display:block;" alt="{{ $product->image_path }}"></a>
                             <div class="card-body custom-card-home">
                                 <h6 class="card-title">{{ $product->name }}</h6>
                                 <p style="font-weight: bold;color: black;"> {{ $product->price }} ฿ </p>

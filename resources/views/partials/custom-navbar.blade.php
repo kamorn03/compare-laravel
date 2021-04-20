@@ -4,7 +4,7 @@
         <div></div>
     </span>
     <a class="navbar-brand mx-md-auto mr-auto w-100 text-center" href="/">
-        <img src="{{ asset('img/Logo_MadameTJ.png') }}" alt="logo" width="250">
+        <img src="{{ asset('img/Logo_MadameTJ.png') }}" alt="logo" width="283">
     </a>
     <span class="navbar-text d-none d-md-block">
         <div class="collapse navbar-collapse" id="navbarSupportedContent" f>
@@ -35,7 +35,7 @@
                                 href="{{ route('users.edit', ['user' => Auth::guard('blogger')->user()->id]) }}">Account</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                          document.getElementById('logout-form').submit();">
+                                document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

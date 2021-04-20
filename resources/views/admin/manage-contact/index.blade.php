@@ -39,19 +39,17 @@
         </div>
         {{-- after meta --}}
         @php
-           
+            // json_decode($contact->contact);l
             if (isset($contact)) {
-                $contact = json_decode(json_encode($contact->contact));
+                $contact = json_decode($contact->contact);
             }
-            
             // echo
         @endphp
-        {{-- {{$contact}} --}}
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label text-right">location</label>
             <div class="col-sm-10">
                 <input type="text" name="location" id="location" class="form-control" placeholder="location"
-                    value="{{ $contact->location ?? '' }}">
+                    value="{{ $contact->location }}">
             </div>
         </div>
 

@@ -31,7 +31,16 @@
                 </button>
             </div>
         @endif
-   
+        @if (count($errors) > 0)
+            @foreach ($errors0 > all() as $error)
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ $error }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            @endforeach
+        @endif
 
         <div class="row justify-content-center">
             <div class="col-lg-7">
@@ -40,15 +49,13 @@
                         <div class="col-lg-12">
                             <h3>Shipping Address</h3>
                             {{-- {{ Auth::user()->id }} --}}
-                            <form
-                                action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}"
-                                method="post">
+                            <form action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}" method="post">
                                 @csrf
                                 <div class="form">
-                                    <label class="field">
-                                        <span class="field__label" for="address">Address</span>
+                                    <div class="field">
+                                        <span class="field__label" for="address">address</span>
                                         <input class="form-control" type="text" name="address" id="address" />
-                                    </label>
+                                    </div>
                                     <label class="field">
                                         <span class="field__label" for="country">Country</span>
                                         <select class="form-control" name="country" id="country">
@@ -82,12 +89,73 @@
                             <h3 class="text-header"> Shipping Address</h3>
 
 
-                            <form class="form-address" style="display: none"
-                                action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}"
-                                method="post">
+                            <form class="form-address" style="display: none" action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}" method="post">
                                 @csrf
-                                <div class="form">
-                                    <label class="field">
+                                    <div class="form-group ">
+                                        <div class="col-md-8 ">
+                                            <input class="form-control form-control-lg" type="text" name="firstname" id="firstname" placeholder="FIRST NAME" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="text" name="lastname" id="lastname"  placeholder="LAST NAME" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="text" name="companyname" id="companyname" placeholder="Company name (optional)" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-2">
+                                            <select class="form-control form-control-lg">
+                                                <option>Country / Region</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="text" name="streetaddress" id="streetaddress" placeholder="Street address" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="text" name="countryregion" id="countryregion" placeholder="Country / Region" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="text" name="towncity" id="towncity" placeholder="Town / City" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <select class="form-control form-control-lg">
+                                                <option>State / County</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="text" name="towncity" id="towncity" placeholder="Town / City" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="number" name="postcodezip" id="postcodezip" placeholder="Postcode / ZIP" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="number" name="phone" id="phone" placeholder="Phone" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 mb-1">
+                                            <input class="form-control form-control-lg" type="Email" name="Email" id="Email" placeholder="Email address" />
+                                        </div>
+                                    </div>
+                                    {{-- <label class="field">
                                         <span class="field__label" for="address">Address</span>
                                         <input class="form-control" type="text" name="address" id="address" />
                                     </label>
@@ -98,7 +166,7 @@
                                             <option value="unitedstates">United States</option>
                                         </select>
                                     </label>
-                                    <div class="fields fields--3">
+                                   <div class="fields fields--3">
                                         <label class="field">
                                             <span class="field__label" for="city">City</span>
                                             <input class="form-control" name="city" type="text" id="" />
@@ -108,14 +176,13 @@
                                             <input class="form-control" name="zipcode" type="text" id="zipcode" />
                                         </label>
 
-                                        {{-- <label class="field">
+                                         <label class="field">
                                         <span class="field__label" for="state">State</span>
                                         <select class="form-control" id="state">
                                             <option value=""></option>
                                         </select>
-                                    </label> --}}
-                                    </div>
-                                </div>
+                                    </label>
+                                    </div> --}}
                                 <button class="btn btn-green">บันทึก</button>
                             </form>
 
@@ -128,10 +195,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">ที่อยู่</h5>
                                     {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
-                                    <p class="card-text">{{ Arr::get($address, 'address') }}</p>
-                                    <p>จังหวัด {{ Arr::get($address, 'country') }} อำเภอ
-                                        {{ Arr::get($address, 'city') }}</p>
-                                    <p>รหัส {{ Arr::get($address, 'zip') }}</p>
+                                    <p class="card-text">{{  Arr::get($address , 'address')  }}</p>
+                                    <p>จังหวัด {{  Arr::get($address , 'country') }} อำเภอ
+                                        {{ Arr::get($address , 'city')  }}</p>
+                                    <p>รหัส {{ Arr::get($address , 'zip') }}</p>
                                 </div>
                             </div>
 
@@ -140,10 +207,9 @@
                 </div>
                 <div class="row w-100 text-right float-right">
                     <div class="col-10">
-                        @if (isset(Auth::guard('blogger')->user()->address))
-                            <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
-                        @endif
+                        <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
                     </div>
+
                 </div>
             </div>
             @if (count($cartCollection) > 0)
@@ -165,8 +231,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="row">
-                                    
-                                    {{-- <form action="{{ route('cart.update') }}" method="POST">
+                                    <form action="{{ route('cart.update') }}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
                                             <input type="hidden" value="{{ $item->id }}" id="id" name="id">
@@ -182,8 +247,7 @@
                                         <input type="hidden" value="{{ $item->id }}" id="id" name="id">
                                         <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i
                                                 class="fa fa-trash"></i></button>
-                                    </form> --}}
-                                    
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -194,11 +258,6 @@
                         @if (count($cartCollection) > 0)
                             <form action="{{ route('cart.confirm') }}" method="POST">
                                 {{ csrf_field() }}
-                                {{-- PLACE ORDER AND NAME IN THIS FROM --}}
-
-                                <input type="hidden" name="address" id="address"
-                                    value="{{ json_encode(Auth::guard('blogger')->user()->address) }}">
-
                                 <button class="btn btn-green w-100 btn-md">CONTINUE</button>
                             </form>
                         @endif
@@ -230,11 +289,9 @@
         .bg-dark {
             background-color: #81D8D0 !important;
         }
-
         .bg-gray {
             background: #FAFAFA
         }
-
     </style>
 @endsection
 
@@ -243,8 +300,8 @@
     <script>
         function alertAddress() {
             Swal.fire(
-                'แจ้งเตือน!',
-                'กรุณากรอกที่อยู่สำหรับจัดส่ง',
+                'Attention!',
+                'Please fill the address for shipping!',
                 'warning'
             )
         }

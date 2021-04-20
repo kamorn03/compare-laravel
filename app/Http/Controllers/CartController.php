@@ -101,56 +101,54 @@ class CartController extends Controller
         return $randomNumber;
     }
 
-    public function confirm(Request $request)  
+    public function confirm()  
     {
         $cartCollection = \Cart::getContent();
         // dd($cartCollection->toJson());
         $order = new Order();
         $order->user_id = Auth::id();
         $order->cart = $cartCollection;
-        $order->address =  $request->get('address'); // address
-        $order->name = "name"; // name
-        $order->status = "watting_payment";
+        $order->address = "address";
+        $order->name = "name";
+        $order->status = "wait";
         $order->payment_id = "2";
         $order->order_no = $this->generateRandomString(2).$this->generateRandomNumber(6);
         $order->save();
         // save $cartCollection to db
         $this->clear();
         $order_id = $order->id;
-        return redirect()->route('cart.complete', ['order' => $order->order_no])->with('success_msg', 'Order Complete!')->with('order_id', $order_id);
+        return redirect()->route('cart.complete')->with('success_msg', 'Order Complete!')->with('order_id', $order_id);
     }
 
     public function VerifyPayment(Request $request)  
     {
         $order = Order::find($request->get('id'));
         $order->update([
-            'status' => 'successful_payment'
+            'status' => 'payment'
         ]);
-        return redirect()->route('cart.finish',['order' => $order->order_no])->with('success_msg', 'Order finish!')->with('order', $order);
+        return redirect()->route('cart.finish')->with('success_msg', 'Order finish!')->with('order', $order);
     }
 
     
-    public function finish(Request $request, $order)  
+    public function finish(Request $request)  
     {
-        $order = Order::where('order_no', $order)->first();
-        return view('payment.finish', compact('order'));
+        return view('payment.finish')->withTitle('finish');
     }
 
     // show complate page 
-    public function complete($id)  
+    public function complete()  
     {
         $cartCollection = \Cart::getContent(); // order
         // dd($cartCollection);
         $user_id = Auth::id();
-        $data_order = Order::query()->where('order_no', $id)->orderBy('id', 'desc')->first();;
-        // $data_order = $last_order->first();
+        $last_order = Order::query()->where('user_id', $user_id)->orderBy('id', 'desc');
+        $data_order = $last_order->first();
 
         return view('complete',compact('data_order'))->withTitle('E-COMMERCE STORE | COMPLETE')->with(['cartCollection' => $cartCollection]);;
     }
 
     public function add(Request $request)
     {
-        // dd($request->size);
         \Cart::add(array(
             'id' => $request->id,
             'name' => $request->name,
@@ -158,8 +156,7 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
                 'image' => $request->img,
-                'slug' => $request->slug,
-                'size' => $request->size,
+                'slug' => $request->slug
             )
         ));
         return redirect()->route('cart.index')->with('success_msg', 'Item is Added to Cart!');
@@ -167,14 +164,6 @@ class CartController extends Controller
 
     public function remove(Request $request)
     {
-        // dd($request);
-        \Cart::remove($request->id);
-        return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
-    }
-
-    public function TESTremove(Request $request)
-    {
-        // dd(6);
         \Cart::remove($request->id);
         return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
     }
@@ -190,29 +179,6 @@ class CartController extends Controller
                 ),
             ));
         return redirect()->route('cart.index')->with('success_msg', 'Cart is Updated!');
-    }
-
-    
-    public function updateAll(Request $request)
-    {
-        // dd($request->data);
-        if($request->data){
-            foreach($request->data as $data){
-                // dd($data);
-                \Cart::update($data['id'],
-                array(
-                    'quantity' => array(
-                        'relative' => false,
-                        'value' => $data['value'],
-                        'attributes' => array(
-                            'size' => $data['size'] ?? null,
-                        )
-                    ),
-                ));
-            }
-        }
-      
-        return response()->json(['success' => true ]);
     }
 
     public function clear()

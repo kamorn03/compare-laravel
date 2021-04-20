@@ -21,7 +21,7 @@
                         </div> --}}
                     @endforeach
                 @else
-                    <div class="carousel-item active" style="background-image: url({{ asset('img/home-title.png') }})">
+                    <div class="carousel-item active" style="background-image: url({{ asset('img/home-title.png')}});width:100%; height:673px;">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                     @endphp
                                     <a
                                         href="/shop/{{ $pro->cate_slug }}/{{ $collection->name ?? 'collection' }}/{{ $pro->slug }}">
-                                        <img src="/img/cards/{{ $pro->image_path }}" height="400"
+                                        <img src="/img/cards/{{ $pro->image_path }}" width="530px" height="530px"
                                             class="card-img-top mx-auto" style="" alt="{{ $pro->image_path }}">
                                     </a>
                                     <div class="card-body custom-card-home text-center mt-3">
@@ -74,11 +74,11 @@
                             @foreach ($products as $key => $pro)
                                 @if ($key > 0)
                                     <div class="col-6 col-sm-3">
-                                        <div class="card custom-card-home" style="margin-bottom: 20px; height: auto;">
+                                        <div class="card custom-card-home" style="margin-bottom: 20px;">
                                             <a
                                                 href="/shop/{{ $pro->cate_slug }}/{{ $pro->collect_slug ?? 'collection' }}/{{ $pro->slug }}"><img
                                                     src="/img/cards/{{ $pro->image_path }}" class="card-img-top mx-auto"
-                                                    style="height: 150px; width: 150px;display: block;"
+                                                    style="height: 250px; width: 250px;display: block;"
                                                     alt="{{ $pro->image_path }}"></a>
                                             <div class="card-body custom-card-home mt-3">
                                                 <h6 class="card-title fw-bold">{{ $pro->name }}</h6>
@@ -100,7 +100,7 @@
             <div class="align-middle">
                 <div class="row">
                     {{-- ck content --}}
-                    <div style="width: 100%">
+                    <div style="width: 100%;">
                         @if (isset($more_about))
                             {!! $more_about->content !!}
                         @endif

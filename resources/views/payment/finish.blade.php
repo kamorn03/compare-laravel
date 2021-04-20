@@ -13,41 +13,21 @@
             </div>
         </div>
     </div>
-    <div class="container" style="margin-top: 50px">
-        {{-- 1090 --}}
-        <div class="main-content">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="">
-                        {{-- {{$order}} --}}
-                        <h1 class="text-header">Thank you. Your order has been received.</h1>
-                    </div>
-                    <div class="row">
-                        <table class="table w-100 text-center">
-                            <th>
+    <div class="container" style="margin-top: 80px">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <img src="{{ asset('img/dist/ISO673AP.jpg') }}" alt="ISO673AP.jpg" width="250" height="250">
+                        <h1 class="text-header mt-5">ชำระเงินสำเร็จ</h1>
+                       
 
-                            <td>ORDER NUMBER :</td>
-                            <td>DATE :</td>
-                            <td>TOTAL :</td>
-                            <td>PAYMENT METHOD : </td>
 
-                            </th>
-
-                        </table>
-                    </div>
-                    <div class="row">
-                        <h1 class="text-header">Address </h1>
-
-                        {{$order}}
-
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-lg-12 text-center">
-                            <img src="{{ asset('img/dist/ISO673AP.jpg') }}" alt="ISO673AP.jpg" width="250" height="250">
-                            <h1 class="text-header mt-5">ชำระเงินสำเร็จ</h1>
-                        </div>
                     </div>
                 </div>
+               
+                
+                <hr>
             </div>
         </div>
     </div>
@@ -71,14 +51,6 @@
 
         .bg-dark {
             background-color: #81D8D0 !important;
-        }
-
-
-        .main-content {
-            max-width: 1090px;
-            /* text-align: center;
-            float : center; */
-            margin: 0 auto;
         }
 
     </style>

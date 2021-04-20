@@ -135,9 +135,9 @@ class ProductController extends Controller
 
     public function upload(Request $request ,$id)
     {
-        $image = $request->file('product');
+        $image = $request->file('file');
 
-        $imageName = time()  .$image->getClientOriginalName(). '.' . $image->extension();
+        $imageName = time() . '.' . $image->extension();
 
         $image->move(public_path('images/product/'), $imageName);
 

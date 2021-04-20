@@ -8,13 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Subscription extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'contact', 'email', 'message',
-    ];
-
-    protected $casts = [
-        'contact' => 'json',
-    ];
-
 }

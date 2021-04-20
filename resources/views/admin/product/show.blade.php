@@ -72,8 +72,7 @@
                         data: null,
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
-                            return '<a href="/digiso-admin/product/' + row.id +
-                                '/size"><i class="iconsminds-maximize"></i> เพิ่มขนาดสินค้า</a>'
+                            return '<i class="iconsminds-maximize"></i>'
                         }
                     },
                     {
