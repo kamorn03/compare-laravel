@@ -51,16 +51,16 @@
         @endif
 
 
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
+        <div class="row justify-content-center" style="margin-bottom: 20rem">
+            <div class="col-lg-5">
                 <div class="row">
                     <div class="col-lg-3">
                         {{-- <img src="/img/cards/{{ $item->attributes->image }}" width="200" height="200"> --}}
                     </div>
                     <div class="col-lg-7">
                         <p class="text-menu"><a
-                            href="{{ route('users.edit', ['user' => Auth::guard('blogger')->user()->id]) }}">Personal
-                            Information </a></p>
+                                href="{{ route('users.edit', ['user' => Auth::guard('blogger')->user()->id]) }}">Personal
+                                Information </a></p>
                         <p class="text-menu"><a href="{{ route('users.cart.order') }}">Orders </a></p>
                         <p class="text-menu active">Change Password </p>
                         <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p>
@@ -69,44 +69,65 @@
             </div>
 
             {{-- First name * Last name * Company name (optional) Country / Region * Street address * Town / City * State / County * Postcode / ZIP * Phone * Email address * --}}
-            <div class="col-lg-6">
+            <div class="col-lg-7 mb-50">
+
+
+
                 {!! Form::model($user, ['method' => 'POST', 'route' => ['users.update.password', $user->id]]) !!}
                 <div class="row">
-                    @csrf
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
+                    <div class="col-lg-7">
+                        @csrf
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
-                        <div class="form-group">
-                            <input id="password" type="password" placeholder="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
-                                autocomplete="new-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <div class="form-group">
+                                <input id="password" type="password" placeholder="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    autocomplete="new-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
-                        <div class="form-group">
-                            <input id="newpassword" type="password" placeholder="new password" class="form-control"
-                                name="newpassword" required autocomplete="new-password">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
+                            <div class="form-group">
+                                <input id="newpassword" type="password" placeholder="new password" class="form-control"
+                                    name="newpassword" required autocomplete="new-password">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
-                        <div class="form-group">
-                            <input id="confirm-password" type="password" placeholder="confirm password" class="form-control"
-                                name="confirm-password" required autocomplete="confirm-password">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
+                            <div class="form-group">
+                                <input id="confirm-password" type="password" placeholder="confirm password"
+                                    class="form-control" name="confirm-password" required autocomplete="confirm-password">
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 mb-3 row">
+                            <div class="col-md-5">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Show password
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-5 float-left">
+                                @if (Route::has('password.request'))
+                                    <a class="" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
 
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <button type="submit" class="btn btn-green">SAVE</button>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <button type="submit" class="btn btn-green">SAVE</button>
+                        </div>
                     </div>
                 </div>
                 {!! Form::close() !!}

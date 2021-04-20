@@ -51,7 +51,7 @@
         @endif
 
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center"  style="margin-bottom: 20rem">
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-3">
