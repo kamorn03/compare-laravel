@@ -64,6 +64,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('update/all', 'App\Http\Controllers\CartController@updateAll')->name('cart.update.all');
 
     Route::post('remove', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
+    Route::get('get/remove', 'App\Http\Controllers\CartController@TESTremove')->name('cart.get.remove');
     Route::post('clear', 'App\Http\Controllers\CartController@clear')->name('cart.clear');
     Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
     

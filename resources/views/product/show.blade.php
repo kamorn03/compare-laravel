@@ -66,22 +66,23 @@
                             <h3 class="text-name">{{ $products[0]->name }}</h3>
                             <h3 class="product-title" style="font-weight: bold;color: black;"> {{ $products[0]->price }}
                                 ฿ </h3>
-                            <h5 class="title">size </h5>
-                            <div class="action">
-                                @php
-                                    $sizes = App\Models\Size::get();
-                                @endphp
-                                <select class="form-control" name="size" id="size">
-                                    @foreach ($sizes as $item)
-                                        <option value="{{ $item->id }}">{{ $item->size }}</option>
-                                    @endforeach
-                                </select>
-                                {{-- <input type="number w-100" class="form-control" id="size" name="size" value="1"> --}}
-                            </div>
 
-                            <h5 class="title">Quantity </h5>
                             <div class="action">
                                 {{ csrf_field() }}
+                                <h5 class="title">size </h5>
+                                <div class="action">
+                                    @php
+                                        $sizes = App\Models\Size::get();
+                                    @endphp
+                                    <select class="form-control" name="size" id="size">
+                                        @foreach ($sizes as $item)
+                                            <option value="{{ $item->id }}">{{ $item->size }}</option>
+                                        @endforeach
+                                    </select>
+                                    {{-- <input type="number w-100" class="form-control" id="size" name="size" value="1"> --}}
+                                </div>
+
+                                <h5 class="title">Quantity </h5>
                                 <input type="hidden" value="{{ $products[0]->id }}" id="id" name="id">
                                 <input type="hidden" value="{{ $products[0]->name }}" id="name" name="name">
                                 <input type="hidden" value="{{ $products[0]->price }}" id="price" name="price">

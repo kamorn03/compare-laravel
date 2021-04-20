@@ -18,7 +18,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 <h2 class="text-header">Shopping Cart</h2>
-
+                {{-- {{$cartCollection}} --}}
                 @foreach ($cartCollection as $item)
                     <div class="row mt-5">
                         <div class="col-lg-3">
@@ -50,41 +50,32 @@
                                                 class="fa fa-edit"></i></button> --}}
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-7">
-                                        {{-- <div class="num-block skin-5 w-100">
-                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                            <div class="num-in w-100">
-                                                <span class="minus dis">-</span>
-                                                <input type="number w-100" class="in-num" id="quantity" name="quantity"
-                                                    value="{{ $item->quantity }}" readonly="">
-                                                <span class="plus">+</span>
-                                            </div>
-                                        </div> --}}
-                                    </div>
-                                    <div class="col-3 text-right float-right">
-                                        <form class="form-remove" action="{{ route('cart.remove') }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" value="{{ $item->id }}" id="id-{{ $item->id }}"
-                                                name="id">
-                                            <button><i class="fa fa-trash"></i></button>
-                                            {{-- <a onclick="$('.form-remove').submit();" style=" cursor: pointer;"><i
-                                                    class="fa fa-trash"></i></a> --}}
-                                        </form>
-                                    </div>
-                                </div>
+
                             </form>
+                            <div class="form-group row">
+                                <div class="col-7">
+                                </div>
+                                <div class="col-3 text-right float-right">
+                                    {{-- <form class="form" action="{{ route('cart.get.remove') }}" method="POST"> --}}
+                                    <form action="{{ route('cart.remove') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ $item->id }}" name="id" id="id">
+                                        <button><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <hr>
                 @endforeach
                 @if (count($cartCollection) > 0)
-                    {{-- <form action="{{ route('cart.clear') }}" method="POST">
+                    <form action="{{ route('cart.clear') }}" method="POST">
                         {{ csrf_field() }}
                         <button class="btn btn-secondary btn-md">Clear Cart</button>
-                    </form> --}}
+                    </form>
                 @endif
             </div>
+            {{-- {{$cartCollection}} --}}
             @if (count($cartCollection) > 0)
                 <div class="col-lg-5">
                     <div class="card bg-light text-dark">
@@ -167,7 +158,7 @@
                             "id": value.id,
                             "value": $('#quantity-' + value.id).val()
                         });
-                       
+
                     });
                 }
                 // console.log(element)
@@ -182,7 +173,7 @@
                         'data': element,
                     },
                     success: function(data) {
-                       window.location.reload();
+                        window.location.reload();
                     }
                 })
             })

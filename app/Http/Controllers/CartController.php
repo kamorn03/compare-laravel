@@ -149,6 +149,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+        // dd($request->size);
         \Cart::add(array(
             'id' => $request->id,
             'name' => $request->name,
@@ -156,7 +157,8 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
                 'image' => $request->img,
-                'slug' => $request->slug
+                'slug' => $request->slug,
+                'size' => $request->size,
             )
         ));
         return redirect()->route('cart.index')->with('success_msg', 'Item is Added to Cart!');
@@ -164,6 +166,14 @@ class CartController extends Controller
 
     public function remove(Request $request)
     {
+        // dd($request);
+        \Cart::remove($request->id);
+        return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
+    }
+
+    public function TESTremove(Request $request)
+    {
+        // dd(6);
         \Cart::remove($request->id);
         return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
     }
@@ -192,7 +202,10 @@ class CartController extends Controller
                 array(
                     'quantity' => array(
                         'relative' => false,
-                        'value' => $data['value']
+                        'value' => $data['value'],
+                        'attributes' => array(
+                            'size' => $data['size'] ?? null,
+                        )
                     ),
                 ));
             }
