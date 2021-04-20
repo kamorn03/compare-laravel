@@ -101,14 +101,14 @@ class CartController extends Controller
         return $randomNumber;
     }
 
-    public function confirm()  
+    public function confirm(Request $request)  
     {
         $cartCollection = \Cart::getContent();
         // dd($cartCollection->toJson());
         $order = new Order();
         $order->user_id = Auth::id();
         $order->cart = $cartCollection;
-        $order->address = "address"; // address
+        $order->address =  $request->get('address'); // address
         $order->name = "name"; // name
         $order->status = "watting_payment";
         $order->payment_id = "2";

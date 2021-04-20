@@ -174,7 +174,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                              document.getElementById('logout-form').submit();">
+                                                                                                                                                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -804,6 +804,11 @@
 
             a:hover {
                 text-decoration: none;
+            }
+
+            .badge {
+                padding: 0.4em .75em;
+                font-size: 74%;
             }
 
         </style>

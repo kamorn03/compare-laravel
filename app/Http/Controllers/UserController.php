@@ -52,13 +52,10 @@ class UserController extends Controller
             'password' => 'required|same:confirm-password',
             // 'roles' => 'required'
         ]);
-
-        Blogger::create([
-            'name' =>$request->firstname." ".$request->lastname,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'address' => array(
-                'company' => $request->get('street-address'),
+        $address = null;
+        if($request->get('street-address')) {
+            $address = array(
+                'company' => $request->get('company'),
                 'country' =>  $request->get('country '),
                 'address' => $request->get('street-address'),
                 'city' =>   $request->get('town'),
@@ -66,8 +63,15 @@ class UserController extends Controller
                 'zip' =>  $request->get('postcode'),
                 'phone' =>  $request->get('phone'),
                 'email' =>   $request->get('email'),
-                // 'state' => 'STATE',
-            )
+            );
+        }  
+       
+
+        Blogger::create([
+            'name' =>$request->firstname." ".$request->lastname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'address' => $address
         ]);
     
     
@@ -143,12 +147,10 @@ class UserController extends Controller
         // }
     
         $user = Blogger::find($id);
-        $user->update([
-            'name' =>$request->firstname." ".$request->lastname,
-            'email' => $request->email,
-            // 'password' => Hash::make($request->password),
-            'address' => array(
-                'company' => $request->get('street-address'),
+        $address = null;
+        if($request->get('street-address')) {
+            $address = array(
+                'company' => $request->get('company'),
                 'country' =>  $request->get('country '),
                 'address' => $request->get('street-address'),
                 'city' =>   $request->get('town'),
@@ -156,8 +158,14 @@ class UserController extends Controller
                 'zip' =>  $request->get('postcode'),
                 'phone' =>  $request->get('phone'),
                 'email' =>   $request->get('email'),
-                // 'state' => 'STATE',
-            )
+            );
+        }  
+
+        $user->update([
+            'name' =>$request->firstname." ".$request->lastname,
+            'email' => $request->email,
+            // 'password' => Hash::make($request->password),
+            'address' => $address
         ]);
         return redirect()->route('users.edit', ['user' =>  $id])->with('success','แก้ไขข้อมูลสำเร็จ');
     }

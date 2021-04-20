@@ -49,7 +49,9 @@
                         <div class="col-lg-12">
                             <h3>Shipping Address</h3>
                             {{-- {{ Auth::user()->id }} --}}
-                            <form action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}" method="post">
+                            <form
+                                action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}"
+                                method="post">
                                 @csrf
                                 <div class="form">
                                     <label class="field">
@@ -88,8 +90,10 @@
                         <div class="col-lg-12">
                             <h3 class="text-header"> Shipping Address</h3>
 
-                                
-                            <form class="form-address" style="display: none" action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}" method="post">
+
+                            <form class="form-address" style="display: none"
+                                action="{{ route('users.update.address', ['id' => Auth::guard('blogger')->user() ? Auth::guard('blogger')->user()->id : 1]) }}"
+                                method="post">
                                 @csrf
                                 <div class="form">
                                     <label class="field">
@@ -128,26 +132,28 @@
                                 $address = Auth::guard('blogger')->user()->address;
                             @endphp
                             {{-- {{ json_encode($address) }} --}}
-                        
+
                             <div class="card data-address" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">ที่อยู่</h5>
                                     {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
-                                    <p class="card-text">{{  Arr::get($address , 'address')  }}</p>
-                                    <p>จังหวัด {{  Arr::get($address , 'country') }} อำเภอ
-                                        {{ Arr::get($address , 'city')  }}</p>
-                                    <p>รหัส {{ Arr::get($address , 'zip') }}</p>
+                                    <p class="card-text">{{ Arr::get($address, 'address') }}</p>
+                                    <p>จังหวัด {{ Arr::get($address, 'country') }} อำเภอ
+                                        {{ Arr::get($address, 'city') }}</p>
+                                    <p>รหัส {{ Arr::get($address, 'zip') }}</p>
                                 </div>
                             </div>
-                   
+
                         </div>
                     @endif
                 </div>
                 <div class="row w-100 text-right float-right">
-                    <div class="col-10"> 
-                        <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
+                    <div class="col-10">
+                        @if (isset(Auth::guard('blogger')->user()->address))
+                            <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
+                        @endif
                     </div>
-                   
+
                 </div>
             </div>
             @if (count($cartCollection) > 0)
@@ -198,7 +204,8 @@
                                 {{ csrf_field() }}
                                 {{-- PLACE ORDER AND NAME IN THIS FROM --}}
 
-
+                                <input type="hidden" name="address" id="address"
+                                    value="{{ json_encode(Auth::guard('blogger')->user()->address) }}">
 
                                 <button class="btn btn-green w-100 btn-md">CONTINUE</button>
                             </form>
@@ -231,9 +238,11 @@
         .bg-dark {
             background-color: #81D8D0 !important;
         }
+
         .bg-gray {
             background: #FAFAFA
         }
+
     </style>
 @endsection
 
@@ -242,8 +251,8 @@
     <script>
         function alertAddress() {
             Swal.fire(
-                'Attention!',
-                'Please fill the address for shipping!',
+                'แจ้งเตือน!',
+                'กรุณากรอกที่อยู่สำหรับจัดส่ง',
                 'warning'
             )
         }
