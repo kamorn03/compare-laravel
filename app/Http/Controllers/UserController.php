@@ -121,20 +121,16 @@ class UserController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            // 'address' => 'required',
-            // 'country' => 'required',
-            // 'city' => 'required',
-            // 'zipcode' => 'required'
         ]);
 
 
     
-        // $input = $request->all();
-        // if(!empty($input['password'])){ 
-        //     $input['password'] = Hash::make($input['password']);
-        // }else{
-        //     $input = Arr::except($input,array('password'));    
-        // }
+        $input = $request->all();
+        if(!empty($input['password'])){ 
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input,array('password'));    
+        }
     
         $user = Blogger::find($id);
         // $user->update($input);
@@ -142,13 +138,13 @@ class UserController extends Controller
             'name' =>$request->firstname." ".$request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'address' => array([
+            'address' => array(
                 'address' => $request->get('street-address'),
                 'country' =>  $request->get('state'),
                 'zip' =>  $request->get('postcode'),
                 'city' =>   $request->get('town'),
                 // 'state' => 'STATE',
-            ])
+            )
         ]);
     
         // DB::table('model_has_roles')->where('model_id',$id)->delete();
@@ -170,13 +166,13 @@ class UserController extends Controller
         ]);
     
         $user = Blogger::find($id);
-        $input['address'] = array([
+        $input['address'] = array(
             'address' => $request->address,
             'country' =>  $request->country,
             'zip' =>  $request->zipcode,
             'city' =>  $request->city,
             // 'state' => 'STATE',
-        ]);
+        );
         $user->update($input);
         return redirect()->route('cart.shipping', ['user' =>  $id])
                         ->with('success','เพิ่มที่อยู่สำเร็จ');
