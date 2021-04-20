@@ -106,7 +106,8 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <form id="contact-form" method="post" action="contact.php" role="form">
+                <form id="contact-form" method="post" action="{{ route('subscribe.store') }}" role="form">
+                    @csrf
                     <div class="controls">
                         <div class="row">
                             <div class="col-md-6">
@@ -144,8 +145,7 @@
                                     {{-- <input id="form_phone" type="tel" name="phone" class="form-control"
                                         placeholder="Please enter your phone"> --}}
                                     <input id="phone" type="tel" class="form-control" name="phone"
-                                        value="+66 (__) __-____"
-                                        pattern="^\+66(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$">
+                                        value="+66 (__) __-____">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>

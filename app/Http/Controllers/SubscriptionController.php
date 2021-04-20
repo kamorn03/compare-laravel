@@ -24,7 +24,8 @@ class SubscriptionController extends Controller
      */
     public function create()
     {
-        //
+
+    
     }
 
     /**
@@ -35,7 +36,22 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           // $table->string('email', 255)->nullable();
+        // $table->jsonb('contact', 255)->nullable();
+        // $table->text('message')->nullable();
+        // $table->timestamps();
+        Subscription::create([
+            'contact' => array(
+                'firstname'=> $request->name,
+                'lastname'=> $request->surnam
+            ),
+            'email' => $request->email,
+            'message' => $request->message
+        ]);
+    
+    
+        return redirect()->route('contact')
+                        ->with('success','User created successfully');
     }
 
     /**

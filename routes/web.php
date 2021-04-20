@@ -17,8 +17,10 @@ use App\Http\Controllers\LoginController as LoginController;
 use App\Http\Controllers\Auth\RegisterController as AuthRegisterController;
 use App\Http\Controllers\RegisterController as RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SubscriptionController;
 
 
+Route::post('subscribe/store', [SubscriptionController::class, 'store'])->name('subscribe.store');
 Route::post('verify-payment', 'App\Http\Controllers\CartController@VerifyPayment')->name('cart.verify-payment');
 Route::get('finish', 'App\Http\Controllers\CartController@finish')->name('cart.finish');
 // // Route::view('/', 'home');

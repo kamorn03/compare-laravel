@@ -31,16 +31,7 @@
                 </button>
             </div>
         @endif
-        @if (count($errors) > 0)
-            @foreach ($errors0 > all() as $error)
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ $error }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-            @endforeach
-        @endif
+   
 
         <div class="row justify-content-center">
             <div class="col-lg-7">
