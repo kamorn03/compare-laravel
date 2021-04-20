@@ -165,7 +165,8 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="row">
-                                    <form action="{{ route('cart.update') }}" method="POST">
+                                    
+                                    {{-- <form action="{{ route('cart.update') }}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
                                             <input type="hidden" value="{{ $item->id }}" id="id" name="id">
@@ -181,7 +182,7 @@
                                         <input type="hidden" value="{{ $item->id }}" id="id" name="id">
                                         <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i
                                                 class="fa fa-trash"></i></button>
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </div>
                         </div>
