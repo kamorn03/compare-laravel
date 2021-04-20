@@ -181,6 +181,20 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Cart is Updated!');
     }
 
+    
+    public function updateAll(Request $request)
+    {
+        // dd($request->id,$request->quantity);
+        \Cart::update($request->id,
+            array(
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $request->quantity
+                ),
+            ));
+        return redirect()->route('cart.index')->with('success_msg', 'Cart is Updated!');
+    }
+
     public function clear()
     {
         \Cart::clear();
