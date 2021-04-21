@@ -85,8 +85,13 @@
                                     @if ($item->attributes->size)
                                         @php
                                             $size = App\Models\Size::find($cart->attributes->size);
+                                            // dd($size)
                                         @endphp
-                                        {{ $size->size }} <br>
+                                        @if ($size)
+                                            {{ $size->size }} <br>
+                                        @else
+                                            {{ $size['size'] ?? '-' }} <br>
+                                        @endif
                                     @else
                                         -
                                     @endif

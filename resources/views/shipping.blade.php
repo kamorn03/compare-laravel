@@ -46,7 +46,7 @@
             <div class="col-lg-7">
                 <div class="row">
                     {{-- {{ json_encode(Auth::guard('blogger')->user()->address) }} --}}
-                    @if (!isset(Auth::guard('blogger')->user()->address) )
+                    @if (!isset(Auth::guard('blogger')->user()->address))
                         <div class="col-lg-12">
                             <h3>Shipping Address</h3>
                             {{-- {{ Auth::user()->id }} --}}
@@ -68,8 +68,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8 mb-1">
-                                        <input class="form-control form-control-lg" type="text" name="company"
-                                            id="company" placeholder="Company name (optional)" />
+                                        <input class="form-control form-control-lg" type="text" name="company" id="company"
+                                            placeholder="Company name (optional)" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -87,31 +87,32 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8 mb-1">
-                                        <input class="form-control form-control-lg" type="text" name="address"
-                                            id="address" placeholder="Street address" />
+                                        <input class="form-control form-control-lg" type="text" name="address" id="address"
+                                            placeholder="Street address" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8 mb-1">
-                                        <input class="form-control form-control-lg" type="text" name="country"
-                                            id="country" placeholder="Country / Region" />
+                                        <input class="form-control form-control-lg" type="text" name="country" id="country"
+                                            placeholder="Country / Region" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8 mb-1">
-                                        <input class="form-control" type="text" name="city"
-                                            id="city" placeholder="Town / City" />
+                                        <input class="form-control" type="text" name="city" id="city"
+                                            placeholder="Town / City" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8 mb-1">
                                         <select class="form-control">
-                                            <option value="0" label="Select State / County ... " selected="selected"> Select State / County  </option>
+                                            <option value="0" label="Select State / County ... " selected="selected"> Select
+                                                State / County </option>
                                             <option value="เชียงใหม่">เชียงใหม่</option>
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="col-md-8 mb-1">
                                         <input class="form-control form-control-lg" type="number" name="zipcode"
@@ -365,7 +366,9 @@
                 </div>
                 <div class="row w-100 text-right float-right">
                     <div class="col-10">
-                        <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
+                        @if (isset(Auth::guard('blogger')->user()->address))
+                            <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
+                        @endif
                     </div>
 
                 </div>
