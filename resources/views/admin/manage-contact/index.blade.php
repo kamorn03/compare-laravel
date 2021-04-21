@@ -39,11 +39,10 @@
         </div>
         {{-- after meta --}}
         @php
-           
+            // dd($contact->contact);
             if (isset($contact)) {
-                $contact = json_decode(json_encode($contact->contact));
+                $contact = json_decode($contact->contact);
             }
-            
             // echo
         @endphp
         {{-- {{$contact}} --}}

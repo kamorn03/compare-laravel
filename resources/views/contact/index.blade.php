@@ -24,7 +24,7 @@
                 </button>
             </div>
         @endif
-        
+
         @if (session()->has('alert_msg'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {{ session()->get('alert_msg') }}
@@ -61,6 +61,14 @@
 
         </div>
         {{-- address detail --}}
+
+        @php
+            // dd($contact->contact);
+            if (isset($contact)) {
+                $contact = json_decode($contact->contact);
+            }
+            // echo
+        @endphp
         <div class="row">
             <div class="col-lg-6">
                 <div class="row">
@@ -69,7 +77,7 @@
                     </div>
                     <div class="col-11 my-auto align-middle pl-4">
                         <div class="h-100 justify-content-center ">
-                            {{ $contact->contact['location'] ?? '999 Bangkok Thailand 10400' }}
+                            {{ $contact->location ?? '999 Bangkok Thailand 10400' }}
                         </div>
                     </div>
                 </div>
@@ -79,7 +87,7 @@
                     </div>
                     <div class="col-11 my-auto align-middle pl-4">
                         <div class="h-100 justify-content-center ">
-                            {{ $contact->contact['email'] ?? 'info@beyond-silver.com' }}
+                            {{ $contact->email ?? 'info@beyond-silver.com' }}
                         </div>
                     </div>
                 </div>
@@ -90,7 +98,7 @@
                     </div>
                     <div class="col-11 my-auto align-middle pl-4">
                         <div class="h-100 justify-content-center">
-                            {!! $contact->contact['phone'] ?? '+66 9999 9999 <br> +66 6666 6666' !!}
+                            {!! $contact->phone ?? '+66 9999 9999 <br> +66 6666 6666' !!}
                         </div>
                     </div>
                 </div>
@@ -100,13 +108,14 @@
                     </div>
                     <div class="col-11 my-auto align-middle pl-4">
                         <div class="h-100 justify-content-center ">
-                            {{ $contact->contact['time'] ?? 'monday - Saturday 10.00am - 5.00pm. Sunday 11.00 - 4.00pm' }}
+                            {{ $contact->time ?? 'monday - Saturday 10.00am - 5.00pm. Sunday 11.00 - 4.00pm' }}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <form id="contact-form" method="post" action="contact.php" role="form">
+                <form id="contact-form" method="post" action="{{ route('subscribe.store') }}" role="form">
+                    @csrf
                     <div class="controls">
                         <div class="row">
                             <div class="col-md-6">
@@ -143,9 +152,7 @@
                                     {{-- <label for="form_phone">Phone</label> --}}
                                     {{-- <input id="form_phone" type="tel" name="phone" class="form-control"
                                         placeholder="Please enter your phone"> --}}
-                                    <input id="phone" type="tel" class="form-control" name="phone"
-                                        value="+66 (__) __-____"
-                                        pattern="^\+66(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$">
+                                    <input id="phone" type="tel" class="form-control" name="phone" value="+66 (__) __-____">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>

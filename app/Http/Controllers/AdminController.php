@@ -37,7 +37,7 @@ class AdminController extends Controller
     //   return Datatables::of(User::query())->make(true);
     public function productList()
     {
-        return Datatables::of(Product::query())->make(true);
+        return Datatables::of(Product::query()->orderBy('created_at','DESC'))->make(true);
     }
 
     public function productAdd(Request $request)

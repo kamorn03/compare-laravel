@@ -16,32 +16,47 @@
     <div class="container" style="margin-top: 80px">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                    <div class="col-lg-12 text-left">
-                        <h1 class="text-header">Thank you. Your order has been received.</h1>
-                    </div>
-                    <table class="table table-borderless">
-                        <thead>
-                          <tr>
+                <div class="col-lg-12 text-left">
+                    <h1 class="text-header">Thank you. Your order has been received.</h1>
+                </div>
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
                             <th class="sum" scope="col">ORDER NUMBER :</th>
                             <th class="sum" scope="col">DATE :</th>
                             <th class="sum" scope="col">TOTAL :</th>
                             <th class="sum" scope="col">PAYMENT METHOD :</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th>9999</th>
-                            <th>February 22, 2021</th>
-                            <th>$108</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <th>{{ $data_order->order_no ?? '#' }}</th>
+                            <th>{{ $data_order->created_at ?? '#' }}</th>
+                            <th> @php
+                                $price = 0;
+                            @endphp
+                                @foreach (json_decode($data_order->cart) as $cart)
+                                    @php
+                                        $price += $cart->price * $cart->quantity;
+                                        
+                                    @endphp
+                                @endforeach
+                                {{ $price }} ฿
+                            </th>
                             <th>paypal</th>
-                          </tr>
-                        </tbody>
-                      </table>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="info-sum-core col-lg-12 text-left">
                     <h1 class="text-header-sum">Address</h1>
-                    <span class="info-sum">Digiso Solutions <br/>
-                        999  Muang Chiang Mai Chiang Mai 50000 Thailand <br/>
-                        099 999 9999 info@digiSolutions.com <br/>
+                    @php
+                        $address = json_decode($data_order->address);
+                    @endphp
+                    <span class="info-sum">{{ Auth::guard('blogger')->user()->name }} <br />
+                        {{ $address->address ?? '' }} {{ $address->city ?? '' }} {{ $address->country ?? '' }}
+                        {{ $address->zip ?? '' }}<br />
+                        {{ $address->phone ?? '' }} {{ $address->email ?? '' }} <br />
                     </span>
                 </div>
                 @php
@@ -58,20 +73,31 @@
                         </div>
                         <div class="col-lg-9">
                             <p>
-                                <div class="order-table"><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></div><br>
-                                    <div class="row">
-                                      <div class="col-2">Size</div>
-                                      <div class="col-2">Quantity</div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-2">5</div>
-                                      <div class="col-2">2</div>
-                                      <div class="col-6"></div>
-                                      <div class="col-2"><b>${{ $item->price }}</b></div>
-                                    </div>
-                                @php
-                                    $totalPrice += $item->price;
-                                @endphp
+                            <div class="order-table"><a
+                                    href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-2">Size</div>
+                                <div class="col-2">Quantity</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    @if ($item->attributes->size)
+                                        @php
+                                            $size = App\Models\Size::find($cart->attributes->size);
+                                        @endphp
+                                        {{ $size->size }} <br>
+                                    @else
+                                        -
+                                    @endif
+                                </div>
+                                <div class="col-2"> {{ $cart->quantity }}</div>
+                                <div class="col-6"></div>
+                                <div class="col-2"><b>${{ $item->price }}</b></div>
+                            </div>
+                            @php
+                                $totalPrice += $item->price;
+                            @endphp
                             </p>
                         </div>
                     </div>
@@ -81,18 +107,18 @@
                     <div class="order-table-subtotal-left col-2">Subtotal</div>
                     <div class="col-8"></div>
                     <div class="order-table-subtotal-right col-2">${{ $totalPrice }}</div>
-                  </div>
-                  <hr>
+                </div>
+                <hr>
                 <div class="row table-total">
                     <div class="order-table-total-left col-2"><b>Total</b></div>
                     <div class="col-8"></div>
                     <div class="order-table-total-right col-2">${{ $totalPrice }}</div>
-                  </div>
+                </div>
                 <div class="row table-total">
                     <div class="order-table-total-left col-2"><b>Payment method</b></div>
                     <div class="col-8"></div>
                     <div class="order-table-total-right col-2">paypal</div>
-                  </div>
+                </div>
 
                 <h1 class="text-center"> total {{ $totalPrice }} ฿ </h1>
                 {{-- payment --}}
