@@ -22,12 +22,13 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Order_no</th>
+                <th>USER</th>
                 {{-- <th>Email</th> --}}
                 <th>Created At</th>
                 <th>Updated At</th>
-                <th>edit</th>
-                <th>remove</th>
+                {{-- <th>edit</th>
+                <th>remove</th> --}}
             </tr>
         </thead>
     </table>
@@ -51,16 +52,25 @@
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admin.order.list', ['status' => $status ]) !!}',
+                ajax: '{!! route('admin.order.list', ['status' => $status]) !!}',
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'order_no',
+                        name: 'order_no'
                     },
-                    // { data: 'email', name: 'email' },
+                    {
+                        data: 'user_id',
+                        name: 'user_id',
+                        className: "dt-center editor-edit",
+                        render: function(data, type, row) {
+                            var address = JSON.parse(row.address.replace(/&quot;/g, '"'))
+                            console.log(address)
+                            return address.email ? address.email : null
+                        }
+                    },
                     {
                         data: 'created_at',
                         name: 'created_at'
@@ -69,20 +79,20 @@
                         data: 'updated_at',
                         name: 'updated_at'
                     },
-                    {
-                        data: null,
-                        className: "dt-center editor-edit",
-                        render: function(data, type, row) {
-                            return '<i class="fa fa-pencil" data-id="' + row.id + '"></i>'
-                        }
-                    },
-                    {
-                        data: null,
-                        className: "dt-center editor-delete",
-                        render: function(data, type, row) {
-                            return '<i class="fa fa-trash" data-id="' + row.id + '"></i>'
-                        }
-                    }
+                    // {
+                    //     data: null,
+                    //     className: "dt-center editor-edit",
+                    //     render: function(data, type, row) {
+                    //         return '<i class="fa fa-pencil" data-id="' + row.id + '"></i>'
+                    //     }
+                    // },
+                    // {
+                    //     data: null,
+                    //     className: "dt-center editor-delete",
+                    //     render: function(data, type, row) {
+                    //         return '<i class="fa fa-trash" data-id="' + row.id + '"></i>'
+                    //     }
+                    // }
                 ]
             });
         });
