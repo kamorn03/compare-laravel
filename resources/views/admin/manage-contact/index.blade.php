@@ -93,15 +93,16 @@
         </div>
 
         <div style="text-align: right;">
-            <button type="submit" clsss="btn btn-primary" id="submit-all">ตกลง</button>
+            <button type="submit" class="btn btn-primary" id="submit-all">ตกลง</button>
         </div>
     </form>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script type="text/javascript">
-        CKEDITOR.replace('editor1');
+        // CKEDITOR.replace('editor1');
 
     </script>
-
-
+    <style>
+        
+    </style>
 @endsection

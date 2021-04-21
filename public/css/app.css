@@ -11512,3 +11512,8 @@ a.text-dark:focus {
         text-align: end;
         margin-left: -114px;
     }
+
+
+    .header-green .row{
+        width: 100%;
+    }

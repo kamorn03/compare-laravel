@@ -44,7 +44,7 @@
                                 @endforeach
                                 {{ $price }} ฿
                             </th>
-                            <th>paypal</th>
+                            <th>2C2P</th>
                         </tr>
                     </tbody>
                 </table>
@@ -125,15 +125,17 @@
                     <div class="order-table-total-right col-2">paypal</div>
                 </div>
 
-                <h1 class="text-center"> total {{ $totalPrice }} ฿ </h1>
+                <h1 class="text-center "> <span class="text-header">total</span> {{ $totalPrice }} ฿ </h1>
                 {{-- payment --}}
-                <div class="text-center">
-                    <img src="{{ asset('img/pngegg.png') }}" alt="visa/master" height="40"> <br> <br>
+                <div class="text-center mt-5">
+                   
                     <form action="/verify-payment" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" id="id" value="{{ $data_order->id }}">
-                        <button class="btn" type="submit"> confirm </button>
+                        <button class="btn" type="submit"> confirm payment</button>
                     </form>
+
+                     <img class="mt-3" src="{{ asset('img/pngegg.png') }}" alt="visa/master" height="40"> <br> <br>
                 </div>
                 <hr>
             </div>

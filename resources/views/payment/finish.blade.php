@@ -22,7 +22,7 @@
                         <h1 class="text-header mt-5">ชำระเงินสำเร็จ</h1>
                        
 
-
+                        <button class="btn" type="submit"> HOME </button>
                     </div>
                 </div>
                
