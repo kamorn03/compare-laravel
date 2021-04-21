@@ -59,9 +59,11 @@
                     {
                         data: 'image_path',
                         render: function(data, type, row) {
-                            var img = window.location.protocol + "//" + window.location.hostname +"/img/cards/" + row.image_path;
+                            var img = window.location.protocol + "//" + window.location.hostname +
+                                "/img/cards/" + row.image_path;
                             console.log(img);
-                            return '<img src="'+ img +'" alt=' + row.image_path + ' width="160" height="160"\>'
+                            return '<img src="' + img + '" alt=' + row.image_path +
+                                ' width="160" height="160"\>'
                         }
                     },
                     {
@@ -96,7 +98,8 @@
                         data: null,
                         className: "dt-center editor-delete",
                         render: function(data, type, row) {
-                            return '<i class="fa fa-trash" data-id="' + row.id + '"></i>'
+                            return '<a href="/digiso-admin/product/' + row.id +
+                                '/remove"><i class="fa fa-trash" data-id="' + row.id + '"></i></a>'
                         }
                     }
                 ]

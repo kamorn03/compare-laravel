@@ -160,7 +160,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/product-list', [App\Http\Controllers\AdminController::class, 'productList'])->name('product.list');
         Route::get('digiso-admin/product-add', [App\Http\Controllers\AdminController::class, 'productAdd'])->name('product.add');
         Route::get('digiso-admin/product/{id}/add_image', [App\Http\Controllers\AdminController::class, 'productImage'])->name('product.add_image'); 
-
+        Route::get('digiso-admin/product/{id}/remove', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.remove');
         // product size api
         Route::get('digiso-admin/product/{id}/size', [App\Http\Controllers\SizeController::class, 'index'])->name('product.size');
         Route::get('digiso-admin/product/{id}/size/list', [App\Http\Controllers\SizeController::class, 'sizeList'])->name('product.size.list');
