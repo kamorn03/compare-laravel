@@ -48,15 +48,30 @@ class UserController extends Controller
         $this->validate($request, [
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:bloggers,email',
             'password' => 'required|same:confirm-password',
             // 'roles' => 'required'
         ]);
+        $address = null;
+        if($request->get('street-address')) {
+            $address = array(
+                'company' => $request->get('company'),
+                'country' =>  $request->get('country'),
+                'address' => $request->get('street-address'),
+                'city' =>   $request->get('town'),
+                'state' =>  $request->get('state'),
+                'zip' =>  $request->get('postcode'),
+                'phone' =>  $request->get('phone'),
+                'email' =>   $request->get('email'),
+            );
+        }  
+       
 
         Blogger::create([
             'name' =>$request->firstname." ".$request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'address' => $address
         ]);
     
     
@@ -100,11 +115,11 @@ class UserController extends Controller
      */
     public function showOrder()
     {
-        $order = Order::all();
+        // $order = Order::all();
         // $roles = Role::pluck('name','name')->all();
         // $userRole = $user->roles->pluck('name','name')->all();
         // dd('1');
-        return view('users.order',compact('order'));
+        return view('users.order');
     }
   
 
@@ -121,7 +136,7 @@ class UserController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             // 'password' => 'required|same:confirm-password',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:bloggers,email,'.$id,
         ]);
 
         // $input = $request->all();
@@ -132,19 +147,55 @@ class UserController extends Controller
         // }
     
         $user = Blogger::find($id);
+        $address = null;
+        if($request->get('street-address')) {
+            $address = array(
+                'company' => $request->get('company'),
+                'country' =>  $request->get('country'),
+                'address' => $request->get('street-address'),
+                'city' =>   $request->get('town'),
+                'state' =>  $request->get('state'),
+                'zip' =>  $request->get('postcode'),
+                'phone' =>  $request->get('phone'),
+                'email' =>   $request->get('email'),
+            );
+        }  
+
         $user->update([
             'name' =>$request->firstname." ".$request->lastname,
             'email' => $request->email,
             // 'password' => Hash::make($request->password),
-            'address' => array(
-                'address' => $request->get('street-address'),
-                'country' =>  $request->get('state'),
-                'zip' =>  $request->get('postcode'),
-                'city' =>   $request->get('town'),
-                // 'state' => 'STATE',
-            )
+            'address' => $address
         ]);
         return redirect()->route('users.edit', ['user' =>  $id])->with('success','แก้ไขข้อมูลสำเร็จ');
+    }
+
+
+      /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function changePassword(Request $request, $id)
+    {
+        $user = Blogger::find($id);
+        return view('users.change-pass', compact('user'));
+    }
+
+    
+    public function updatePassword(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'required|same:confirm-password',
+            'newpassword' => 'required',
+        ]);
+        $user = Blogger::find($id);
+        $user->update([
+            'password' => Hash::make($request->newpassword),
+        ]);
+        return redirect()->route('users.change.password', ['user' =>  $id])->with('success','แก้ไขข้อมูลสำเร็จ');
     }
 
     public function updateAddress(Request $request, $id)
@@ -159,10 +210,13 @@ class UserController extends Controller
     
         $user = Blogger::find($id);
         $input['address'] = array(
+            'company' => $request->company,
             'address' => $request->address,
             'country' =>  $request->country,
             'zip' =>  $request->zipcode,
             'city' =>  $request->city,
+            'phone' =>  $request->phone,
+            'email' =>  $request->email,
             // 'state' => 'STATE',
         );
         $user->update($input);

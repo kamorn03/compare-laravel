@@ -51,7 +51,7 @@
         @endif
 
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-bottom: 20rem">
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-3">
@@ -62,7 +62,9 @@
                                 href="{{ route('users.edit', ['user' => Auth::guard('blogger')->user()->id]) }}">Personal
                                 Information </a></p>
                         <p class="text-menu active">Orders</p>
-                        <p class="text-menu">Change Password</p>
+                        <p class="text-menu"><a
+                                href="{{ route('users.change.password', ['user' => Auth::guard('blogger')->user()->id]) }}">Change
+                                Password</a></p>
                         <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p>
                     </div>
                 </div>
@@ -80,52 +82,94 @@
                         <td>View : </td>
                         </th>
                     </table>
+
+                    @php
+                        $order = App\Models\Order::where('user_id', Auth::guard('blogger')->user()->id)->get();
+                    @endphp
                     {{-- {{ $order }} --}}
+                    @if (!sizeOf($order) > 0)
+                        {{-- {{sizeOf($order)}} --}}
+                        <h5 class="text-center mt-5"> Your order is empty!!</h5>
+                    @endif
+
                     @foreach ($order as $key => $item)
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading{{ $key }}">
 
-                                    <table class="table table-striped w-100 bg-gray">
-                                        <tr>
-                                            <td>#{{ $item->order_no }}</td>
-                                            <td>{{ $item->created_at }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>
+                                <table class="table table-striped w-100 bg-gray">
+                                    <tr>
+                                        <td>#{{ $item->order_no }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                        <td>{{ $item->status }}</td>
+                                        <td>
+                                            @php
+                                                $price = 0;
+                                            @endphp
+                                            @foreach (json_decode($item->cart) as $cart)
                                                 @php
-                                                    $price = 0;
+                                                    $price += $cart->price * $cart->quantity;
+                                                    
                                                 @endphp
-                                                @foreach (json_decode($item->cart) as $cart)
-                                                    @php
-                                                        $price += $cart->price;
-                                                    @endphp
-                                                @endforeach
-                                                {{ $price }} ฿ 
-                                            </td>
-                                            <td> <a role="button" data-toggle="collapse" data-parent="#accordionGroupOpen"
-                                                    href="#collapseOpen{{ $key }}" aria-expanded="true"
-                                                    aria-controls="collapseOpen{{ $key }}"></td>
-                                            </th>
-                                    </table>
-                                    </a>
-                                
+                                            @endforeach
+                                            {{ $price }} ฿
+                                        </td>
+                                        <td> <a role="button" data-toggle="collapse" data-parent="#accordionGroupOpen"
+                                                href="#collapseOpen{{ $key }}" aria-expanded="true"
+                                                aria-controls="collapseOpen{{ $key }}"></td>
+                                        </th>
+                                </table>
+                                </a>
+
                             </div>
                             <div id="collapseOpen{{ $key }}" class="panel-collapse collapse in mb-3"
                                 role="tabpanel" aria-labelledby="heading{{ $key }}">
                                 <div class="panel-body">
+                                    {{-- {{$item->cart}} --}}
                                     @foreach (json_decode($item->cart) as $cart)
-
                                         <div class="row">
                                             <div class="col-lg-3">
                                                 <img src="/img/cards/{{ $cart->attributes->image }}"
-                                                    class="img-thumbnail" width="200" height="200">
+                                                    class="img-thumbnail" width="88" height="88">
                                             </div>
                                             <div class="col-lg-9">
-                                                <p>
-                                                    <b><a
-                                                            href="/shop/{{ $cart->attributes->slug }}">{{ $cart->name }}</a></b><br>
-                                                    {{ $cart->price }} ฿ <br>
-
-                                                </p>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <b>{{ $cart->name }}</b>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        size
+                                                    </div>
+                                                    <div class="col-2">
+                                                        quantity
+                                                    </div>
+                                                    <div class="col-8">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        @if ($cart->attributes->size)
+                                                            @php
+                                                                $size = App\Models\Size::find($cart->attributes->size);
+                                                            @endphp
+                                                            {{ $size->size }} <br>
+                                                        @else
+                                                            -
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-2">
+                                                        {{ $cart->quantity }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <b> {{ $cart->price * $cart->quantity }} ฿ </b>
+                                                    </div>
+                                                    <div class="col-2">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     @endforeach

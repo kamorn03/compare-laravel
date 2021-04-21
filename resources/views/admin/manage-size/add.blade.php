@@ -36,7 +36,7 @@
 
         <form class="form form-horizontal"
             action="{{ isset($size) && $size->id ? route('admin.size.update', ['id' => $size->id]) : route('admin.size.store') }}"
-            method="POST" name="add_post" enctype="multipart/form-data">
+            method="POST" name="add_post">
             {{ csrf_field() }}
             <input name="id" type="hidden" value="{{ isset($size) ? $size->id : null }}">
             {{-- using category --}}
@@ -47,6 +47,8 @@
                 <div class="col-sm-10">
                     <input type="text" name="size" class="form-control" placeholder="size"
                         value="{{ $size->size ?? '' }}">
+                    <input type="hidden" name="product_id" id="product_id" class="form-control"
+                        value="{{ $product->id ?? '' }}">    
                 </div>
             </div>
             <div style="text-align: right;">

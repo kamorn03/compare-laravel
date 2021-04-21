@@ -22,7 +22,7 @@ class MainTitleController extends Controller
     {
         $image = $request->file('file');
 
-        $imageName = time() . '.' . $image->extension();
+        $imageName = time() .$image->getClientOriginalName(). '.' . $image->extension();
 
         $image->move(public_path('images/title/'), $imageName);
 
@@ -58,7 +58,7 @@ class MainTitleController extends Controller
         foreach($main as $image)
         {
         $output .= '
-        <div class="col-md-12" style="margin-bottom:16px;" align="center">
+        <div class="col-md-3" style="margin-bottom:16px;" align="center">
                     <label for="" class="col-sm-2 col-form-label text-left">รูปที่ '.$number.'</label>
                     <img src="'.asset($image->image_path).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
                     <button type="button" class="btn btn-link remove_image" id="'.$image->id.'">Remove</button>

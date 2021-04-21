@@ -69,23 +69,24 @@
                                 ฿ </h3>
 
 
-                            {{-- <h5 class="sizes">sizes: </h5>
-                            <div class="num-block w-100">
-                                <select class="form-control" name="" id="">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                </select>
-                            </div> --}}
-
-
-                            <h5 class="title">size </h5>
-                            <div class="action">
-                                <input type="number w-100" class="form-control" id="size" name="size" value="1">
-                            </div>
-
-                            <h5 class="title">Quantity </h5>
+                            @php
+                                $sizes = App\Models\Size::where('product_id', $products[0]->id)->get();
+                            @endphp
                             <div class="action">
                                 {{ csrf_field() }}
+                                @if (sizeOf($sizes) != 0)
+                                    <h5 class="title">size </h5>
+                                    <div class="action">
+                                        {{-- {{sizeOf($sizes)}} --}}
+                                        <select class="form-control" name="size" id="size">
+                                            @foreach ($sizes as $item)
+                                                <option value="{{ $item->id }}">{{ $item->size }}</option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <input type="number w-100" class="form-control" id="size" name="size" value="1"> --}}
+                                    </div>
+                                @endif
+                                <h5 class="title">Quantity </h5>
                                 <input type="hidden" value="{{ $products[0]->id }}" id="id" name="id">
                                 <input type="hidden" value="{{ $products[0]->name }}" id="name" name="name">
                                 <input type="hidden" value="{{ $products[0]->price }}" id="price" name="price">
@@ -128,7 +129,7 @@
                                 <a
                                     href="/shop/{{ $product->cate_slug }}/{{ $product->collect_slug ?? 'non-collection' }}/{{ $product->slug }}"><img
                                         src="/img/cards/{{ $product->image_path }}" class="card-img-top mx-auto"
-                                        style="height :160px; width: 200px;display: block;"
+                                        style="height :250px; width: 250px;display: block;"
                                         alt="{{ $product->image_path }}"></a>
                                 <div class="card-body custom-card-home">
                                     <h6 class="card-title">{{ $product->name }}</h6>

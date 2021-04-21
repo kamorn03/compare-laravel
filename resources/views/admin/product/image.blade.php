@@ -39,8 +39,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script type="text/javascript">
-        CKEDITOR.replace('editor1');
+
         Dropzone.options.dropzoneForm = {
+            // maxFiles: 30,
+            parallelUploads: 30,
+            paramName : "product", 
             autoProcessQueue: false,
             acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
             init: function() {
@@ -61,12 +64,12 @@
                 //     formData.append("price", $("#price").val());
                 // });
                 this.on("complete", function() {
-                    if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
-                        var _this = this;
-                        _this.removeAllFiles();
-                    }
+                    // if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
+                    //     var _this = this;
+                    //     _this.removeAllFiles();
+                    // }
                     console.log('complete');
-                    // load_images();
+                    load_images();
                 });
             },
             renameFile: function(file) {
@@ -79,22 +82,7 @@
             timeout: 500000,
             removedfile: function(file) {
                 var name = file.upload.filename;
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    },
-                    type: 'POST',
-                    url: '{{ url('delete') }}',
-                    data: {
-                        filename: name
-                    },
-                    success: function(data) {
-                        console.log("File has been successfully removed!!");
-                    },
-                    error: function(e) {
-                        console.log(e);
-                    }
-                });
+                console.log(name);
                 var fileRef;
                 return (fileRef = file.previewElement) != null ?
                     fileRef.parentNode.removeChild(file.previewElement) : void 0;

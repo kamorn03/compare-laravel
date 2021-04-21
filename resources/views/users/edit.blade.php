@@ -60,7 +60,7 @@
                     <div class="col-lg-7">
                         <p class="text-menu active">Personal Information</p>
                         <p class="text-menu"><a href="{{ route('users.cart.order') }}">Orders </a></p>
-                        <p class="text-menu">Change Password</p>
+                        <p class="text-menu"><a href="{{ route('users.change.password', ['user' => Auth::guard('blogger')->user()->id]) }}">Change Password</a></p>
                         <p class="text-menu"><a href="{{ route('logout') }}"> Sign out </a></p>
                     </div>
                 </div>
@@ -74,6 +74,9 @@
                     @php
                         if ($user->name) {
                             $name = explode(' ', $user->name);
+                        }
+                        if ($user->email) {
+                            $email = $user->email;
                         }
                         $address[0] = [];
                         if ($user->address) {
@@ -99,21 +102,14 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('company', null, ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
+                            {!! Form::text('company', Arr::get($address , 'company'), ['placeholder' => 'Company name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('country', null, ['placeholder' => 'Country', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('region', null, ['placeholder' => 'Region', 'class' => 'form-control']) !!}
+                            {!! Form::text('country', Arr::get($address , 'country'), ['placeholder' => 'Country / Region ', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -134,7 +130,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('state', Arr::get($address , 'country') , ['placeholder' => 'State / Country', 'class' => 'form-control']) !!}
+                            {!! Form::text('state', Arr::get($address , 'state') , ['placeholder' => 'State / County', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -147,14 +143,14 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
+                            {!! Form::text('phone', Arr::get($address , 'phone'), ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             {{-- <strong>Email:</strong> --}}
-                            {!! Form::text('email', null, ['placeholder' => 'Email address', 'class' => 'form-control']) !!}
+                            {!! Form::text('email', $email, ['placeholder' => 'Email address', 'class' => 'form-control']) !!}
                         </div>
                     </div>
 

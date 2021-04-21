@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Collections;
+use App\Models\Blogger;
 
 class AdminController extends Controller
 {
@@ -33,9 +34,6 @@ class AdminController extends Controller
         return view('admin.home', compact('submit_url','order','order_wait','order_payment'));
     }
 
-    
-
-
     //   return Datatables::of(User::query())->make(true);
     public function productList()
     {
@@ -55,7 +53,7 @@ class AdminController extends Controller
     }
 
     public function users(Request $request){
-        $data = User::orderBy('id','DESC')->paginate(5);
+        $data = Blogger::orderBy('id','DESC')->paginate(5);
         return view('admin.manage-users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -68,7 +66,7 @@ class AdminController extends Controller
      */
     public function userShow(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = Blogger::find($id);
         return view('admin.manage-users.show',compact('user'));
     }
 
@@ -125,9 +123,14 @@ class AdminController extends Controller
     public function order($status)
     {
         $submit_url = "/api/home_manage";
-        $order_wait = Order::where('status','wait')->count();
-        $order_payment = Order::where('status','payment')->count();
-        return view('admin.manage-order-status.wait', compact('submit_url','order_wait','order_payment','status'));
+        
+        // watting_payment -> รอการชำระเงิน
+        // successful_payment -> ชำระเงินเสร็จสิ้น (รอจัดส่ง)
+        // waiting_delivery -> ระหว่างจัดส่ง
+        // successful_delivery ->จัดส่งเสร็จสิ้น
+        // cancel -> ยกเลิก
+
+        return view('admin.manage-order-status.wait', compact('submit_url','status'));
     }
 
     public function mainTitle()

@@ -2,7 +2,16 @@
 
 @section('content')
     <div class="col-12">
-        <h1>รายการ รอชำระเงิน</h1>
+        @php
+            $title = [
+                'watting_payment' => 'รอการชำระเงิน',
+                'successful_payment' => 'แจ้งชำระเงินแล้ว รอตรวจสอบ',
+                'waiting_delivery' => 'กำลังดำเนินการ',
+                'successful_delivery' => 'ส่งสินค้าแล้ว',
+                'cancel' => 'ชำระเงินผิด',
+            ];
+        @endphp
+        <h1>รายการ {{ $title[$status] }}</h1>
         <div class="separator mb-5"></div>
     </div>
 
@@ -42,7 +51,7 @@
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admin.order.list', ['status' => $status]) !!}',
+                ajax: '{!! route('admin.order.list', ['status' => $status ]) !!}',
                 columns: [{
                         data: 'id',
                         name: 'id'

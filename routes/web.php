@@ -17,10 +17,12 @@ use App\Http\Controllers\LoginController as LoginController;
 use App\Http\Controllers\Auth\RegisterController as AuthRegisterController;
 use App\Http\Controllers\RegisterController as RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SubscriptionController;
 
 
+Route::post('subscribe/store', [SubscriptionController::class, 'store'])->name('subscribe.store');
 Route::post('verify-payment', 'App\Http\Controllers\CartController@VerifyPayment')->name('cart.verify-payment');
-Route::get('finish', 'App\Http\Controllers\CartController@finish')->name('cart.finish');
+Route::get('finish/{order}', 'App\Http\Controllers\CartController@finish')->name('cart.finish');
 // // Route::view('/', 'home');
 Route::group(['middleware' => ['guest']], function () {
     Auth::routes();
@@ -60,7 +62,11 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('cart', 'App\Http\Controllers\CartController@cart')->name('cart.index');
     Route::post('add', 'App\Http\Controllers\CartController@add')->name('cart.store');
     Route::post('update', 'App\Http\Controllers\CartController@update')->name('cart.update');
+
+    Route::post('update/all', 'App\Http\Controllers\CartController@updateAll')->name('cart.update.all');
+
     Route::post('remove', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
+    Route::get('get/remove', 'App\Http\Controllers\CartController@TESTremove')->name('cart.get.remove');
     Route::post('clear', 'App\Http\Controllers\CartController@clear')->name('cart.clear');
     Route::get('checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
     
@@ -92,12 +98,13 @@ Route::group(['middleware' => 'auth:blogger'], function () {
     Route::view('/blogger', 'blogger');
     Route::post('users/update/{id}/address', [App\Http\Controllers\UserController::class, 'updateAddress'])->name('users.update.address');
     // users
-    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store' ,'showOrder']]);
-    
+    Route::resource('users',  UserController::class , ['except' => [ 'create' , 'store' ,'showOrder','changePassword','updatePassword']]);
+    Route::get('users/change/{user}/password',  [App\Http\Controllers\UserController::class, 'changePassword'])->name('users.change.password');
+    Route::post('users/update/{id}/password',  [App\Http\Controllers\UserController::class, 'updatePassword'])->name('users.update.password');
     Route::get('users/cart/order',  [App\Http\Controllers\UserController::class, 'showOrder'])->name('users.cart.order');
   
     Route::post('confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
-    Route::get('complete',  [App\Http\Controllers\CartController::class, 'complete'])->name('cart.complete');
+    Route::get('complete/{order}',  [App\Http\Controllers\CartController::class, 'complete'])->name('cart.complete');
 
 });
 
@@ -155,8 +162,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/product/{id}/add_image', [App\Http\Controllers\AdminController::class, 'productImage'])->name('product.add_image'); 
 
         // product size api
-        Route::get('digiso-admin/product/{id}/size', [App\Http\Controllers\AdminController::class, 'productSize'])->name('product.size');
-
+        Route::get('digiso-admin/product/{id}/size', [App\Http\Controllers\SizeController::class, 'index'])->name('product.size');
+        Route::get('digiso-admin/product/{id}/size/list', [App\Http\Controllers\SizeController::class, 'sizeList'])->name('product.size.list');
+        Route::get('digiso-admin/product/{id}/size/add', [App\Http\Controllers\SizeController::class, 'sizeAdd'])->name('product.size.add');
+        Route::get('digiso-admin/product/{product}/size/{id}/edit', [App\Http\Controllers\SizeController::class, 'sizeEdit'])->name('product.size.edit');
+        Route::get('digiso-admin/product/{product}/size/{id}/delete', [App\Http\Controllers\SizeController::class, 'destroy'])->name('product.size.delete');
+        // Route::get('digiso-admin/size', [App\Http\Controllers\SizeController::class, 'index'])->name('size');
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
         // banner

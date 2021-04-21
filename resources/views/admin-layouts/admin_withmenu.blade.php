@@ -174,7 +174,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                      document.getElementById('logout-form').submit();">
+                                                                                                                                                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -279,50 +279,72 @@
                                 <i class="simple-icon-basket-loaded"></i> <span class="d-inline-block">สินค้า</span>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.size') }}">
                                 <i class="iconsminds-maximize"></i> ขนาดสินค้า
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <ul class="list-unstyled" data-link="order">
                         <li>
-                            <a href="Dashboard.Content.html">
+                            <a href="#">
                                 <i class="simple-icon-doc"></i> <span class="d-inline-block">คำสั่งซื้อ</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'wait']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'watting_payment']) }}">
                                 <i class="icon-angle-right"></i> รอการชำระเงิน
-                                @if (isset($order_wait) && $order_wait > 0)
-                                    <span class="badge badge-light">{{ $order_wait }}</span>
+                                @php
+                                    $watting_payment_count = App\Models\Order::where('status', 'watting_payment')->count();
+                                @endphp
+                                @if (isset($watting_payment_count) && $watting_payment_count > 0)
+                                    <span class="badge badge-light">{{ $watting_payment_count }}</span>
                                 @endif
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'payment']) }}">
+
+                            <a href="{{ route('admin.order', ['status' => 'successful_payment']) }}">
                                 <i class="icon-angle-right"></i> แจ้งชำระเงินแล้ว รอตรวจสอบ
-                                @if (isset($order_wait) && $order_payment > 0)
-                                    <span class="badge badge-light">{{ $order_payment }}</span>
+                                @php
+                                    $successful_payment_count = App\Models\Order::where('status', 'successful_payment')->count();
+                                @endphp
+                                @if (isset($successful_payment_count) && $successful_payment_count > 0)
+                                    <span class="badge badge-light">{{ $successful_payment_count }}</span>
                                 @endif
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'pending']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'waiting_delivery']) }}">
                                 <i class="icon-angle-right"></i> กำลังดำเนินการ
-                                {{-- <span class="badge badge-light">5</span> --}}
+                                @php
+                                    $waiting_delivery_count = App\Models\Order::where('status', 'waiting_delivery')->count();
+                                @endphp
+                                @if (isset($waiting_delivery_count) && $waiting_delivery_count > 0)
+                                    <span class="badge badge-light">{{ $waiting_delivery_count }}</span>
+                                @endif
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'shipped']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'successful_delivery']) }}">
                                 <i class="icon-angle-right"></i> ส่งสินค้าแล้ว
-                                {{-- <span class="badge badge-light">13</span> --}}
+                                @php
+                                    $successful_delivery_count = App\Models\Order::where('status', 'successful_delivery')->count();
+                                @endphp
+                                @if (isset($successful_delivery_count) && $successful_delivery_count > 0)
+                                    <span class="badge badge-light">{{ $successful_delivery_count }}</span>
+                                @endif
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.order', ['status' => 'wrong']) }}">
+                            <a href="{{ route('admin.order', ['status' => 'cancel']) }}">
                                 <i class="icon-angle-right"></i> ชำระเงินผิด
-                                {{-- <span class="badge badge-light">1</span> --}}
+                                @php
+                                    $cancel_count = App\Models\Order::where('status', 'cancel')->count();
+                                @endphp
+                                @if (isset($cancel_count) && $cancel_count > 0)
+                                    <span class="badge badge-light">{{ $cancel_count }}</span>
+                                @endif
                             </a>
                         </li>
                     </ul>
@@ -782,6 +804,11 @@
 
             a:hover {
                 text-decoration: none;
+            }
+
+            .badge {
+                padding: 0.4em .75em;
+                font-size: 74%;
             }
 
         </style>

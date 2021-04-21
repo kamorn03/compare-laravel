@@ -94,14 +94,14 @@
                     <div class="order-table-total-right col-2">paypal</div>
                   </div>
 
-                <h1 class="text-center"> ราคาสินค้ารวม {{ $totalPrice }} ฿ </h1>
+                <h1 class="text-center"> total {{ $totalPrice }} ฿ </h1>
                 {{-- payment --}}
                 <div class="text-center">
                     <img src="{{ asset('img/pngegg.png') }}" alt="visa/master" height="40"> <br> <br>
                     <form action="/verify-payment" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" id="id" value="{{ $data_order->id }}">
-                        <button class="btn" type="submit"> ยืนยันการชำระเงิน </button>
+                        <button class="btn" type="submit"> confirm </button>
                     </form>
                 </div>
                 <hr>

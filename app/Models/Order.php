@@ -11,6 +11,7 @@ class Order extends Model
 
     protected $fillable = [
         'status',
+        'size',
     ];
 
     public function user(){
