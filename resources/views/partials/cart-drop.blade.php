@@ -32,15 +32,15 @@
     </li>
     <br>
     <div class="row" style="margin: 0px;">
-        <a class="btn btn-green btn-block" href="{{ route('cart.index') }}">
+        <a class="btn btn-green btn-block w-100" href="{{ route('cart.index') }}">
             CART <i class="fa fa-arrow-right"></i>
         </a>
         @guest
-            <a class="btn btn-green btn-sm btn-block" href="{{ route('cart.checkout') }}">
+            <a class="btn btn-green btn-sm btn-block w-100" href="{{ route('cart.checkout') }}">
                 CHECKOUT <i class="fa fa-arrow-right"></i>
             </a>
         @else
-            <a class="btn btn-green btn-sm btn-block" href="{{ route('cart.shipping') }}">
+            <a class="btn btn-green btn-sm btn-block w-100" href="{{ route('cart.shipping') }}">
                 CHECKOUT <i class="fa fa-arrow-right"></i>
             </a>
         @endguest
