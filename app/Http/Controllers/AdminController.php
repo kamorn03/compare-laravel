@@ -120,6 +120,13 @@ class AdminController extends Controller
         return Datatables::of(Order::query()->where('status', $status))->make(true);
     }
 
+    public function orderShow($status , $order)
+    {
+        $data_order = Order::query()->where('order_no', $order)->orderBy('id', 'desc')->first();;
+        return view('admin.manage-order-status.show',compact('data_order'));
+    }
+
+
     public function order($status)
     {
         $submit_url = "/api/home_manage";

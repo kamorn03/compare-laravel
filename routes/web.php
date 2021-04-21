@@ -196,6 +196,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
         // order
         Route::get('digiso-admin/order/{status}', [App\Http\Controllers\AdminController::class, 'order'])->name('order');
+        Route::get('digiso-admin/order/{status}/no/{order}', [App\Http\Controllers\AdminController::class, 'orderShow'])->name('order.number.show');
         Route::get('digiso-admin/order-list/{status}', [App\Http\Controllers\AdminController::class, 'orderList'])->name('order.list');
 
 

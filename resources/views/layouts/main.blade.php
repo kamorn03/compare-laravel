@@ -50,6 +50,14 @@
                                     alt="Vector (3)" style="width: 20;"></a>
                         </div>
                     </div>
+
+                    @php
+
+                        $contact = App\Models\CMSAdminManage::where('page_type', 'contact')->first();
+                        if (isset($contact)) {
+                            $contact = json_decode($contact->contact);
+                        }
+                    @endphp
                     <div class="col-xs-12 col-sm-4 col-md-4 mb-3">
                         <h5 class="text-title-footer">Store Info</h5>
                         <div class="row">
@@ -58,7 +66,7 @@
                                     height="28" />
                             </div>
                             <div class="col-11 ">
-                                999 Bangkok Thailand 10400
+                                {{ $contact->location ?? '999 Bangkok Thailand 10400' }}
                             </div>
                         </div>
                         <div class="row">
@@ -68,7 +76,7 @@
                             </div>
                             <div class="col-11">
                                 <div>
-                                    info@beyond-silver.com
+                                    {{ $contact->email ?? 'info@beyond-silver.com' }}
                                 </div>
                             </div>
                         </div>
@@ -79,7 +87,7 @@
                             </div>
                             <div class="col-11 my-auto align-middle">
                                 <div class="h-100 justify-content-center ">
-                                    +66 9999 9999
+                                    {!! $contact->phone ?? '+66 9999 9999' !!}
                                 </div>
                             </div>
                         </div>
@@ -122,9 +130,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-
         // $('.dropdown').click(function(){
 
         //     $('.dropdown-menu').toggleClass('show');

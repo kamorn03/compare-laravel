@@ -1,28 +1,12 @@
-@extends('layouts.main')
+@extends('admin-layouts.admin_app')
 
 @section('content')
-
-
-    <div class="header-green text-center align-middle">
-        <div class="row align-items-center h-100">
-            <div class="mx-auto">
-                <div class="h-100 justify-content-center">
-                    <div>
-                        <label> Home > Cart > Checkout > Shipping > Order Complete </label>
-                        <h1>Order Complete</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="container" style="margin-top: 80px">
         <div class="row justify-content-center">
+            <div class="row text-center">
+                <h1 class="text-header">Order : {{ $data_order->order_no }}</h1>
+            </div>
             <div class="col-lg-10">
-                <div class="col-lg-12 text-left">
-                    <h1 class="text-header">Thank you. Your order has been received.</h1>
-                </div>
                 <table class="table table-borderless text-center">
                     <thead>
                         <tr>
@@ -57,8 +41,11 @@
                     @php
                         $address = json_decode($data_order->address);
                     @endphp
-                    <span class="info-sum">{{ Auth::guard('blogger')->user()->name }} <br />
-                        {{ $address->address ?? '' }} {{ $address->city ?? '' }} {{ $address->country ?? '' }}
+                    <span class="info-sum">
+                        {{-- {{ Auth::guard('blogger')->user()->name }} <br /> --}}
+                        <br />
+
+                        {{ $address->address ?? '' }} {{ $address->city ?? '' }} {{ $address->country ?? '' }}<br />
                         {{ $address->zip ?? '' }}<br />
                         {{ $address->phone ?? '' }} {{ $address->email ?? '' }} <br />
                     </span>
@@ -77,8 +64,9 @@
                         </div>
                         <div class="col-lg-9">
                             <p>
-                            <div class="order-table"><a
-                                    href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a>
+                            <div class="order-table">
+                                <h3>{{ $item->name }}</h3>
+
                             </div><br>
                             <div class="row">
                                 <div class="col-2">Size</div>
@@ -121,26 +109,21 @@
                 <div class="row table-total">
                     <div class="order-table-total-left col-2"><b>Total</b></div>
                     <div class="col-8"></div>
-                    <div class="order-table-total-right col-2 float-right">${{ $totalPrice }}</div>
+                    <div class="order-table-total-right col-2 float-right">{{ $totalPrice }} ฿</div>
                 </div>
                 <div class="row table-total">
                     <div class="order-table-total-left col-2"><b>Payment method</b></div>
                     <div class="col-8"></div>
                     <div class="order-table-total-right col-2 float-right">2C2P</div>
                 </div>
-
-                <h1 class="text-center "> <span class="text-header">total</span> {{ $totalPrice }} ฿ </h1>
-                {{-- payment --}}
-                <div class="text-center mt-5">
-                   
-                    <form action="/verify-payment" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="id" id="id" value="{{ $data_order->id }}">
-                        <button class="btn" type="submit"> confirm payment</button>
-                    </form>
-
-                     <img class="mt-3" src="{{ asset('img/pngegg.png') }}" alt="visa/master" height="40"> <br> <br>
+                <div class="row">
+                    <h1 class="text-center">
+                        <span class="text-header">total</span> <br>
+                        {{ $totalPrice }} ฿
+                    </h1>
                 </div>
+                {{-- payment --}}
+
                 <hr>
             </div>
         </div>
@@ -163,11 +146,21 @@
             color: #FFFFFF;
         }
 
+        .table-subtotal {
+            justify-content: flex-end;
+        }
+
+        .table-total {
+            justify-content: flex-end;
+        }
+
         .bg-dark {
             background-color: #81D8D0 !important;
         }
+
         hr {
             border: 1px solid #81D8D0;
-        } 
+        }
+
     </style>
 @endsection

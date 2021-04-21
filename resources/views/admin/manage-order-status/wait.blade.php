@@ -59,7 +59,14 @@
                     },
                     {
                         data: 'order_no',
-                        name: 'order_no'
+                        name: 'order_no',
+                        className: "dt-center",
+                        render: function(data, type, row) {
+                            // 
+                            return '<a href="/digiso-admin/order/{!! $status !!}/no/' + row
+                                .order_no +
+                                '">' + row.order_no + '</a>'
+                        }
                     },
                     {
                         data: 'user_id',

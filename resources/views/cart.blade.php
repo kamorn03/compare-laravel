@@ -19,7 +19,7 @@
             <div class="col-lg-7">
                 <h2 class="text-header">Shopping Cart</h2>
                 @if (count($cartCollection) == 0)
-                <h3 class="text-header">Your Cart is empty!!</h2>
+                    <h3 class="text-header">Your Cart is empty!!</h2>
                 @endif
                 @foreach ($cartCollection as $item)
                     <div class="row mt-5">
@@ -38,7 +38,7 @@
                                             <div class="num-in w-100">
                                                 <span class="minus dis">-</span>
                                                 <input type="number w-100" class="in-num" id="quantity-{{ $item->id }}"
-                                                name="quantity" value="{{ $item->quantity }}" readonly="">
+                                                    name="quantity" value="{{ $item->quantity }}" readonly="">
                                                 <span class="plus">+</span>
                                             </div>
                                         </div>
