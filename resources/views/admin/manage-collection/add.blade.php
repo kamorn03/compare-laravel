@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>{{ isset($collections) ? 'แก้ไข' : 'เพิ่ม' }} Sub Category</h1>
+        <h1>{{ isset($collections) ? 'Edit' : 'Add' }} Sub Category</h1>
         <div class="separator mb-5"></div>
     </div>
 

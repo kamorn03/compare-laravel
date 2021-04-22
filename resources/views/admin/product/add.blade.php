@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>เพิ่มสินค้า</h1>
+        <h1>{{ isset($product) ? 'Edit' : 'Add' }} Product</h1>
         <div class="separator mb-5"></div>
     </div>
 

@@ -147,8 +147,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('digiso-admin/collection/add', [App\Http\Controllers\CollectionController::class, 'collectionAdd'])->name('collection.add');
         Route::get('digiso-admin/collection-list', [App\Http\Controllers\AdminController::class, 'collectionList'])->name('collection.datalist');
         Route::post('digiso-admin/collection/{category_id}/list', [App\Http\Controllers\CollectionController::class, 'collectionGetList'])->name('collection.list');
-        Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\AdminController::class, 'collectionUpdate'])->name('collection.edit');
-        // Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\CollectionController::class, 'collectionEdit'])->name('collection.edit');
+        Route::get('digiso-admin/collection/{id}/edit', [App\Http\Controllers\CollectionController::class, 'collectionEdit'])->name('collection.edit');
         Route::get('digiso-admin/collection/{id}/delete', [App\Http\Controllers\CollectionController::class, 'destroy'])->name('collection.delete');
         Route::post('digiso-admin/collection/{category_id}/list', [App\Http\Controllers\CollectionController::class, 'collectionGetList'])->name('collection.list');
 
