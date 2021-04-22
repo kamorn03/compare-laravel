@@ -281,7 +281,7 @@
                     <ul class="list-unstyled" data-link="order">
                         <li>
                             <a href="{{ route('admin.order', ['status' => 'watting_payment']) }}">
-                                <i class="icon-angle-right"></i> รอการชำระเงิน
+                                <i class="icon-angle-right"></i> watting payment
                                 @php
                                     $watting_payment_count = App\Models\Order::where('status', 'watting_payment')->count();
                                 @endphp
@@ -293,7 +293,7 @@
                         <li>
 
                             <a href="{{ route('admin.order', ['status' => 'successful_payment']) }}">
-                                <i class="icon-angle-right"></i> แจ้งชำระเงินแล้ว รอตรวจสอบ
+                                <i class="icon-angle-right"></i> successful payment
                                 @php
                                     $successful_payment_count = App\Models\Order::where('status', 'successful_payment')->count();
                                 @endphp
@@ -304,7 +304,7 @@
                         </li>
                         <li>
                             <a href="{{ route('admin.order', ['status' => 'waiting_delivery']) }}">
-                                <i class="icon-angle-right"></i> กำลังดำเนินการ
+                                <i class="icon-angle-right"></i> waiting delivery
                                 @php
                                     $waiting_delivery_count = App\Models\Order::where('status', 'waiting_delivery')->count();
                                 @endphp
@@ -315,7 +315,7 @@
                         </li>
                         <li>
                             <a href="{{ route('admin.order', ['status' => 'successful_delivery']) }}">
-                                <i class="icon-angle-right"></i> ส่งสินค้าแล้ว
+                                <i class="icon-angle-right"></i> successful delivery
                                 @php
                                     $successful_delivery_count = App\Models\Order::where('status', 'successful_delivery')->count();
                                 @endphp
@@ -326,7 +326,7 @@
                         </li>
                         <li>
                             <a href="{{ route('admin.order', ['status' => 'cancel']) }}">
-                                <i class="icon-angle-right"></i> ชำระเงินผิด
+                                <i class="icon-angle-right"></i> cancel
                                 @php
                                     $cancel_count = App\Models\Order::where('status', 'cancel')->count();
                                 @endphp
