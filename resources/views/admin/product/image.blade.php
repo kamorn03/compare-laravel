@@ -2,9 +2,15 @@
 
 @section('content')
     <div class="col-12">
-        <h1>เพิ่มรูป สินค้า</h1>
+        <h1>Add Product Images ({{ $product->name }})</h1>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('admin.product')}}"> Back</a>
+        </div>
         <div class="separator mb-5"></div>
     </div>
+
+
+
     <div class="form-group row">
         <div class="col-12">
             <div class="panel panel-default">
@@ -19,11 +25,7 @@
                         </form>
                     </div>
 
-                    <div class="form-group row">
-                        <div style="text-align: center;">
-                            <button type="button" class="btn btn-info" id="submit-all">Upload</button>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
             <br />
@@ -31,7 +33,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Uploaded Image</h3>
                 </div>
-                <div class="panel-body" id="uploaded_image">
+                <div class="panel-body mt-5" id="uploaded_image">
                 </div>
             </div>
         </div>
@@ -39,20 +41,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script type="text/javascript">
-
         Dropzone.options.dropzoneForm = {
             // maxFiles: 30,
             parallelUploads: 30,
-            paramName : "product", 
-            autoProcessQueue: false,
+            paramName: "product",
+            autoProcessQueue: true,
             acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
             init: function() {
                 var submitButton = document.querySelector("#submit-all");
                 myDropzone = this;
 
-                submitButton.addEventListener('click', function() {
-                    myDropzone.processQueue();
-                });
+                // submitButton.addEventListener('click', function() {
+                //     myDropzone.processQueue();
+                // });
 
                 // this.on("sendingmultiple", function(data, xhr, formData) {
                 //     // formData.append("firstname", jQuery("#firstname").val());
@@ -93,7 +94,7 @@
 
         function load_images() {
             $.ajax({
-                url: "{{ route('product.image.fetch', ['id' => $product->id ]) }}",
+                url: "{{ route('product.image.fetch', ['id' => $product->id]) }}",
                 success: function(data) {
                     $('#uploaded_image').html(data);
                 }
