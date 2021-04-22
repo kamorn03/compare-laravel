@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>จัดการ ข่าว</h1>
+        <h1>Manage News</h1>
         <div class="separator mb-5"></div>
     </div>
 

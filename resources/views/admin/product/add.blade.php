@@ -90,17 +90,17 @@
             </div>
 
             <div class="form-group row">
-                <label for="price" class="col-sm-2 col-form-label text-right">ราคา</label>
+                <label for="price" class="col-sm-2 col-form-label text-right">price</label>
                 <div class="col-sm-10">
                     <input type="number" name="price" id="price" class="form-control" placeholder="ราคา"
                         value="{{ $product->price ?? '' }}">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="category" class="col-sm-2 col-form-label text-right">ประเภทสินค้า</label>
+                <label for="category" class="col-sm-2 col-form-label text-right">category</label>
                 <div class="col-sm-10">
                     <select name="category" id="category" class="form-control" onchange="ChangeCategory();" required>
-                        <option value="0" disabled {{ !isset($category) ? 'selected' : '' }}>เลือก ประเภทสินค้า</option>
+                        <option value="0" disabled {{ !isset($category) ? 'selected' : '' }}>select category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
                                 {{ isset($product) && $category->id == $product->category_id ? 'selected' : '' }}>
@@ -110,15 +110,15 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="collection" class="col-sm-2 col-form-label text-right">คอลเลคชั่น</label>
+                <label for="collection" class="col-sm-2 col-form-label text-right">Sub Category</label>
                 <div class="col-sm-10">
                     <select name="collection" id="collection" class="form-control">
-                        <option value="0" disabled>เลือก คอลเลคชั่น</option>
+                        <option value="0" disabled>select sub category</option>
                     </select>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label text-right">picture</label>
+                <label for="" class="col-sm-2 col-form-label text-right">main cover picture</label>
                 <div class="col-sm-10 text-center">
                     <input type="file" class="form-control" name="image" id="image"
                         value="{{ isset($product) && $product->image_path ? null : 'required' }}">

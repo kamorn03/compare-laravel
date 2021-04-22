@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="col-12">
-        <h1>Size ({{$product->name}})</h1>
+        <h1>Size ({{ $product->name }})</h1>
         <span class="float-right">
             <a href="{{ route('admin.product.size.add', ['id' => $product->id]) }}"><i class="fa fa-plus"></i>
-               Add Size</a>
+                Add Size</a>
         </span>
         <div class="separator mb-5"></div>
 
@@ -47,7 +47,7 @@
             <table class="table table-bordered text-center" id="collection-table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>No</th>
                         <th>Size</th>
                         <th>edit</th>
                         <th>remove</th>
@@ -80,7 +80,10 @@
                     ajax: '{!! route('admin.product.size.list', ['id' => $product->id]) !!}',
                     columns: [{
                             data: 'id',
-                            name: 'id'
+                            name: 'id',
+                            render: function(data, type, full, meta) {
+                                return meta.row + 1;
+                            }
                         },
                         {
                             data: 'size',

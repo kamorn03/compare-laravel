@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="col-12">
-        <h1>จัดการ ข่าว</h1>
+        <h1>Manage News</h1>
 
         <span class="float-right">
-            <a href="{{ route('admin.news.add') }}"><i class="fa fa-plus"></i> เพิ่มข่าว </a>
+            <a href="{{ route('admin.news.add') }}"><i class="fa fa-plus"></i> Add News </a>
         </span>
         <div class="separator mb-5"></div>
     </div>
@@ -16,7 +16,7 @@
     <table class="table table-bordered" id="news-table" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>No</th>
                 <th>Name</th>
                 {{-- <th>Email</th> --}}
                 <th>Created At</th>
@@ -49,7 +49,10 @@
                 ajax: '{!! route('admin.news.list') !!}',
                 columns: [{
                         data: 'id',
-                        name: 'id'
+                        name: 'id',
+                        render: function(data, type, full, meta) {
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'company_name',
