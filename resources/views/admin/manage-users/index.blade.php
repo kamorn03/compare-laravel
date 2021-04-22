@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>รายการ ผู้ใช้</h1>
+        <h1>Member List</h1>
         <div class="separator mb-5"></div>
     </div>
 
