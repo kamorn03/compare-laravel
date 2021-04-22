@@ -16,8 +16,8 @@
 
     {{-- image --}}
     @if(isset($news->path_img_detail))
-        <div style="margin-top: 50px">
-            <img src="{{ asset('/img/cards/'.$news->path_img_detail)  }}" style="width:100%;height:600px;" alt="{{ $news->path_img_detail  }}">
+        <div style="margin-top: 100px;" class="text-center">
+            <img class="news-img" src="{{ asset('/img/cards/'.$news->path_img_detail)  }}" style="" alt="{{ $news->path_img_detail  }}">
         </div>
     @endif
  
@@ -70,6 +70,12 @@
     </div>
     </div>
     <style>
+
+        img.news-img{
+            width:1090px;
+            height:600px;
+            margin: auto;
+        }
         .btn {
             /* padding: 0.375rem 2.75rem; */
             background: #81D8D0;

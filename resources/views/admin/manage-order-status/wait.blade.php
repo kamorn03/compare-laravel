@@ -27,6 +27,9 @@
                 {{-- <th>Email</th> --}}
                 <th>Created At</th>
                 <th>Updated At</th>
+
+                {{-- option field to update status --}}
+
                 {{-- <th>edit</th>
                 <th>remove</th> --}}
             </tr>
