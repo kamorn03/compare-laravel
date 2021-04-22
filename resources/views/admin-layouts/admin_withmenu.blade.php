@@ -195,7 +195,7 @@
                         <li>
                             <a href="#dashboard">
                                 <i class="iconsminds-shop-4"></i>
-                                <span> จัดการเนื้อหา (CMS) </span>
+                                <span> Manage content (CMS) </span>
                             </a>
                         </li>
                         {{-- <li>

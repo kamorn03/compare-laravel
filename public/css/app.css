@@ -10953,6 +10953,9 @@ a.text-dark:focus {
     color: #81D8D0;
 }
 
+#footer {
+    margin-top: 200px;
+}
 
 /* Slider */
 
@@ -11060,16 +11063,16 @@ a.text-dark:focus {
     float: left;
     width: 100%;
     padding-bottom: 15px;
-  }
+}
 
-  /* skin 1 */
+/* skin 1 */
 
-  .skin-1 .num-in {
+.skin-1 .num-in {
     float: left;
     width: 94px;
-  }
+}
 
-  .skin-1 .num-in span {
+.skin-1 .num-in span {
     display: block;
     float: left;
     width: 30px;
@@ -11078,13 +11081,13 @@ a.text-dark:focus {
     text-align: center;
     position: relative;
     cursor: pointer;
-  }
+}
 
-  .skin-1 .num-in span.dis:before {
+.skin-1 .num-in span.dis:before {
     background-color: #ccc !important;
-  }
+}
 
-  .skin-1 .num-in input {
+.skin-1 .num-in input {
     float: left;
     width: 32px;
     height: 32px;
@@ -11093,9 +11096,9 @@ a.text-dark:focus {
     color: #000;
     text-align: center;
     padding: 0;
-  }
+}
 
-  .skin-1 .num-in span.minus:before {
+.skin-1 .num-in span.minus:before {
     content: "";
     position: absolute;
     width: 15px;
@@ -11103,10 +11106,10 @@ a.text-dark:focus {
     background-color: #00A94F;
     top: 50%;
     left: 0;
-  }
+}
 
-  .skin-1 .num-in span.plus:before,
-  .skin-1 .num-in span.plus:after {
+.skin-1 .num-in span.plus:before,
+.skin-1 .num-in span.plus:after {
     content: "";
     position: absolute;
     right: 0px;
@@ -11114,35 +11117,35 @@ a.text-dark:focus {
     height: 2px;
     background-color: #00A94F;
     top: 50%;
-  }
+}
 
-  .skin-1 .num-in span.plus:after {
+.skin-1 .num-in span.plus:after {
     transform: rotate(90deg);
-  }
+}
 
-  /* / skin 1 */
+/* / skin 1 */
 
-  /* skin 2 */
+/* skin 2 */
 
-  .skin-2 .num-in {
+.skin-2 .num-in {
     background: #FFFFFF;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 25px;
     height: 40px;
     width: 110px;
     float: left;
-  }
+}
 
-  .skin-2 .num-in span {
+.skin-2 .num-in span {
     width: 40%;
     display: block;
     height: 40px;
     float: left;
     position: relative;
-  }
+}
 
-  .skin-2 .num-in span:before,
-  .skin-2 .num-in span:after {
+.skin-2 .num-in span:before,
+.skin-2 .num-in span:after {
     content: "";
     position: absolute;
     background-color: #667780;
@@ -11152,34 +11155,34 @@ a.text-dark:focus {
     left: 50%;
     margin-top: -1px;
     margin-left: -5px;
-  }
+}
 
-  .skin-2 .num-in span.plus:after {
+.skin-2 .num-in span.plus:after {
     transform: rotate(90deg);
-  }
+}
 
-  .skin-2 .num-in input {
+.skin-2 .num-in input {
     float: left;
     width: 20%;
     height: 40px;
     border: none;
     text-align: center;
-  }
+}
 
-  /* / skin 2 */
+/* / skin 2 */
 
-  /* skin 3 */
+/* skin 3 */
 
-  .skin-3 .num-in span {
+.skin-3 .num-in span {
     display: block;
     float: left;
     width: 25px;
     height: 34px;
     position: relative;
     cursor: pointer;
-  }
+}
 
-  .skin-3 .num-in span.minus:before {
+.skin-3 .num-in span.minus:before {
     content: "";
     position: absolute;
     width: 10px;
@@ -11189,9 +11192,9 @@ a.text-dark:focus {
     margin-left: -5px;
     margin-top: -1px;
     background-color: #000;
-  }
+}
 
-  .skin-3 .num-in .in-num {
+.skin-3 .num-in .in-num {
     float: left;
     width: 54px;
     height: 34px;
@@ -11199,9 +11202,9 @@ a.text-dark:focus {
     border-radius: 3px;
     text-align: center;
     font-size: 14px;
-  }
+}
 
-  .skin-3 .num-in span.plus:before {
+.skin-3 .num-in span.plus:before {
     content: "";
     position: absolute;
     width: 10px;
@@ -11211,9 +11214,9 @@ a.text-dark:focus {
     margin-left: -5px;
     margin-top: -1px;
     background-color: #000;
-  }
+}
 
-  .skin-3 .num-in span.plus:after {
+.skin-3 .num-in span.plus:after {
     content: "";
     position: absolute;
     height: 10px;
@@ -11223,102 +11226,102 @@ a.text-dark:focus {
     margin-top: -5px;
     margin-left: -1px;
     background-color: #000;
-  }
+}
 
-  /* / skin 3 */
+/* / skin 3 */
 
-  /* skin 4 */
+/* skin 4 */
 
-  .skin-4 .num-in {
+.skin-4 .num-in {
     float: left;
     width: 80px;
     padding: 8px 0;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
-  }
+}
 
-  .skin-4 .in-num {
+.skin-4 .in-num {
     width: 47px;
     float: left;
     height: 36px;
     font-size: 30px;
     text-align: center;
     outline: none;
-  }
+}
 
-  .skin-4 .all-span {
+.skin-4 .all-span {
     position: relative;
     float: right;
     width: 23px;
     height: 36px;
     border-left: 1px solid #000;
-  }
+}
 
-  .skin-4 .all-span span {
+.skin-4 .all-span span {
     float: left;
     width: 100%;
     height: 18px;
     position: relative;
     cursor: pointer;
-  }
+}
 
-  .skin-4 .all-span span:before {
+.skin-4 .all-span span:before {
     content: "";
     position: absolute;
     left: 50%;
     margin-left: -5px;
-  }
+}
 
-  .skin-4 span.minus:before {
+.skin-4 span.minus:before {
     top: 3px;
     border-top: 5px solid #000;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-  }
+}
 
-  .skin-4 span.minus.dis:before {
+.skin-4 span.minus.dis:before {
     opacity: 0.5;
-  }
+}
 
-  .skin-4 span.plus:before {
+.skin-4 span.plus:before {
     bottom: 3px;
     border-bottom: 5px solid #000;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-  }
+}
 
-  /* / skin 4 */
+/* / skin 4 */
 
-  /* skin 5 */
+/* skin 5 */
 
-  .skin-5 .num-in {
+.skin-5 .num-in {
     width: 88px;
     float: left;
     vertical-align: middle;
     position: relative;
     border: 1px solid #EEEFF1;
     border-radius: 3px;
-  }
+}
 
-  .skin-5 .num-in:hover {
+.skin-5 .num-in:hover {
     border: 1px solid #4687FF;
     box-shadow: 0px 0px 7px 0px rgba(70, 135, 255, 0.75);
-  }
+}
 
-  .skin-5 .num-in span {
+.skin-5 .num-in span {
     font-size: 16px;
     width: 40px;
     display: block;
     line-height: 41px;
     cursor: pointer;
-  }
+}
 
-  .skin-5 .num-in span.minus {
+.skin-5 .num-in span.minus {
     float: left;
     text-align: right;
-  }
+}
 
-  .skin-5 .num-in input {
+.skin-5 .num-in input {
     border: none;
     height: 41px;
     width: 80%;
@@ -11327,27 +11330,27 @@ a.text-dark:focus {
     font-size: 16px;
     font-weight: bold;
     box-shadow: none !important;
-  }
+}
 
-  .skin-5 .num-in span.plus {
+.skin-5 .num-in span.plus {
     float: right;
     text-align: left;
-  }
+}
 
-  /* / skin 5 */
+/* / skin 5 */
 
-  /* skin 6 */
+/* skin 6 */
 
-  .skin-6 .num-in {
+.skin-6 .num-in {
     background-color: #333;
     float: left;
     width: 120px;
     height: 45px;
     padding: 3px 0;
     border-radius: 5px;
-  }
+}
 
-  .skin-6 .num-in span {
+.skin-6 .num-in span {
     display: block;
     float: left;
     width: 34px;
@@ -11358,31 +11361,31 @@ a.text-dark:focus {
     text-align: center;
     cursor: pointer;
     transition: all 0.3;
-  }
+}
 
-  .skin-6 .num-in span:hover {
+.skin-6 .num-in span:hover {
     color: #fff !important;
-  }
+}
 
-  .skin-6 .num-in input {
+.skin-6 .num-in input {
     float: left;
     height: 39px;
     width: 52px;
     border-radius: 5px;
     text-align: center;
-  }
+}
 
-  /* / skin 6 */
+/* / skin 6 */
 
-  /* skin 7 */
+/* skin 7 */
 
-  .skin-7 .num-in {
+.skin-7 .num-in {
     float: left;
     width: 138px;
     border: 1px solid #a4a4a3;
-  }
+}
 
-  .skin-7 input.in-num {
+.skin-7 input.in-num {
     font-family: "HelveticaNeueCyr-Roman";
     font-size: 14px;
     float: left;
@@ -11392,9 +11395,9 @@ a.text-dark:focus {
     border-right: 1px solid #a4a4a3;
     background-color: #fff;
     text-align: center;
-  }
+}
 
-  .skin-7 .num-in span {
+.skin-7 .num-in span {
     font-size: 24px;
     text-align: center;
     display: block;
@@ -11404,116 +11407,116 @@ a.text-dark:focus {
     background-color: #f4f4f6;
     cursor: pointer;
     transition: all 0.3s;
-  }
+}
 
-  .skin-7 .num-in span:hover {
+.skin-7 .num-in span:hover {
     background-color: #d7d7d8;
-  }
+}
 
-  .skin-7 .num-in input {
+.skin-7 .num-in input {
     border: none;
     float: left;
     width: 44px;
     line-height: 34px;
     text-align: center;
     font-family: "helveticaneuecyrbold";
-  }
+}
 
-  /* / skin 7 */
-    .sum{
-        font-size: 16px;
-        line-height: 22px;
-        color: #797979;
-    }
+/* / skin 7 */
+.sum {
+    font-size: 16px;
+    line-height: 22px;
+    color: #797979;
+}
 
-    .info-sum-core{
-        margin-bottom: 80px;
-    }
+.info-sum-core {
+    margin-bottom: 80px;
+}
 
-    .text-header-sum {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 25px;
-        text-transform: uppercase;
-        color: #797979;
-    }
+.text-header-sum {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 25px;
+    text-transform: uppercase;
+    color: #797979;
+}
 
-    .info-sum{
-        width: 669px;
-        height: 160px;
-        font-size: 16px;
-        line-height: 24px;
-        color: #797979;
-    }
+.info-sum {
+    width: 669px;
+    height: 160px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #797979;
+}
 
-    .table-subtotal{
-        padding: 10px 2px;
-    }
+.table-subtotal {
+    padding: 10px 2px;
+}
 
-    .text-header-sum-table{
-        width: 530px;
-        height: 51px;
-        font-size: 24px;
-        line-height: 33px;
-        text-transform: uppercase;
-        color: #797979;
-    }
+.text-header-sum-table {
+    width: 530px;
+    height: 51px;
+    font-size: 24px;
+    line-height: 33px;
+    text-transform: uppercase;
+    color: #797979;
+}
 
-    .order-table a{
-        width: 476px;
-        height: 22px;
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 22px;
-        color: #797979;
-    }
+.order-table a {
+    width: 476px;
+    height: 22px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #797979;
+}
 
-    .order-table-subtotal-left{
-        width: 234px;
-        height: 26px;
-        font-size: 16px;
-        line-height: 22px;
-        color: #797979;
-    }
+.order-table-subtotal-left {
+    width: 234px;
+    height: 26px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #797979;
+}
 
-    .order-table-subtotal-right{
-        width: 234px;
-        height: 26px;
-        font-size: 16px;
-        line-height: 22px;
-        color: #797979;
-        text-align: end;
-        margin-left: -114px;
-    }
+.order-table-subtotal-right {
+    width: 234px;
+    height: 26px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #797979;
+    text-align: end;
+    margin-left: -114px;
+}
 
-    .table-total{
-        padding: 10px 2px;
-    }
+.table-total {
+    padding: 10px 2px;
+}
 
-    .order-table-total-left{
-        width: 234px;
-        height: 23px;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 22px;
-        color: #000000;
-    }
+.order-table-total-left {
+    width: 234px;
+    height: 23px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+}
 
-    .order-table-total-right{
-        width: 234px;
-        height: 25px;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 22px;
-        color: #000000;
-        text-align: end;
-        margin-left: -114px;
-    }
+.order-table-total-right {
+    width: 234px;
+    height: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    text-align: end;
+    margin-left: -114px;
+}
 
 
-    .header-green .row{
-        width: 100%;
-    }
+.header-green .row {
+    width: 100%;
+}

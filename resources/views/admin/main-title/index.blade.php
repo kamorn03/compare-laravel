@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="col-12">
-        <h1>เพิ่มรูป บนสไลด์</h1>
+        <h1>Add Slide image</h1>
         <div class="separator mb-5"></div>
     </div>
     <div class="form-group row">
         <div class="col-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Select Image</h3>
+                    <h3 class="panel-title"> Drag and Drop Image</h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group row">
@@ -17,28 +17,16 @@
                             @csrf
                         </form>
                     </div>
-
-                    <div class="form-group row">
-                        <div style="text-align: center;">
-                            <button type="button" class="btn btn-info" id="submit-all">Upload</button>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            {{-- <textarea name="editor1" id="editor1" rows="10" cols="80">
-                This is my textarea to be replaced with CKEditor 4.
-            </textarea> --}}
-            <br />
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Uploaded Image</h3>
                 </div>
-                <div class="panel-body" id="uploaded_image">
-
+                <div class="panel-body mt-5" id="uploaded_image">
                 </div>
             </div>
-            {{-- <textarea id="editor1" name="editor1"></textarea> --}}
         </div>
     </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
@@ -54,16 +42,16 @@
         // }, 500)
         // CKEDITOR.replace('editor1');
         Dropzone.options.dropzoneForm = {
-            autoProcessQueue: false,
+            autoProcessQueue: true,
             acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
 
             init: function() {
                 var submitButton = document.querySelector("#submit-all");
                 myDropzone = this;
 
-                submitButton.addEventListener('click', function() {
-                    myDropzone.processQueue();
-                });
+                // submitButton.addEventListener('click', function() {
+                //     myDropzone.processQueue();
+                // });
 
                 this.on("complete", function() {
                     if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {

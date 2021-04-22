@@ -29,7 +29,7 @@
             @yield('content')
         </main>
         {{-- footer --}}
-        <section id="footer" style="margin-top: 50px">
+        <section id="footer">
             <div class="container">
                 {{-- align text --}}
                 <div class="row text-left text-xs-left text-sm-left text-md-left">
