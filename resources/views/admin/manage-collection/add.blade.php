@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>{{ isset($collections) ? 'แก้ไข' : 'เพิ่ม' }} ประเภทย่อยสินค้า</h1>
+        <h1>{{ isset($collections) ? 'แก้ไข' : 'เพิ่ม' }} Sub Category</h1>
         <div class="separator mb-5"></div>
     </div>
 
@@ -40,8 +40,31 @@
             {{ csrf_field() }}
             <input name="id" type="hidden" value="{{ isset($collections) ? $collections->id : null }}">
             {{-- using category --}}
+
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label text-right">เลือกประเภทสินค้า</label>
+                <label for="meta_title" class="col-sm-2 col-form-label text-right">meta title</label>
+                <div class="col-sm-10">
+                    <input type="text" name="meta_title" id="meta_title" class="form-control" required placeholder="title"
+                        value="{{ $more_about->meta_title ?? '' }}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="meta_description" class="col-sm-2 col-form-label text-right">meta description</label>
+                <div class="col-sm-10">
+                    <input type="text" name="meta_description" id="meta_description" class="form-control"
+                        placeholder="description" value="{{ $more_about->meta_description ?? '' }}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="meta_keyword" class="col-sm-2 col-form-label text-right">meta keyword</label>
+                <div class="col-sm-10">
+                    <input type="text" name="meta_keyword" id="meta_keyword" class="form-control" placeholder="keyword"
+                        value="{{ $more_about->meta_keyword ?? '' }}" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label text-right">select category</label>
                 <div class="col-sm-10">
                     {{-- {{ $collections->category_id}} --}}
                     <select name="category_id" id="category_id" class="form-control">

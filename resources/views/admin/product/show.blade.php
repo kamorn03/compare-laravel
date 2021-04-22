@@ -16,14 +16,14 @@
     <table class="table table-bordered" id="product-table" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>No</th>
                 <th>Name</th>
-                <th>รูป</th>
-                <th>วันที่แก้ไข</th>
-                <th>add size</th>
-                <th>เพิ่มรูปภาพ</th>
-                <th>edit</th>
-                <th>remove</th>
+                <th>Image</th>
+                <th>Created at</th>
+                <th>Add size</th>
+                <th>Add image</th>
+                <th>Edit</th>
+                <th>Remove</th>
             </tr>
         </thead>
     </table>
@@ -50,7 +50,10 @@
                 ajax: '{!! route('admin.product.list') !!}',
                 columns: [{
                         data: 'id',
-                        name: 'id'
+                        name: 'id',
+                        render: function(data, type, full, meta) {
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'name',
@@ -75,7 +78,7 @@
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
                             return '<a href="/digiso-admin/product/' + row.id +
-                                '/size"><i class="iconsminds-maximize"></i> เพิ่มขนาดสินค้า</a>'
+                                '/size"><i class="iconsminds-maximize"></i> Add size</a>'
                         }
                     },
                     {
@@ -83,7 +86,7 @@
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
                             return '<a href="/digiso-admin/product/' + row.id +
-                                '/add_image">เพิ่มรูปภาพ</a>'
+                                '/add_image">Add image</a>'
                         }
                     },
                     {

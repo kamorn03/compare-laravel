@@ -41,8 +41,8 @@
             <table class="table table-bordered text-center" id="collection-table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>ประเภทสินค้า</th>
+                        <th>No</th>
+                        <th>Category</th>
                         <th>edit</th>
                         <th>remove</th>
                     </tr>
@@ -75,7 +75,10 @@
                 ajax: '{!! route('admin.collection.datalist') !!}',
                 columns: [{
                         data: 'id',
-                        name: 'id'
+                        name: 'id',
+                        render: function(data, type, full, meta) {
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'name',

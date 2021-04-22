@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>เพิ่มรูป แบนเนอร์</h1>
+        <h1>Banner</h1>
         <div class="separator mb-5"></div>
     </div>
     <div class="form-group row">
