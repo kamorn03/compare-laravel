@@ -48,6 +48,9 @@ class CategoryController extends Controller
         $insert = [
             'slug' => SlugService::createSlug(Category::class, 'slug', $request->slug),
             'name' => $request->name,
+            'meta_title' =>  $request->meta_title,
+            'meta_description' =>  $request->meta_description,
+            'meta_keyword' =>  $request->meta_keyword,
         ];
 
         Category::insertGetId($insert);
@@ -75,6 +78,9 @@ class CategoryController extends Controller
         $insert = [
             'slug' => SlugService::createSlug(Category::class, 'slug', $request->slug),
             'name' => $request->name,
+            'meta_title' =>  $request->meta_title,
+            'meta_description' =>  $request->meta_description,
+            'meta_keyword' =>  $request->meta_keyword,
         ];
 
         // dd($insert);

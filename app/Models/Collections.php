@@ -24,7 +24,10 @@ class Collections extends Model
     protected $fillable = [
         'name',
         'slug',
-        'category_id'
+        'category_id',
+        'meta_title',
+        'meta_description',
+        'meta_keyword',
     ];
  
 

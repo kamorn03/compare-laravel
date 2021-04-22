@@ -52,7 +52,10 @@ class CollectionController extends Controller
         $insert = [
             'slug' => SlugService::createSlug(Collections::class, 'slug', $request->slug),
             'name' => $request->name,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'meta_title' =>  $request->meta_title,
+            'meta_description' =>  $request->meta_description,
+            'meta_keyword' =>  $request->meta_keyword,
         ];
 
         Collections::insertGetId($insert);
@@ -78,7 +81,10 @@ class CollectionController extends Controller
         $insert = [
             'slug' => SlugService::createSlug(Collections::class, 'slug', $request->slug),
             'name' => $request->name,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'meta_title' =>  $request->meta_title,
+            'meta_description' =>  $request->meta_description,
+            'meta_keyword' =>  $request->meta_keyword,
         ];
         $category->update($insert);
         return Redirect::to(route('admin.collection'))->with('success','Greate! posts updated successfully.');
