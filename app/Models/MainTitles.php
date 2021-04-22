@@ -12,7 +12,7 @@ class MainTitles extends Model
     protected $fillable = [
         'image_path',
         'line_title',
-        'description' 
+        'description',
+        'link'
     ];
-
 }
