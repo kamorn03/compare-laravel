@@ -41,10 +41,9 @@ class MainTitleController extends Controller
 
         $main_title = MainTitles::where('id',$id)->update([
             // 'image_path' => "images/title/".$imageName,
-            'line_title' => 'title',
-            'description' => $request->get('description'),
+            'link' => $request->get('link')
         ]);
-        // dd($main_title);
+        dd($request->get('link'));
     }
     
 
@@ -67,12 +66,12 @@ class MainTitleController extends Controller
                     <div class="form-group row mt-3">
                     <label for="meta_title" class="col-sm-2 col-form-label text-right">Link</label>
                         <div class="col-sm-10">
-                            <input class="form-control" placeholder="link" id="link-'.$image->id.'" name="link-'.$image->id.'">
+                            <input class="form-control" placeholder="link" id="link-'.$image->id.'" value="'.$image->link.'" name="link-'.$image->id.'">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 text-right">
-                            <button type="button" class="btn btn-primary save_link" value="'.$image->link.'" id="save_link-'.$image->id.'">save</button>
+                            <button type="button" class="btn btn-primary save_link" link-id="'.$image->id.'"  id="save_link-'.$image->id.'">save</button>
                         </div>
                         <div class="col-sm-6">
                         <button type="button" class="btn btn-primary remove_image" id="'.$image->id.'">Remove</button>

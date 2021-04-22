@@ -68,9 +68,9 @@
             })
         }
 
-        $(document).on('click', '.save_title', function() {
-            var id = $(this).attr('id');
-            id = id.split('-');
+        $(document).on('click', '.save_link', function() {
+            var id = $(this).attr('link-id');
+            // id = id.split('-');
             $.ajax({
                 url: "{{ route('main-title.update') }}",
                 // headers: {
@@ -79,11 +79,15 @@
                 method: 'post',
                 data: {
                     "_token": '{{ csrf_token() }}',
-                    'id': id[2],
-                    'title': $('#title-line-1-' + id[2]).val(),
-                    'description': CKEDITOR.instances['title-ck-' + id[2]].getData(),
+                    'id': id,
+                    'link': $('#link-' + id).val(),
                 },
                 success: function(data) {
+                    Swal.fire(
+                        'สำเร็จ!',
+                        'บันทึกข้อมูลสำเร็จ!',
+                        'success'
+                    )
                     load_images();
                 }
             })
@@ -92,15 +96,28 @@
         $(document).on('click', '.remove_image', function() {
             var id = $(this).attr('id');
             console.log(name)
-            $.ajax({
-                url: "{{ route('main-title.delete') }}",
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    load_images();
+
+            Swal.fire({
+                title: 'ต้องการลบข้อมูลใช่หรือไม่?',
+                showCancelButton: true,
+                confirmButtonText: `ลบข้อมูล`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('main-title.delete') }}",
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            Swal.fire('ลบข้อมูลสำเร็จ!', '', 'success')
+                            load_images();
+                        }
+                    })
+
                 }
             })
+
         });
 
     </script>

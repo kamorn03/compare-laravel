@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <style>
         #main-content-title {
             height: 120px;
