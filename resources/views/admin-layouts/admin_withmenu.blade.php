@@ -174,7 +174,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                      document.getElementById('logout-form').submit();">
+                                                                                                                                                                                              document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -198,16 +198,10 @@
                                 <span> Manage content (CMS) </span>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="#main_menu">
-                                <i class="iconsminds-digital-drawing"></i>
-                                <span> ตั้งค่า </span>
-                            </a>
-                        </li> --}}
                         <li>
                             <a href="#main_menu">
                                 <i class="iconsminds-digital-drawing"></i>
-                                <span> สมาชิก </span>
+                                <span> Member </span>
                             </a>
                         </li>
                         <li>
@@ -240,21 +234,22 @@
                     <ul class="list-unstyled" data-link="dashboard">
                         <li>
                             <a href="{{ route('admin.main-title') }}">
-                                <i class="simple-icon-rocket"></i> <span class="d-inline-block">หน้าแรก</span>
+                                <i class="simple-icon-rocket"></i> <span class="d-inline-block">Home</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="{{ route('admin.more-about') }}">
-                                <i class="simple-icon-doc"></i> <span class="d-inline-block">เกี่ยวกับฉัน</span>
+                                <i class="simple-icon-doc"></i> <span class="d-inline-block">About Us</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('admin.contact') }}">
-                                <i class="simple-icon-doc"></i> <span class="d-inline-block">ติดต่อเรา (contact)</span>
+                                <i class="simple-icon-doc"></i> <span class="d-inline-block">Contact Us</span>
                             </a>
                         </li>
                     </ul>
+
+
                     <ul class="list-unstyled" data-link="main_menu">
                         <li>
                             <a href="{{ route('admin.users') }}">

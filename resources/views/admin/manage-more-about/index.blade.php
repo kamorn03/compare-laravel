@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1> แก้ไข CMS </h1>
+        <h1> Manage About Us</h1>
         <div class="separator mb-5"></div>
     </div>
 
@@ -10,52 +10,54 @@
         @csrf
         <div>
             <div class="form-group mb-2">
-                <h1><label for="topic">หน้า</label>
-                    <span id="topic">เกี่ยวกับเรา
+                <h1>
+                    {{-- <label for="topic"></label> --}}
+                    <span id="topic">About Us
                     </span>
                 </h1>
             </div>
 
-            {{-- <div class="form-group row">
-                <label for="" class="col-sm-1 col-form-label">
-                    <h3>รูปที่ 1</h3>
-                </label>
-                <div class="col-sm-11 text-center">
-                    <input type="file" class="form-control" name="image1" id="image1">
-                    <div class="float-left">
-                        <img class="img-thumbnail" src="{{ asset('img/dist/default-thumbnail.jpg') }}" width="300"
-                            height="200" id="preview-image-1">
-                    </div>
-                </div>
-            </div> --}}
 
-            <div class="form-group">
-                <h3 for="editor1">รายละเอียดแบบย่อ</h3>
-                <textarea name="editor1" id="editor1" rows="10" cols="80">
-                                                {{ !is_null($more_about) ? $more_about->content : '' }}
-                                        </textarea>
+            <div class="form-group row">
+                <label for="meta_title" class="col-sm-2 col-form-label text-right">meta title</label>
+                <div class="col-sm-10">
+                    <input type="text" name="meta_title" id="meta_title" class="form-control" required placeholder="title"
+                        value="{{ $news->meta_title ?? '' }}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="meta_description" class="col-sm-2 col-form-label text-right">meta description</label>
+                <div class="col-sm-10">
+                    <input type="text" name="meta_description" id="meta_description" class="form-control"
+                        placeholder="description" value="{{ $news->meta_description ?? '' }}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="meta_keyword" class="col-sm-2 col-form-label text-right">meta keyword</label>
+                <div class="col-sm-10">
+                    <input type="text" name="meta_keyword" id="meta_keyword" class="form-control" placeholder="keyword"
+                        value="{{ $news->meta_keyword ?? '' }}" required>
+                </div>
             </div>
 
-            {{-- <div class="form-group row">
-                <label for="" class="col-sm-1 col-form-label">
-                    <h3>รูปที่ 2</h3>
-                </label>
-                <div class="col-sm-11 text-center">
-                    <input type="file" class="form-control" name="image2" id="image2">
-                    <div class="float-left">
-                        <img class="img-thumbnail" src="{{ asset('img/dist/default-thumbnail.jpg') }}" width="300"
-                            height="200" id="preview-image-2">
-                    </div>
+            <div class="form-group row">
+                <label for="meta_keyword" class="col-sm-2 col-form-label text-right">Sub detail</label>
+                <div class="col-sm-10">
+                    <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                {{ !is_null($more_about) ? $more_about->content : '' }}
+                        </textarea>
                 </div>
-            </div> --}}
-            <div class="form-group">
-                <h3 for="editor1">รายละเอียดทั้งหมด</h3>
-                <textarea name="editor2" id="editor2" rows="10" cols="80">
-                                            {{ !is_null($more_about) ? $more_about->detail : '' }}
-                                        </textarea>
+            </div>
+
+            <div class="form-group row">
+                <label for="meta_keyword" class="col-sm-2 col-form-label text-right">Detail</label>
+                <div class="col-sm-10">
+                    <textarea name="editor2" id="editor2" rows="10" cols="80">
+                            {{ !is_null($more_about) ? $more_about->detail : '' }}
+                        </textarea>
+                </div>
             </div>
         </div>
-
         <div class="col-12">
             <div class="separator mt-2 mb-2"></div>
             <button type="submit" class="btn btn-primary">ตกลง</button>

@@ -33,14 +33,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script> --}}
     <script type="text/javascript">
-        // setTimeout(function() {
-        //     var text = {!! json_encode($maintext->toArray()) !!};
-        //     for (var i = 0; i < text.length; i++) {
-        //         CKEDITOR.replace('title-ck-' + text[i].id);
-
-        //     }
-        // }, 500)
-        // CKEDITOR.replace('editor1');
         Dropzone.options.dropzoneForm = {
             autoProcessQueue: true,
             acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
@@ -72,12 +64,6 @@
                 url: "{{ route('main-title.fetch') }}",
                 success: function(data) {
                     $('#uploaded_image').html(data);
-                    // setTimeout(function() {
-                    //     var text = {!! json_encode($maintext->toArray()) !!};
-                    //     for (var i = 0; i < text.length; i++) {
-                    //         CKEDITOR.replace('title-ck-' + text[i].id);
-                    //     }
-                    // }, 500)
                 }
             })
         }
