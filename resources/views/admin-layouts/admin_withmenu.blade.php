@@ -248,12 +248,10 @@
                             </a>
                         </li>
                     </ul>
-
-
                     <ul class="list-unstyled" data-link="main_menu">
                         <li>
                             <a href="{{ route('admin.users') }}">
-                                <i class="simple-icon-doc"></i> <span class="d-inline-block">รายการ สมาชิก</span>
+                                <i class="simple-icon-doc"></i> <span class="d-inline-block">Member list</span>
                             </a>
                         </li>
                     </ul>

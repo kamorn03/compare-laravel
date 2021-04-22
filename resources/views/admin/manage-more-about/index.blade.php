@@ -9,13 +9,12 @@
     <form action="{{ route('admin.more-about.update') }}" method="post">
         @csrf
         <div>
-            <div class="form-group mb-2">
+            {{-- <div class="form-group mb-2">
                 <h1>
-                    {{-- <label for="topic"></label> --}}
                     <span id="topic">About Us
                     </span>
                 </h1>
-            </div>
+            </div> --}}
 
 
             <div class="form-group row">
@@ -58,8 +57,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="separator mt-2 mb-2"></div>
+        <div class="col-12 w-100 text-center">
+            <div class="separator mt-2 mb-2 "></div>
             <button type="submit" class="btn btn-primary">ตกลง</button>
         </div>
     </form>

@@ -27,6 +27,9 @@ class MoreAboutController extends Controller
         $data_more_about = CMSAdminManage::where('page_type', 'more-about')->first();
         if(!$data_more_about){
             $data_more_about = CMSAdminManage::create([
+                'meta_title' =>  $request->get('meta_title'),
+                'meta_description' =>  $request->get('meta_description'),
+                'meta_keyword' =>  $request->get('meta_keyword'),
                 'page_type' => 'more-about',
                 'content' => $request->get('editor1'),
                 'detail' => $request->get('editor2')
@@ -34,6 +37,9 @@ class MoreAboutController extends Controller
             return Redirect::to(route('admin.more-about'))->with('success','Greate! posts created successfully.');
         }else{
             $data_more_about = CMSAdminManage::where('page_type', 'more-about')->update([
+                'meta_title' =>  $request->get('meta_title'),
+                'meta_description' =>  $request->get('meta_description'),
+                'meta_keyword' =>  $request->get('meta_keyword'),
                 'page_type' => 'more-about',
                 'content' => $request->get('editor1'),
                 'detail' => $request->get('editor2')

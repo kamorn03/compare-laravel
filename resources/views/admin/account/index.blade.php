@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>รายการ สมาชิก</h1>
+        <h1>Member list</h1>
 
         <span class="float-right">
             <a href="{{ route('admin.product.add') }}"><i class="fa fa-plus"></i> add product </a>
