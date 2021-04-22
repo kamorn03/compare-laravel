@@ -1,33 +1,50 @@
 @extends('admin-layouts.admin_app')
 
 @section('content')
+
+    <div class="col-12">
+        <h1>Show User</h1>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('admin.users') }}"> Back</a>
+        </div>
+        <div class="separator mb-5"></div>
+    </div>
     <div class="container" style="margin-top: 80px">
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
-                    <h2> Show User</h2>
-                </div>
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('admin.users') }}"> Back</a>
-                </div>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Name:</strong>
+        <div class="form-group row">
+            <label for="name" class="col-sm-2">Name</label>
+            <div class="col-sm-10">
+                <p>
                     {{ $user->name }}
-                </div>
+                </p>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Email:</strong>
-                    {{ $user->email }}
-                </div>
-            </div>
-           
         </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2">Email</label>
+            <div class="col-sm-10">
+                <p>
+                    {{ $user->email }}
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="address" class="col-sm-2">Address</label>
+            <div class="col-sm-10">
+                <p>
+                    {{-- {{ json_encode($user->address)}} --}}
+                    {{ $user->address['address'] ?? '' }}
+                    {{ $user->address['city'] ?? '' }}
+                    {{ $user->address['state'] ?? '' }}
+                    {{ $user->address['zip'] ?? '' }}
+                    เบอร์โทร {{ $user->address['phone'] ?? '-' }}
+
+
+                    {{-- @foreach ($user->address as $address)
+                       {{$address}}
+                   @endforeach --}}
+                </p>
+            </div>
+        </div>
+
     </div>
 @endsection
