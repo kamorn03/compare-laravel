@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="col-12">
-        <h1>{{ isset($size) ? 'แก้ไข' : 'เพิ่ม' }} ขนาดสินค้า</h1>
+        <h1>{{ isset($size) ? 'Edit' : 'Add' }} Size ({{$product->name}})</h1>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('admin.product.size', ['id' => $product->id]) }}"> Back</a>
+        </div>
         <div class="separator mb-5"></div>
     </div>
 

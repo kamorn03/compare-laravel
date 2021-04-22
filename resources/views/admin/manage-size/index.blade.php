@@ -2,12 +2,16 @@
 
 @section('content')
     <div class="col-12">
-        <h1>ขนาดสินค้า</h1>
+        <h1>Size ({{$product->name}})</h1>
         <span class="float-right">
             <a href="{{ route('admin.product.size.add', ['id' => $product->id]) }}"><i class="fa fa-plus"></i>
-                เพิ่มขนาดสินค้า </a>
+               Add Size</a>
         </span>
         <div class="separator mb-5"></div>
+
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('admin.product') }}"> Back</a>
+        </div>
     </div>
 
     <div class="container" style="margin-top: 80px">
@@ -44,7 +48,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>ขนาดสินค้า</th>
+                        <th>Size</th>
                         <th>edit</th>
                         <th>remove</th>
                     </tr>

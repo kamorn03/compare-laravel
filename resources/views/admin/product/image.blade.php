@@ -4,7 +4,7 @@
     <div class="col-12">
         <h1>Add Product Images ({{ $product->name }})</h1>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('admin.product')}}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('admin.product') }}"> Back</a>
         </div>
         <div class="separator mb-5"></div>
     </div>
@@ -25,7 +25,7 @@
                         </form>
                     </div>
 
-                  
+
                 </div>
             </div>
             <br />
@@ -115,4 +115,11 @@
         });
 
     </script>
+    <style>
+        .dropzone .dz-preview.dz-image-preview {
+            background: white;
+            z-index: 0;
+        }
+
+    </style>
 @endsection

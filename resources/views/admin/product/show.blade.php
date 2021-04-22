@@ -20,7 +20,7 @@
                 <th>Name</th>
                 <th>รูป</th>
                 <th>วันที่แก้ไข</th>
-                <th>เพิ่มขนาดสินค้า</th>
+                <th>add size</th>
                 <th>เพิ่มรูปภาพ</th>
                 <th>edit</th>
                 <th>remove</th>
