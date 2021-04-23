@@ -57,7 +57,10 @@
                 ajax: '{!! route('admin.order.list', ['status' => $status]) !!}',
                 columns: [{
                         data: 'id',
-                        name: 'id'
+                        name: 'id',
+                        render: function(data, type, full, meta) {
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'order_no',
