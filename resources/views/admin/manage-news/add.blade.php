@@ -3,6 +3,9 @@
 @section('content')
     <div class="col-12">
         <h1>Add News</h1>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('admin.news') }}"> Back</a>
+        </div>
         <div class="separator mb-5"></div>
     </div>
 

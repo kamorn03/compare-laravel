@@ -3,15 +3,22 @@
 @section('content')
     <div class="col-12">
         @php
+            // $title = [
+            //     'watting_payment' => 'รอการชำระเงิน',
+            //     'successful_payment' => 'แจ้งชำระเงินแล้ว รอตรวจสอบ',
+            //     'waiting_delivery' => 'กำลังดำเนินการ',
+            //     'successful_delivery' => 'ส่งสินค้าแล้ว',
+            //     'cancel' => 'ชำระเงินผิด',
+            // ];
             $title = [
-                'watting_payment' => 'รอการชำระเงิน',
-                'successful_payment' => 'แจ้งชำระเงินแล้ว รอตรวจสอบ',
-                'waiting_delivery' => 'กำลังดำเนินการ',
-                'successful_delivery' => 'ส่งสินค้าแล้ว',
-                'cancel' => 'ชำระเงินผิด',
+                'watting_payment' => 'Watting Payment',
+                'successful_payment' => 'Successful Payment',
+                'waiting_delivery' => 'Waiting Delivery',
+                'successful_delivery' => 'Successful Delivery',
+                'cancel' => 'Cancel',
             ];
         @endphp
-        <h1>รายการ {{ $title[$status] }}</h1>
+        <h1>Order {{ $title[$status] }}</h1>
         <div class="separator mb-5"></div>
     </div>
 
