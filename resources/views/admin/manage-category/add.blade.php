@@ -3,7 +3,9 @@
 @section('content')
     <div class="col-12">
         <h1>{{ isset($categories) ? 'Edit' : 'Add' }} Category</h1>
-
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('admin.collection') }}"> Back</a>
+        </div>
         <div class="separator mb-5"></div>
     </div>
 

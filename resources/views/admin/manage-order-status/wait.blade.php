@@ -17,7 +17,6 @@
 
     {{-- datatable --}}
 
-
     <table class="table table-bordered" id="order-table" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -26,7 +25,7 @@
                 <th>USER</th>
                 {{-- <th>Email</th> --}}
                 <th>Created At</th>
-                <th>Updated At</th>
+                <th>Update Status</th>
 
                 {{-- option field to update status --}}
 
