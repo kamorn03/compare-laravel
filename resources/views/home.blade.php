@@ -55,8 +55,7 @@
                                     @php
                                         $collection = App\Models\Collections::where('category_id', $pro->category_id)->first();
                                     @endphp
-                                    <a
-                                        href="/shop/{{ $pro->cate_slug }}/{{ $collection->name ?? 'collection' }}/{{ $pro->slug }}">
+                                    <a href="/shop/{{ $pro->cate_slug }}/{{ $collection->name ?? 'collection' }}/{{ $pro->slug }}">
                                         <img src="/img/cards/{{ $pro->image_path }}" width="530px" height="530px"
                                             class="card-img-top mx-auto" style="" alt="{{ $pro->image_path }}">
                                     </a>
