@@ -113,7 +113,7 @@
                         <ul class="collapse list-unstyled" id="orderSubmenu">
                             <li>
                                 <a href="{{ route('admin.order', ['status' => 'watting_payment']) }}">
-                                    watting payment
+                                    watting payment &nbsp;
                                     @php
                                         $watting_payment_count = App\Models\Order::where('status', 'watting_payment')->count();
                                     @endphp
@@ -125,7 +125,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.order', ['status' => 'successful_payment']) }}">
-                                    successful payment 
+                                    successful payment &nbsp;
                                     @php
                                         $successful_payment_count = App\Models\Order::where('status', 'successful_payment')->count();
                                     @endphp
@@ -136,7 +136,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.order', ['status' => 'waiting_delivery']) }}">
-                                    waiting delivery
+                                    waiting delivery &nbsp;
                                     @php
                                     $waiting_delivery_count = App\Models\Order::where('status', 'waiting_delivery')->count();
                                     @endphp
@@ -147,7 +147,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.order', ['status' => 'successful_delivery']) }}">
-                                    successful delivery
+                                    successful delivery &nbsp;
                                     @php
                                         $successful_delivery_count = App\Models\Order::where('status', 'successful_delivery')->count();
                                     @endphp
@@ -158,7 +158,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.order', ['status' => 'cancel']) }}">
-                                    cancel
+                                    cancel &nbsp;
                                     @php
                                         $cancel_count = App\Models\Order::where('status', 'cancel')->count();
                                     @endphp
