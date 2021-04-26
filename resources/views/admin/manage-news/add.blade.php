@@ -14,7 +14,7 @@
     <div class="row">
         <div class="card card-tasks">
             <div class="card-body">
-                <div class="container">
+                <div class="container" style="margin-top: 50px">
                     @if (session()->has('success_msg'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session()->get('success_msg') }}
@@ -48,8 +48,8 @@
                         method="POST" name="add_post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{-- @if (isset($news) && $news->id)
-                <input name="_method" type="hidden" value="PUT">
-            @endif --}}
+                            <input name="_method" type="hidden" value="PUT">
+                        @endif --}}
 
 
                         <input name="id" type="hidden" value="{{ isset($news) ? $news->id : null }}">

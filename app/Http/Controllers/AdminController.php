@@ -70,6 +70,15 @@ class AdminController extends Controller
         return view('admin.manage-users.show',compact('user'));
     }
 
+    public function userRemove(Request $request, $id)
+    {
+        // dd(Blogger::find($id));
+        Blogger::where('id',$id)->first()->delete();
+        return redirect()->route('admin.users')
+                        ->with('success','User deleted successfully');
+    }
+    
+
     public function product()
     {
         $submit_url = "/api/home_manage";

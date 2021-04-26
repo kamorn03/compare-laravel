@@ -134,7 +134,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         // users
         Route::get('digiso-admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
         Route::get('digiso-admin/users/{id}/show', [App\Http\Controllers\AdminController::class, 'userShow'])->name('users.show');
-
+        Route::delete('digiso-admin/users/{id}/remove', [App\Http\Controllers\AdminController::class, 'userRemove'])->name('users.remove');
         // category
         Route::get('digiso-admin/category', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
         Route::get('digiso-admin/category-list', [App\Http\Controllers\AdminController::class, 'categoryList'])->name('category.list');

@@ -52,7 +52,7 @@
                 </div>
 
                 <ul class="nav">
-                    <li class="active ">
+                    <li class="{{ request()->is('admin') ? 'active' : '' }}">
                         <a href="{{ route('admin') }}">
                             <i class="tim-icons icon-chart-pie-36"></i>
                             <p>Home</p>
