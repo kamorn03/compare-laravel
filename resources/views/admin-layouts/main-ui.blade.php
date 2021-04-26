@@ -51,7 +51,6 @@
                     </a>
                 </div>
 
-
                 <ul class="nav">
                     <li class="active ">
                         <a href="{{ route('admin') }}">
@@ -89,10 +88,24 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="./icons.html">
-                            <i class="tim-icons icon-atom"></i>
-                            <p>Icons</p>
-                        </a>
+                        <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle"><i class="tim-icons icon-cart"></i>Product</a>
+                        <ul class="collapse list-unstyled" id="productSubmenu">
+                            <li>
+                                <a href="{{ route('admin.category') }}"><i
+                                        class="tim-icons icon-basket-simple"></i>Category</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.collection') }}"><i
+                                        class="tim-icons icon-basket-simple"></i>Sub
+                                    Category</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.product') }}"><i
+                                        class="tim-icons icon-bullet-list-67"></i>Product
+                                    list </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="./map.html">
@@ -316,6 +329,7 @@
         </div>
     </div>
     <!--   Core JS Files   -->
+
     <script src="{{ asset('js/core/jquery.min.js') }}"></script>
     <script src="{{ asset('js/core/popper.min.js') }}"></script>
     <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
@@ -329,6 +343,9 @@
     <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('js/black-dashboard.min.js?v=1.0.0') }}"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" />
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js">
+    </script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('demo/demo.js') }}"></script>
     <script>
