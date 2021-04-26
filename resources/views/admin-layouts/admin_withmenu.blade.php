@@ -267,7 +267,6 @@
                                 <i class="simple-icon-pie-chart"></i> <span class="d-inline-block">Sub Category</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="{{ route('admin.product') }}">
                                 <i class="simple-icon-basket-loaded"></i> <span class="d-inline-block">Product list</span>

@@ -1,4 +1,4 @@
-@extends('admin-layouts.admin_app')
+@extends('admin-layouts.main-ui')
 
 @section('content')
     <div class="col-12">
@@ -29,9 +29,9 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script> --}}
     <script type="text/javascript">
         Dropzone.options.dropzoneForm = {
             autoProcessQueue: true,
