@@ -39,7 +39,7 @@
 
 <body class="white-content">
     <div class="wrapper">
-        <div class="sidebar">
+        <div class="sidebar" data="blue">
             <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red" -->
             <div class="sidebar-wrapper">
                 <div class="logo">
@@ -220,7 +220,7 @@
                 </ul>
             </div>
         </div>
-        <div class="main-panel">
+        <div class="main-panel" data="green">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
                 <div class="container-fluid">

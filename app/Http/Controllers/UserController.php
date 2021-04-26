@@ -232,7 +232,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        Blogger::find($id)->delete();
         return redirect()->route('admin.users')
                         ->with('success','User deleted successfully');
     }
