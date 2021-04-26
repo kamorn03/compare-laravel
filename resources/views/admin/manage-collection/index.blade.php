@@ -1,59 +1,68 @@
-@extends('admin-layouts.admin_app')
+@extends('admin-layouts.main-ui')
 
 @section('content')
-    <div class="col-12">
-        <h1>ประเภทย่อยสินค้า</h1>
-        <span class="float-right">
-            <a href="{{ route('admin.collection.add') }}"><i class="fa fa-plus"></i> Add Sub category </a>
-        </span>
-        <div class="separator mb-5"></div>
-    </div>
 
-    <div class="container" style="margin-top: 80px">
-        @if (session()->has('success_msg'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session()->get('success_msg') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
-        @if (session()->has('alert_msg'))
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ session()->get('alert_msg') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        @endif
-        @if (count($errors) > 0)
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ $error }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card card-tasks">
+                <div class="card-body">
+                    <div class="col-12">
+                        <h1>Sub Category</h1>
+                        <span class="float-right">
+                            <a href="{{ route('admin.collection.add') }}"><i class="fa fa-plus"></i> Add Sub Category </a>
+                        </span>
+                        <div class="separator mb-5"></div>
+                    </div>
+
+                    <div class="container" style="margin-top: 80px">
+                        @if (session()->has('success_msg'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session()->get('success_msg') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        @endif
+                        @if (session()->has('alert_msg'))
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ session()->get('alert_msg') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        @endif
+                        @if (count($errors) > 0)
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ $error }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            @endforeach
+                        @endif
+
+                        <div class="col-12">
+                            <table class="table table-bordered text-center" id="collection-table" cellspacing="0"
+                                width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Category</th>
+                                        <th>edit</th>
+                                        <th>remove</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-            @endforeach
-        @endif
-
-        <div class="col-12">
-            <table class="table table-bordered text-center" id="collection-table" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Category</th>
-                        <th>edit</th>
-                        <th>remove</th>
-                    </tr>
-                </thead>
-            </table>
+            </div>
         </div>
+    </div>
+@endsection
 
-
-    @endsection
-
-    @push('scripts')
+@push('scripts')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
@@ -88,14 +97,17 @@
                         data: null,
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
-                            return '<a href="/digiso-admin/collection/' + row.id + '/edit"><i class="fa fa-pencil" data-id="' + row.id + '"></i></a>'
+                            return '<a href="/digiso-admin/collection/' + row.id +
+                                '/edit"><i class="tim-icons icon-pencil" data-id="' + row.id +
+                                '"></i></a>'
                         }
                     },
                     {
                         data: null,
                         className: "dt-center editor-delete",
                         render: function(data, type, row) {
-                            return  '<a href="/digiso-admin/collection/' + row.id + '/delete"><i class="fa fa-trash" data-id="' + row.id + '"></i></a>'
+                            return '<a href="/digiso-admin/collection/' + row.id +
+                                '/delete"><i class="fa fa-trash" data-id="' + row.id + '"></i></a>'
                         }
                     }
                 ]
@@ -103,4 +115,3 @@
         });
 
     </script>
-

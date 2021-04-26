@@ -58,9 +58,7 @@
             </div>
         </div>
     </div>
-@endsection
 
-@push('scripts')
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script>
         $(function() {
@@ -94,7 +92,7 @@
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
                             return '<a href="/digiso-admin/category/' + row.id +
-                                '/edit"><i class="fa fa-pencil" data-id="' + row.id +
+                                '/edit"><i class="tim-icons icon-pencil" data-id="' + row.id +
                                 '"></i></a>'
                         }
                     },
@@ -112,3 +110,4 @@
         });
 
     </script>
+@endsection

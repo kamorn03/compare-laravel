@@ -1,36 +1,41 @@
-@extends('admin-layouts.admin_app')
+@extends('admin-layouts.main-ui')
 
 @section('content')
-    <div class="col-12">
-        <h1>Products</h1>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card card-tasks">
+                <div class="card-body">
+                    <div class="col-12">
 
-        <span class="float-right">
-            <a href="{{ route('admin.product.add') }}"><i class="fa fa-plus"></i> add product </a>
-        </span>
-        <div class="separator mb-5"></div>
+                        <h1 class="float-left">Products</h1>
+
+                        <span class="float-right">
+                            <a href="{{ route('admin.product.add') }}"><i class="fa fa-plus"></i> add product </a>
+                        </span>
+                        <div class="separator mb-5"></div>
+                    </div>
+
+                    {{-- datatable --}}
+
+
+                    <table class="table table-bordered" id="product-table" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Created at</th>
+                                <th>Add size</th>
+                                <th>Add image</th>
+                                <th>Edit</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-
-    {{-- datatable --}}
-
-
-    <table class="table table-bordered" id="product-table" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Created at</th>
-                <th>Add size</th>
-                <th>Add image</th>
-                <th>Edit</th>
-                <th>Remove</th>
-            </tr>
-        </thead>
-    </table>
-
-@endsection
-
-@push('scripts')
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script>
         $(function() {
@@ -94,7 +99,8 @@
                         className: "dt-center editor-edit",
                         render: function(data, type, row) {
                             return '<a href="/digiso-admin/product/' + row.id +
-                                '/edit"><i class="fa fa-pencil" data-id="' + row.id + '"></i></a>'
+                                '/edit"><i class="tim-icons icon-pencil" data-id="' + row.id +
+                                '"></i></a>'
                         }
                     },
                     {
@@ -110,3 +116,10 @@
         });
 
     </script>
+    <style>
+        .card-tasks {
+            height: 100%;
+        }
+
+    </style>
+@endsection
