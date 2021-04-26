@@ -1,20 +1,21 @@
 @extends('admin-layouts.main-ui')
 
 @section('content')
+
+    <div class="form-group row">
+        <div class="col-12">
+            <h2 class="pull-left">Category</h2>
+            <span class="pull-right">
+                <a href="{{ route('admin.category.add') }}"><i class="fa fa-plus"></i> Add Category </a>
+            </span>
+            <div class="separator mb-5"></div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card card-tasks">
                 <div class="card-body">
-                    <div class="form-group">
-                        <div class="col-12">
-                            <h2 class="pull-left">Category</h2>
-                            <span class="pull-right">
-                                <a href="{{ route('admin.category.add') }}"><i class="fa fa-plus"></i> Add Category </a>
-                            </span>
-                            <div class="separator mb-5"></div>
-                        </div>
-                    </div>
-
                     <div style="margin-top: 80px">
                         @if (session()->has('success_msg'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

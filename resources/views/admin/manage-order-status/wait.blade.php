@@ -1,50 +1,52 @@
 @extends('admin-layouts.main-ui')
 
 @section('content')
+
+    <div class="col-12">
+        @php
+            // $title = [
+            //     'watting_payment' => 'รอการชำระเงิน',
+            //     'successful_payment' => 'แจ้งชำระเงินแล้ว รอตรวจสอบ',
+            //     'waiting_delivery' => 'กำลังดำเนินการ',
+            //     'successful_delivery' => 'ส่งสินค้าแล้ว',
+            //     'cancel' => 'ชำระเงินผิด',
+            // ];
+            $title = [
+                'watting_payment' => 'Watting Payment',
+                'successful_payment' => 'Successful Payment',
+                'waiting_delivery' => 'Waiting Delivery',
+                'successful_delivery' => 'Successful Delivery',
+                'cancel' => 'Cancel',
+            ];
+        @endphp
+        <h2>Order {{ $title[$status] }}</h2>
+        <div class="separator mb-5"></div>
+    </div>
+
+    {{-- datatable --}}
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card card-tasks">
                 <div class="card-body">
-                    <div class="col-12">
-                        @php
-                            // $title = [
-                            //     'watting_payment' => 'รอการชำระเงิน',
-                            //     'successful_payment' => 'แจ้งชำระเงินแล้ว รอตรวจสอบ',
-                            //     'waiting_delivery' => 'กำลังดำเนินการ',
-                            //     'successful_delivery' => 'ส่งสินค้าแล้ว',
-                            //     'cancel' => 'ชำระเงินผิด',
-                            // ];
-                            $title = [
-                                'watting_payment' => 'Watting Payment',
-                                'successful_payment' => 'Successful Payment',
-                                'waiting_delivery' => 'Waiting Delivery',
-                                'successful_delivery' => 'Successful Delivery',
-                                'cancel' => 'Cancel',
-                            ];
-                        @endphp
-                        <h2>Order {{ $title[$status] }}</h2>
-                        <div class="separator mb-5"></div>
-                    </div>
+                    <div style="margin-top: 30px">
+                        <table class="table table-bordered" id="order-table" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Order_no</th>
+                                    <th>USER</th>
+                                    {{-- <th>Email</th> --}}
+                                    <th>Created At</th>
+                                    <th>Update Status</th>
 
-                    {{-- datatable --}}
+                                    {{-- option field to update status --}}
 
-                    <table class="table table-bordered" id="order-table" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Order_no</th>
-                                <th>USER</th>
-                                {{-- <th>Email</th> --}}
-                                <th>Created At</th>
-                                <th>Update Status</th>
-
-                                {{-- option field to update status --}}
-
-                                {{-- <th>edit</th>
+                                    {{-- <th>edit</th>
                 <th>remove</th> --}}
-                            </tr>
-                        </thead>
-                    </table>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
