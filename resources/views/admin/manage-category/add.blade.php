@@ -6,7 +6,7 @@
         <div class="col-12">
             <h2 class="pull-left">{{ isset($categories) ? 'Edit' : 'Add' }} Category</h2>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('admin.collection') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('admin.category') }}"> Back</a>
             </div>
             <div class="separator mb-5"></div>
         </div>

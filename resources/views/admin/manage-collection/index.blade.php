@@ -1,20 +1,20 @@
 @extends('admin-layouts.main-ui')
 
 @section('content')
-
+    <div class="form-group row">
+        <div class="col-12">
+            <h2 class="pull-left">Sub Category</h2>
+            <span class="pull-right">
+                <a href="{{ route('admin.collection.add') }}"><i class="fa fa-plus"></i> Add Sub Category </a>
+            </span>
+            <div class="separator mb-5"></div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card card-tasks">
                 <div class="card-body">
-                    <div class="col-12">
-                        <h1>Sub Category</h1>
-                        <span class="float-right">
-                            <a href="{{ route('admin.collection.add') }}"><i class="fa fa-plus"></i> Add Sub Category </a>
-                        </span>
-                        <div class="separator mb-5"></div>
-                    </div>
-
-                    <div class="container" style="margin-top: 80px">
+                    <div style="margin-top: 80px">
                         @if (session()->has('success_msg'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session()->get('success_msg') }}
