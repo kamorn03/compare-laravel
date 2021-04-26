@@ -5,30 +5,40 @@
         <h1>Add Slide image</h1>
         <div class="separator mb-5"></div>
     </div>
-    <div class="form-group row">
-        <div class="col-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"> Drag and Drop Image</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="form-group row">
-                        <form id="dropzoneForm" class="dropzone" id="dropzone" action="{{ route('main-title.upload') }}">
-                            @csrf
-                        </form>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card card-tasks">
+                <div class="card-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"> Drag and Drop Image</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group row">
+                                <div class="col-lg-12 col-md-12">
+                                    <form id="dropzoneForm" class="dropzone" id="dropzone"
+                                        action="{{ route('main-title.upload') }}">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Uploaded Image</h3>
-                </div>
-                <div class="panel-body mt-5" id="uploaded_image">
+                    <div class="col-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Uploaded Image</h3>
+                            </div>
+                            <div class="panel-body mt-5" id="uploaded_image">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
@@ -121,4 +131,10 @@
         });
 
     </script>
+    <style>
+        .card-tasks {
+            height: 100%;
+        }
+
+    </style>
 @endsection
