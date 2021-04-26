@@ -114,7 +114,7 @@
             </div>
             <hr>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" id="submit-all">ตกลง</button>
+                <button type="submit" class="btn btn-primary" id="submit-all">save</button>
             </div>
         </form>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">

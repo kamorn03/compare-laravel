@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12">
-        <h1>จัดการ ติดต่อเรา</h1>
+        <h1>Manage Contact Us</h1>
         <div class="separator mb-5"></div>
     </div>
     {{-- {{ isset($contact) ? $contact->id : $count + 1 }} --}}
@@ -93,7 +93,7 @@
         </div>
 
         <div style="text-align: right;">
-            <button type="submit" class="btn btn-primary" id="submit-all">ตกลง</button>
+            <button type="submit" class="btn btn-primary" id="submit-all">save</button>
         </div>
     </form>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />

@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div style="text-align: right;">
-                <button type="submit" class="btn btn-primary">ตกลง</button>
+                <button type="submit" class="btn btn-primary">save</button>
             </div>
         </form>
     @endsection

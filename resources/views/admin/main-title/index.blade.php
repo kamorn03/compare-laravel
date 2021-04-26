@@ -84,8 +84,8 @@
                 },
                 success: function(data) {
                     Swal.fire(
-                        'สำเร็จ!',
-                        'บันทึกข้อมูลสำเร็จ!',
+                        'success!',
+                        'Data has been saved!',
                         'success'
                     )
                     load_images();
@@ -98,9 +98,9 @@
             console.log(name)
 
             Swal.fire({
-                title: 'ต้องการลบข้อมูลใช่หรือไม่?',
+                title: 'Do you want to remove?',
                 showCancelButton: true,
-                confirmButtonText: `ลบข้อมูล`,
+                confirmButtonText: `remove`,
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
@@ -110,7 +110,7 @@
                             id: id
                         },
                         success: function(data) {
-                            Swal.fire('ลบข้อมูลสำเร็จ!', '', 'success')
+                            Swal.fire('removed!', '', 'success')
                             load_images();
                         }
                     })

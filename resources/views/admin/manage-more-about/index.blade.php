@@ -59,7 +59,7 @@
         </div>
         <div class="col-12 w-100 text-center">
             <div class="separator mt-2 mb-2 "></div>
-            <button type="submit" class="btn btn-primary">ตกลง</button>
+            <button type="submit" class="btn btn-primary">save</button>
         </div>
     </form>
 
