@@ -28,7 +28,6 @@
 </head>
 
     <body id="app-container" class="menu-default">
-        1
             @yield('content')
     </body>
 

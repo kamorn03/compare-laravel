@@ -1,26 +1,18 @@
 @extends('admin-layouts.main-ui')
 
 @section('content')
-
-
+    <div class="col-12">
+        <h2>Manage Contact Us</h2>
+        <div class="separator mb-5"></div>
+    </div>
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card card-tasks">
                 <div class="card-body">
-                    <div class="col-12">
-                        <h1>Manage Contact Us</h1>
-                        <div class="separator mb-5"></div>
-                    </div>
-                    {{-- {{ isset($contact) ? $contact->id : $count + 1 }} --}}
                     <form class="form form-horizontal"
                         action="{{ route('admin.contact.update', ['id' => isset($contact) ? $contact->id : $count + 1]) }}"
                         method="POST" name="add_post" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        {{-- @if (isset($product) && $product->id)
-        <input name="_method" type="hidden" value="PUT">
-    @endif --}}
-
-
                         <input name="id" type="hidden" value="{{ isset($contact) ? $contact->id : null }}">
                         <div class="form-group row">
                             <label for="meta_title" class="col-sm-2 col-form-label text-right">meta title</label>

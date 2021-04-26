@@ -108,12 +108,50 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="./map.html">
-                            <i class="tim-icons icon-pin"></i>
-                            <p>Maps</p>
+                        <a href="#orderSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
+                                class="tim-icons icon-delivery-fast"></i>Order Process</a>
+                        <ul class="collapse list-unstyled" id="orderSubmenu">
+                            <li>
+                                <a href="{{ route('admin.category') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                    watting payment
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.collection') }}"><i
+                                        class="tim-icons icon-bullet-list-67"></i>
+                                    successful payment
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.product') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                    waiting delivery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.product') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                    successful delivery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.product') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                    cancel
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.banner') }}">
+                            <i class="tim-icons icon-send"></i>
+                            <p>Banner</p>
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.news') }}">
+                            <i class="tim-icons icon-bell-55"></i>
+                            <p>News</p>
+                        </a>
+                    </li>
+                    {{-- <li>
                         <a href="./notifications.html">
                             <i class="tim-icons icon-bell-55"></i>
                             <p>Notifications</p>
@@ -142,13 +180,13 @@
                             <i class="tim-icons icon-world"></i>
                             <p>RTL Support</p>
                         </a>
-                    </li>
-                    <li class="active-pro">
+                    </li> --}}
+                    {{-- <li class="active-pro">
                         <a href="./upgrade.html">
                             <i class="tim-icons icon-spaceship"></i>
                             <p>Upgrade to PRO</p>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -164,7 +202,7 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+                        <a class="navbar-brand" href="javascript:void(0)">Admin</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -180,7 +218,7 @@
                                     <span class="d-lg-none d-md-block">Search</span>
                                 </button>
                             </li> --}}
-                            <li class="dropdown nav-item">
+                            {{-- <li class="dropdown nav-item">
                                 <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <div class="notification d-none d-lg-block d-xl-block"></div>
                                     <i class="tim-icons icon-sound-wave"></i>
@@ -204,11 +242,11 @@
                                     <li class="nav-link"><a href="javascript:void(0)"
                                             class="nav-item dropdown-item">Another one</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <div class="photo">
-                                        <img src="../assets/img/anime3.png" alt="Profile Photo">
+                                    <div class="tag">
+                                        Admin
                                     </div>
                                     <b class="caret d-none d-lg-block d-xl-block"></b>
                                     <p class="d-lg-none">
@@ -249,7 +287,7 @@
             </div>
             <footer class="footer">
                 <div class="container-fluid">
-                    <ul class="nav">
+                    {{-- <ul class="nav">
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
                                 Creative Tim
@@ -265,14 +303,9 @@
                                 Blog
                             </a>
                         </li>
-                    </ul>
+                    </ul> --}}
                     <div class="copyright">
-                        ©
-                        <script>
-                            document.write(new Date().getFullYear())
-
-                        </script>2018 made with <i class="tim-icons icon-heart-2"></i> by
-                        <a href="javascript:void(0)" target="_blank">Creative Tim</a> for a better web.
+                        © copyright 2021 All Rights Reserved by digi solution co.,LTD
                     </div>
                 </div>
             </footer>

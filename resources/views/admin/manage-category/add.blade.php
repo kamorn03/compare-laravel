@@ -90,7 +90,7 @@
                                 </div>
                             </div>
 
-                            <div style="text-align: right;">
+                            <div class="text-center">
                                 <button type="submit" class="btn btn-primary">save</button>
                             </div>
 

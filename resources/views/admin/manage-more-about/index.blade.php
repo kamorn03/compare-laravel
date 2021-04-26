@@ -1,14 +1,14 @@
 @extends('admin-layouts.main-ui')
 
 @section('content')
+    <div class="col-12">
+        <h1> Manage About Us</h1>
+        <div class="separator mb-5"></div>
+    </div>
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card card-tasks">
                 <div class="card-body">
-                    <div class="col-12">
-                        <h1> Manage About Us</h1>
-                        <div class="separator mb-5"></div>
-                    </div>
                     <form action="{{ route('admin.more-about.update') }}" method="post">
                         @csrf
                         <div class="form-group row">
@@ -38,8 +38,8 @@
                             <label for="meta_keyword" class="col-sm-2 col-form-label text-right">Sub detail</label>
                             <div class="col-sm-10">
                                 <textarea name="editor1" id="editor1" rows="10" cols="80">
-                                                {{ !is_null($more_about) ? $more_about->content : '' }}
-                                        </textarea>
+                                                    {{ !is_null($more_about) ? $more_about->content : '' }}
+                                            </textarea>
                             </div>
                         </div>
 
@@ -47,8 +47,8 @@
                             <label for="meta_keyword" class="col-sm-2 col-form-label text-right">Detail</label>
                             <div class="col-sm-10">
                                 <textarea name="editor2" id="editor2" rows="10" cols="80">
-                                            {{ !is_null($more_about) ? $more_about->detail : '' }}
-                                        </textarea>
+                                                {{ !is_null($more_about) ? $more_about->detail : '' }}
+                                            </textarea>
                             </div>
                         </div>
                         <div class="col-12 w-100 text-center">
