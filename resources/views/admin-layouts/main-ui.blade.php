@@ -33,15 +33,14 @@
     <link href="{{ asset('css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
+    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body class="white-content">
     <div class="wrapper">
         <div class="sidebar">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-    -->
+            <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red" -->
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="javascript:void(0)" class="simple-text logo-mini">
