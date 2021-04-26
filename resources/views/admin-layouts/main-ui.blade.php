@@ -131,14 +131,14 @@
                                     @endphp
                                     @if (isset($successful_payment_count) && $successful_payment_count > 0)
                                         <span class="badge badge-default">{{ $successful_payment_count }}</span>
-                                    @endif 
+                                    @endif
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.order', ['status' => 'waiting_delivery']) }}">
                                     waiting delivery &nbsp;
                                     @php
-                                    $waiting_delivery_count = App\Models\Order::where('status', 'waiting_delivery')->count();
+                                        $waiting_delivery_count = App\Models\Order::where('status', 'waiting_delivery')->count();
                                     @endphp
                                     @if (isset($waiting_delivery_count) && $waiting_delivery_count > 0)
                                         <span class="badge badge-default">{{ $waiting_delivery_count }}</span>
@@ -287,9 +287,19 @@
                                     <li class="nav-link"><a href="javascript:void(0)"
                                             class="nav-item dropdown-item">Settings</a></li>
                                     <li class="dropdown-divider"></li>
-                                    
-                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log
-                                            out</a></li>
+
+                                    <li class="nav-link"> 
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                                                                                                                                                      document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="separator d-lg-none"></li>

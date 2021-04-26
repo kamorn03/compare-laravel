@@ -5,8 +5,8 @@
         <h2>Home</h2>
         <div class="separator mb-5"></div>
     </div>
-    <div class="col-lg-12 col-xl-6 text-center">
-        <img src="{{ asset('img/Logo_MadameTJ.png') }}" alt="logo" style="width: 40%;">
+    <div class="col-lg-12 col-xl-12 text-center">
+        <img src="{{ asset('img/Logo_MadameTJ.png') }}" alt="logo" style="width: 15%;">
         <h2>ADMIN</h2> 
     </div>
 @endsection
