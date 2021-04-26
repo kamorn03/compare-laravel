@@ -112,29 +112,59 @@
                                 class="tim-icons icon-delivery-fast"></i>Order Process</a>
                         <ul class="collapse list-unstyled" id="orderSubmenu">
                             <li>
-                                <a href="{{ route('admin.category') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                <a href="{{ route('admin.order', ['status' => 'watting_payment']) }}">
                                     watting payment
+                                    @php
+                                        $watting_payment_count = App\Models\Order::where('status', 'watting_payment')->count();
+                                    @endphp
+                                    @if (isset($watting_payment_count) && $watting_payment_count > 0)
+                                        <span class="badge badge-default">{{ $watting_payment_count }}</span>
+                                    @endif
+
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.collection') }}"><i
-                                        class="tim-icons icon-bullet-list-67"></i>
-                                    successful payment
+                                <a href="{{ route('admin.order', ['status' => 'successful_payment']) }}">
+                                    successful payment 
+                                    @php
+                                        $successful_payment_count = App\Models\Order::where('status', 'successful_payment')->count();
+                                    @endphp
+                                    @if (isset($successful_payment_count) && $successful_payment_count > 0)
+                                        <span class="badge badge-default">{{ $successful_payment_count }}</span>
+                                    @endif 
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.product') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                <a href="{{ route('admin.order', ['status' => 'waiting_delivery']) }}">
                                     waiting delivery
+                                    @php
+                                    $waiting_delivery_count = App\Models\Order::where('status', 'waiting_delivery')->count();
+                                    @endphp
+                                    @if (isset($waiting_delivery_count) && $waiting_delivery_count > 0)
+                                        <span class="badge badge-default">{{ $waiting_delivery_count }}</span>
+                                    @endif
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.product') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                <a href="{{ route('admin.order', ['status' => 'successful_delivery']) }}">
                                     successful delivery
+                                    @php
+                                        $successful_delivery_count = App\Models\Order::where('status', 'successful_delivery')->count();
+                                    @endphp
+                                    @if (isset($successful_delivery_count) && $successful_delivery_count > 0)
+                                        <span class="badge badge-default">{{ $successful_delivery_count }}</span>
+                                    @endif
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.product') }}"><i class="tim-icons icon-bullet-list-67"></i>
+                                <a href="{{ route('admin.order', ['status' => 'cancel']) }}">
                                     cancel
+                                    @php
+                                        $cancel_count = App\Models\Order::where('status', 'cancel')->count();
+                                    @endphp
+                                    @if (isset($cancel_count) && $cancel_count > 0)
+                                        <span class="badge badge-default">{{ $cancel_count }}</span>
+                                    @endif
                                 </a>
                             </li>
                         </ul>
