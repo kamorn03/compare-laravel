@@ -5,12 +5,14 @@
         <div class="col-lg-12 col-md-12">
             <div class="card card-tasks">
                 <div class="card-body">
-                    <div class="col-12">
-                        <h1>Category</h1>
-                        <span class="pull-right">
-                            <a href="{{ route('admin.category.add') }}"><i class="fa fa-plus"></i> Add Category </a>
-                        </span>
-                        <div class="separator mb-5"></div>
+                    <div class="form-group">
+                        <div class="col-12">
+                            <h2 class="pull-left">Category</h2>
+                            <span class="pull-right">
+                                <a href="{{ route('admin.category.add') }}"><i class="fa fa-plus"></i> Add Category </a>
+                            </span>
+                            <div class="separator mb-5"></div>
+                        </div>
                     </div>
 
                     <div class="container" style="margin-top: 80px">

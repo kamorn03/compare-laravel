@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="form-group row">
                     <div class="col-12">
-                        <h1 class="float-left">Add News</h1>
+                        <h2 class="float-left">Add News</h2>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('admin.news') }}"> Back</a>
                         </div>
@@ -127,6 +127,8 @@
             </div>
         </div>
     </div>
+    
+    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script type="text/javascript">

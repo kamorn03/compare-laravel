@@ -41,5 +41,10 @@
     </div>
 
     {{-- {!! $data->render() !!} --}}
+    <style>
+        .card-tasks {
+            height: 100%;
+        }
 
+    </style>
 @endsection
