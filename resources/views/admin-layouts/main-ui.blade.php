@@ -19,20 +19,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/apple-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
     <title>
-        white Dashboard by Creative Tim
+        Digiso Admin
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- Nucleo Icons -->
-    <link href="../css/nucleo-icons.css" rel="stylesheet" />
+    <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="../css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <link href="{{ asset('css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../demo/demo.css" rel="stylesheet" />
+    <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
 </head>
 
 <body class="white-content">
@@ -60,32 +60,31 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Manage content (CMS)</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
+                                class="tim-icons icon-components"></i>Manage content (CMS)</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li>
-                                <a href="#">Page 1</a>
+                                <a href="{{ route('admin.main-title') }}"><i class="tim-icons icon-tv-2"></i>Home</a>
                             </li>
                             <li>
-                                <a href="#">Page 2</a>
+                                <a href="{{ route('admin.more-about') }}"><i class="tim-icons icon-notes"></i>About
+                                    Us</a>
                             </li>
                             <li>
-                                <a href="#">Page 3</a>
+                                <a href="{{ route('admin.contact') }}"><i class="tim-icons icon-badge"></i>Contact
+                                    Us</a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#memberSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            Member </a>
+                            <i class="tim-icons icon-single-02"></i> Member </a>
                         <ul class="collapse list-unstyled" id="memberSubmenu">
                             <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
+                                <a href="{{ route('admin.users') }}">
+                                    <i class="tim-icons icon-bullet-list-67"></i> <span class="d-inline-block">Member
+                                        list</span>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -317,21 +316,21 @@
         </div>
     </div>
     <!--   Core JS Files   -->
-    <script src="../js/core/jquery.min.js"></script>
-    <script src="../js/core/popper.min.js"></script>
-    <script src="../js/core/bootstrap.min.js"></script>
-    <script src="../js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="{{ asset('js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
     <!--  Google Maps Plugin    -->
     <!-- Place this tag in your head or just before your close body tag. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chart JS -->
-    <script src="../js/plugins/chartjs.min.js"></script>
+    <script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
     <!--  Notifications Plugin    -->
-    <script src="../js/plugins/bootstrap-notify.js"></script>
+    <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../js/black-dashboard.min.js?v=1.0.0"></script>
+    <script src="{{ asset('js/black-dashboard.min.js?v=1.0.0') }}"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../demo/demo.js"></script>
+    <script src="{{ asset('demo/demo.js') }}"></script>
     <script>
         $(document).ready(function() {
             $().ready(function() {
@@ -461,6 +460,13 @@
             });
 
     </script>
+    <style>
+        .list-unstyled {
+            padding-left: 2em;
+            list-style: none;
+        }
+
+    </style>
 </body>
 
 </html>
