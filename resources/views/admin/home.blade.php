@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="col-12">
-        <h1>Home</h1>
+        <h2>Home</h2>
         <div class="separator mb-5"></div>
     </div>
-    <div class="col-lg-12 col-xl-6">
-
+    <div class="col-lg-12 col-xl-6 text-center">
+        <img src="{{ asset('img/Logo_MadameTJ.png') }}" alt="logo" style="width: 40%;">
+        <h2>ADMIN</h2> 
     </div>
 @endsection

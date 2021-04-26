@@ -1,21 +1,19 @@
 @extends('admin-layouts.main-ui')
 
 @section('content')
+    <div class="form-group row">
+        <div class="col-12">
+            <h1 class="pull-left">Add Product Images ({{ $product->name }})</h1>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('admin.product') }}"> Back</a>
+            </div>
+            <div class="separator mb-5"></div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card card-tasks">
                 <div class="card-body">
-
-                    <div class="col-12">
-                        <h1>Add Product Images ({{ $product->name }})</h1>
-                        <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('admin.product') }}"> Back</a>
-                        </div>
-                        <div class="separator mb-5"></div>
-                    </div>
-
-
-
 
                     <div class="form-group row">
                         <div class="col-12">
