@@ -59,23 +59,25 @@ class MainTitleController extends Controller
         $output .= '
                 <div class="col-md-3" style="margin-bottom:16px;" align="center">
                     <div>
-                        <label for="" class="col-sm-2 col-form-label text-left">รูปที่ '.$number.'</label>
+                        <label for="" class="col-sm-2 col-form-label text-left"><b> '.$number.' . </b></label>
                         <img src="'.asset($image->image_path).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
                     </div>
                     <div>
                     <div class="form-group row mt-3">
-                    <label for="meta_title" class="col-sm-2 col-form-label text-right">Link</label>
+                    <label for="meta_title" class="col-sm-2 col-form-label text-center">Link</label>
                         <div class="col-sm-10">
                             <input class="form-control" placeholder="link" id="link-'.$image->id.'" value="'.$image->link.'" name="link-'.$image->id.'">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6 text-right">
+
+                        <div class="col-sm-6 text-center">
                             <button type="button" class="btn btn-primary save_link" link-id="'.$image->id.'"  id="save_link-'.$image->id.'">save</button>
                         </div>
                         <div class="col-sm-6">
                         <button type="button" class="btn btn-primary remove_image" id="'.$image->id.'">Remove</button>
                         </div>
+
                     </div>
                     </div>
                 </div>
