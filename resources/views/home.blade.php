@@ -108,8 +108,8 @@
                             @endif
                         </div>
                         <br>
-                        <a href="{{ route('more-about') }}" class="readmore-text"> Read more <img class="ml-2" src="{{ asset('img/svg-icons/__.svg') }}"
-                                alt="__.svg"> </a>
+                        <a href="{{ route('more-about') }}" class="readmore-text"> Read more <img class="ml-2"
+                                src="{{ asset('img/svg-icons/__.svg') }}" alt="__.svg"> </a>
                         {{-- ck content --}}
                     </div>
                 </div>
@@ -144,9 +144,9 @@
         </div>
     </div>
     <div class="container" style="margin-top: 80px">
-        <h4 class="text-center"> News & Event </h4>
+        <h4 class="text-center text-news-event"> News & Event </h4>
         {{-- carousel news --}}
-        <div class="row img-news text-left text-xs-left text-sm-left text-md-left">
+        <div class="row img-news text-left text-xs-left text-sm-left text-md-left mt-5">
             @foreach ($news as $new)
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <img src="/img/cards/{{ $new->path_img }}" alt="traditional-gold-earrings-set 1">
@@ -155,8 +155,9 @@
                         {{ $new->news_content }}
                     </p>
                     <div class="row">
-                        <div class="col-6"><a href="{{ route('news.more', ['id' => $new->id]) }}" class="readmore-text"> Read more <img class="ml-2" src="{{ asset('img/svg-icons/__blue.svg') }}"
-                            alt="__blue.svg">  </a>
+                        <div class="col-6"><a href="{{ route('news.more', ['id' => $new->id]) }}" class="readmore-text">
+                                Read more <img class="ml-2" src="{{ asset('img/svg-icons/__blue.svg') }}"
+                                    alt="__blue.svg"> </a>
                         </div>
                         <div class="col-6 text-right">{{ $new->created_at }}</div>
                     </div>
@@ -166,16 +167,26 @@
     </div>
 
     <style>
-        a.readmore-text{
+        a.readmore-text {
             color: #000000;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: bold;
             background-color: transparent;
         }
-        .readmore-text img{
+
+        .readmore-text img {
             width: 17px;
             height: 17px;
         }
+
+        .text-news-event {
+            font-size: 36px;
+            line-height: 49px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #000000;
+        }
+
     </style>
 @endsection
