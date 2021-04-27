@@ -2,26 +2,27 @@
 
 @section('content')
     <header>
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 
-        </div>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
             <div class="carousel-inner" role="listbox">
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 @if (isset($main_title) && sizeof($main_title) > 0)
                     @foreach ($main_title as $key => $value)
-                        <div class="carousel-item {{ $key === 0 ? 'active' : '' }}"
-                            style="background-image: url({{ asset($value->image_path) }})">
-                            <div class="carousel-caption d-none d-md-block">
+                        <a href="{{ $value->link ?? '#' }}">
+                            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}"
+                                style="background-image: url({{ asset($value->image_path) }})">
+                                <div class="carousel-caption d-none d-md-block">
+                                </div>
                             </div>
-                        </div>
+                        </a>
                         {{-- <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
                             <img class="d-block w-100" src="{{ asset($value->image_path) }}" alt="First slide">
                         </div> --}}
                     @endforeach
                 @else
-                    <div class="carousel-item active" style="background-image: url({{ asset('img/home-title.png')}});width:100%; height:673px;">
+                    <div class="carousel-item active"
+                        style="background-image: url({{ asset('img/home-title.png') }});width:100%; height:673px;">
                         <div class="carousel-caption d-none d-md-block">
                         </div>
                     </div>
@@ -55,7 +56,8 @@
                                     @php
                                         $collection = App\Models\Collections::where('category_id', $pro->category_id)->first();
                                     @endphp
-                                    <a href="/shop/{{ $pro->cate_slug }}/{{ $collection->name ?? 'collection' }}/{{ $pro->slug }}">
+                                    <a
+                                        href="/shop/{{ $pro->cate_slug }}/{{ $collection->name ?? 'collection' }}/{{ $pro->slug }}">
                                         <img src="/img/cards/{{ $pro->image_path }}" width="530px" height="530px"
                                             class="card-img-top mx-auto" style="" alt="{{ $pro->image_path }}">
                                     </a>
