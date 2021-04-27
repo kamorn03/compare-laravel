@@ -218,7 +218,7 @@
                         </div>
                     @else
                         <div class="col-lg-12">
-                            <h3 class="text-header"> Shipping Address</h3>
+                            <h3 class="text-header mb-5"> Shipping Address</h3>
                             @php
                                 $address = Auth::guard('blogger')->user()->address;
                                 $user = Auth::guard('blogger')->user();
@@ -373,47 +373,75 @@
 
                 </div>
             </div>
+
             @if (count($cartCollection) > 0)
-                <div class="col-lg-5 bg-gray">
-                    <h1 class="text-header text-center">Order Summary</h1>
-                    @foreach ($cartCollection as $item)
-                        <div class="row mt-5">
-                            <div class="col-lg-3">
-                                <img src="/img/cards/{{ $item->attributes->image }}" class="img-thumbnail" width="200"
-                                    height="200">
-                            </div>
-                            <div class="col-lg-5">
-                                <p>
-                                    <b>{{ $item->name }}</b><br>
-                                    <b>price: </b>{{ $item->price }} ฿ <br>
-                                    <b>total: </b>{{ \Cart::get($item->id)->getPriceSum() }} ฿ <br>
+                <div class="col-lg-5">
+                    <div class="bg-gray">
+                        <h1 class="text-header text-center mt-3">Order Summary</h1>
+                        @foreach ($cartCollection as $item)
+                            <div class="order-summary mt-3">
+                                <div class="col-lg-3">
+                                    <img src="/img/cards/{{ $item->attributes->image }}" class="img-thumbnail"
+                                        width="160" height="160">
+                                </div>
+                                <div class="col-lg-5 ml-4">
+                                    <p>
+                                    <div class="header-order-summary"><a
+                                            href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></div><br>
+                                    <div class="row">
+                                        <div class="col-2 title-order-summary">Size</div>
+                                        <div class="col-2 title-order-summary">Quantity</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3 title-order-summary">-</div>
+                                        <div class="col-3 title-order-summary">{{ $item->quantity }}</div>
+                                        <div class="col-3"></div>
+                                        <div class="col-3"><b> {{ $item->price * $item->quantity }}฿</b></div>
+                                    </div>
+                                    {{-- <b>ทั้งหมด: </b>{{ \Cart::get($item->id)->getPriceSum() }} ฿ <br> --}}
                                     {{-- <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }} --}}
-                                </p>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="row">
-                                    {{-- <form action="{{ route('cart.update') }}" method="POST">
-                                        {{ csrf_field() }}
-                                        <div class="form-group row">
-                                            <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                            <input type="number" class="form-control form-control-sm"
-                                                value="{{ $item->quantity }}" id="quantity" name="quantity"
-                                                style="width: 70px; margin-right: 10px;">
-                                            <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i
-                                                    class="fa fa-edit"></i></button>
-                                        </div>
-                                    </form>
-                                    <form action="{{ route('cart.remove') }}" method="POST">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                        <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i
-                                                class="fa fa-trash"></i></button>
-                                    </form> --}}
+                                    </p>
                                 </div>
                             </div>
+                            <hr color="#81D8D0">
+
+                        @endforeach
+
+                        <div class="row table-subtotal">
+                            {{-- <div class="col-2"></div> --}}
+                            <div class="order-table-subtotal-left subtotal-order-summary col-4 ml-5">Subtotal</div>
+                            <div class="col-6"></div>
+                            <div class="order-table-subtotal-right  subtotal-order-summary col-2 mr-5">
+                                {{ \Cart::getTotal() }} ฿ </div>
                         </div>
-                        <hr>
-                    @endforeach
+                        <hr color="#81D8D0">
+                        <div class="row table-total">
+                            {{-- <div class="col-2"></div> --}}
+                            <div class="order-table-total-left col-4 ml-5"><b>Total</b></div>
+                            <div class="col-6"></div>
+                            <div class="order-table-total-right col-2 mr-5"> <b> {{ \Cart::getTotal() }} ฿ </b></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-check ml-5">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                            value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            <span class="subtotal-order-summary">Payment with</span></label>
+                        <img class="img-payment" src="{{ asset('img/paypal_pay.png') }}" alt="paypal_pay">
+                    </div>
+
+                    <br><br>
+                    <div class="form-check ml-5">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                            value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            <span class="subtotal-order-summary">Payment with</span>
+                            <img class="img-payment" src="{{ asset('img/mastercard_pay.png') }}" alt="mastercard_pay">
+                        </label>
+                    </div>
+                    <br>
+                    <br>
                     {{-- {{ Auth::user()->address }} --}}
                     @if (isset(Auth::guard('blogger')->user()->address))
                         @if (count($cartCollection) > 0)
@@ -429,6 +457,7 @@
                     @endif
                 </div>
             @endif
+
         </div>
         <br><br>
     </div>
@@ -453,8 +482,19 @@
             background-color: #81D8D0 !important;
         }
 
+        hr {
+            margin: 1rem 2rem;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
         .bg-gray {
-            background: #FAFAFA
+            background: #FAFAFA;
+            border-radius: 5px;
+        }
+
+        .img-payment {
+            margin-left: 3em;
         }
 
     </style>

@@ -284,17 +284,14 @@
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu dropdown-navbar">
-                                    <li class="nav-link"><a href="javascript:void(0)"
-                                            class="nav-item dropdown-item">Settings</a></li>
-                                    <li class="dropdown-divider"></li>
-
-                                    <li class="nav-link"> 
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                                                                                                                                                                      document.getElementById('logout-form').submit();">
+                                    {{-- <li class="nav-link"><a href="javascript:void(0)"
+                                            class="nav-item dropdown-item">Settings</a></li> --}}
+                                    {{-- <li class="dropdown-divider"></li> --}}
+                                    <li class="nav-link"  onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" style="cursor: pointer"> 
+                                        <a>
                                             {{ __('Logout') }}
                                         </a>
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
                                             @csrf
