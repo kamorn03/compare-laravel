@@ -101,8 +101,11 @@
                             <div class="form-group row">
                                 <label for="price" class="col-sm-2 col-form-label text-right">price</label>
                                 <div class="col-sm-10">
-                                    <input type="number" name="price" id="price" class="form-control" placeholder="ราคา"
-                                        value="{{ $product->price ?? '' }}">
+                                    {{-- <input type="float" name="price" id="price" class="form-control" placeholder="price"> --}}
+                                    <input type="number" placeholder="0.00" class="form-control" required name="price"
+                                        min="0" value="{{ $product->price ?? '' }}" step="0.01" title="Currency"
+                                        pattern="^\d+(?:\.\d{1,2})?$"
+                                        onblur=" this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value) ? 'inherit' : 'red'">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -136,7 +139,7 @@
                                     <img class="img-thumbnail"
                                         src="{{ isset($product) && $product->image_path ? asset('img/cards/' . $product->image_path) : asset('img/dist/default-thumbnail.jpg') }}"
                                         width="300" height="200" id="preview-image">
-                                        <span style="color:red">( Recommended upload size of image 670 x 670 pixels )</span> 
+                                    <span style="color:red">( Recommended upload size of image 670 x 670 pixels )</span>
                                 </div>
                             </div>
 
