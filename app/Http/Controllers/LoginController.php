@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+
 use Auth;
 use Session;
 
@@ -82,7 +83,15 @@ class LoginController extends Controller
         // dd($request);
         if (Auth::guard('blogger')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             $user = Auth::guard('blogger')->user();
-            return redirect()->intended('/users/'.$user->id.'/edit');
+            $cartCollection = \Cart::getContent();
+            // dd($cartCollection);
+            if(count($cartCollection) > 0){
+                return redirect()->intended('/shipping');
+            }else{
+                return redirect()->intended('/users/'.$user->id.'/edit');
+            }
+
+            
         }
         return back()->withInput($request->only('email', 'remember'));
     }
