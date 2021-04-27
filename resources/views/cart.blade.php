@@ -122,7 +122,8 @@
                                 </div>
                                 <div class="col-12 mt-3">
                                     @if (!Auth::guard('blogger')->user())
-                                        <a href="/checkout" class="btn btn-green-checkout w-100">Check Out</a>
+                                         
+                                        <a href="#" class="btn btn-green-checkout w-100">Check Out</a>
                                     @else
                                         <a href="/shipping" class="btn btn-green-checkout w-100">Check Out</a>
                                     @endif

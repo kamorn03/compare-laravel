@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <img src="{{ asset('img/dist/ISO673AP.jpg') }}" alt="ISO673AP.jpg" width="250" height="250">
-                        <h1 class="text-header mt-5">ชำระเงินสำเร็จ</h1>
+                        <h1 class="text-header mt-5">Complate payment!</h1>
 
 
                         <a href="/"> <button class="btn" type="submit"> HOME </button></a>

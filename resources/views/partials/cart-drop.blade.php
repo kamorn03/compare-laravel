@@ -35,15 +35,15 @@
         <a class="btn btn-green btn-block w-100" href="{{ route('cart.index') }}">
             CART <i class="fa fa-arrow-right"></i>
         </a>
-        @guest
-            <a class="btn btn-green btn-sm btn-block w-100" href="{{ route('cart.checkout') }}">
+        @if (Auth::guest() && null === Auth::guard('blogger')->user())
+            {{-- <a class="btn btn-green btn-sm btn-block w-100" href="{{ route('cart.checkout') }}">
                 CHECKOUT <i class="fa fa-arrow-right"></i>
-            </a>
+            </a> --}}
         @else
             <a class="btn btn-green btn-sm btn-block w-100" href="{{ route('cart.shipping') }}">
                 CHECKOUT <i class="fa fa-arrow-right"></i>
             </a>
-        @endguest
+        @endif
     </div>
 @else
     <li class="list-group-item">Your Cart is Empty</li>

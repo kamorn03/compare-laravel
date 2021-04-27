@@ -343,7 +343,7 @@
                                         </select>
                                     </label>
                                     </div> --}}
-                                <button class="btn btn-green">บันทึก</button>
+                                <button class="btn btn-green">save</button>
                             </form>
 
 
@@ -351,13 +351,13 @@
 
                             <div class="card data-address" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">ที่อยู่</h5>
+                                    <h5 class="card-title">address</h5>
                                     {{-- <h6 class="card-subtitle mb-2 text-muted">ที่อยู่</h6> --}}
-                                    <p class="card-text">ชื่อ {{ Auth::guard('blogger')->user()->name }}</p>
+                                    <p class="card-text">name {{ Auth::guard('blogger')->user()->name }}</p>
                                     <p class="card-text">{{ Arr::get($address, 'address') }}</p>
-                                    <p>จังหวัด {{ Arr::get($address, 'country') }} อำเภอ
+                                    <p>country {{ Arr::get($address, 'country') }} city
                                         {{ Arr::get($address, 'city') }}</p>
-                                    <p>รหัส {{ Arr::get($address, 'zip') }}</p>
+                                    <p>zipcode {{ Arr::get($address, 'zip') }}</p>
                                 </div>
                             </div>
 
@@ -367,7 +367,7 @@
                 <div class="row w-100 text-right float-right">
                     <div class="col-10">
                         @if (isset(Auth::guard('blogger')->user()->address))
-                            <a onclick="$('.form-address').toggle();$('.data-address').toggle()">แก้ไขที่อยู่</a>
+                            <a onclick="$('.form-address').toggle();$('.data-address').toggle()"><i class="fa fa-pencil"></i> Edit address </a>
                         @endif
                     </div>
 
