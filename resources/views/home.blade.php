@@ -155,8 +155,8 @@
                         {{ $new->news_content }}
                     </p>
                     <div class="row">
-                        <div class="col-6"><a href="{{ route('news.more', ['id' => $new->id]) }}" class="readmore-text"> Read more <img class="ml-2" src="{{ asset('img/svg-icons/__.svg') }}"
-                            alt="__.svg">  </a>
+                        <div class="col-6"><a href="{{ route('news.more', ['id' => $new->id]) }}" class="readmore-text"> Read more <img class="ml-2" src="{{ asset('img/svg-icons/__blue.svg') }}"
+                            alt="__blue.svg">  </a>
                         </div>
                         <div class="col-6 text-right">{{ $new->created_at }}</div>
                     </div>
