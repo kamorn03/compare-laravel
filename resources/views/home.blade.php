@@ -108,7 +108,7 @@
                             @endif
                         </div>
                         <br>
-                        <a href="{{ route('more-about') }}"> Read more <img src="{{ asset('img/svg-icons/__.svg') }}"
+                        <a href="{{ route('more-about') }}" class="readmore-text"> Read more <img class="ml-2" src="{{ asset('img/svg-icons/__.svg') }}"
                                 alt="__.svg"> </a>
                         {{-- ck content --}}
                     </div>
@@ -155,7 +155,8 @@
                         {{ $new->news_content }}
                     </p>
                     <div class="row">
-                        <div class="col-6"><a href="{{ route('news.more', ['id' => $new->id]) }}"> Read more >> </a>
+                        <div class="col-6"><a href="{{ route('news.more', ['id' => $new->id]) }}" class="readmore-text"> Read more <img class="ml-2" src="{{ asset('img/svg-icons/__.svg') }}"
+                            alt="__.svg">  </a>
                         </div>
                         <div class="col-6 text-right">{{ $new->created_at }}</div>
                     </div>
@@ -165,11 +166,16 @@
     </div>
 
     <style>
-        a {
-            color: #3490dc;
+        a.readmore-text{
+            color: #000000;
             text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
             background-color: transparent;
         }
-
+        .readmore-text img{
+            width: 17px;
+            height: 17px;
+        }
     </style>
 @endsection
