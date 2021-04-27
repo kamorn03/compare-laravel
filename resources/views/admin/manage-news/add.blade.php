@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label text-right">รูป หน้าแรก</label>
+                            <label for="" class="col-sm-2 col-form-label text-right">image home page</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" name="image" id="image">
                                 <img class="img-thumbnail"
@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label text-right">รูป รายละเอียด</label>
+                            <label for="" class="col-sm-2 col-form-label text-right">image detail page</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" name="image1" id="image1"
                                     value="{{ isset($news) && $news->path_img_detail ? null : 'required' }}">
