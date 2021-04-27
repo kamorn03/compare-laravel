@@ -101,15 +101,17 @@
             <div class="align-middle">
                 <div class="row">
                     {{-- ck content --}}
-                    <div style="width: 100%;">
-                        @if (isset($more_about))
-                            {!! $more_about->content !!}
-                        @endif
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div style="width: 100%;">
+                            @if (isset($more_about))
+                                {!! $more_about->content !!}
+                            @endif
+                        </div>
+                        <br>
+                        <a href="{{ route('more-about') }}"> Read more <img src="{{ asset('img/svg-icons/__.svg') }}"
+                                alt="__.svg"> </a>
+                        {{-- ck content --}}
                     </div>
-                    <br>
-                    <a href="{{ route('more-about') }}"> Read more <img src="{{ asset('img/svg-icons/__.svg') }}"
-                            alt="__.svg"> </a>
-                    {{-- ck content --}}
                 </div>
             </div>
         </div>
@@ -122,8 +124,8 @@
                 @endphp
                 {{-- {{ $banners }} --}}
                 @if (isset($banners))
-                    @foreach ($banners as $banner)
-                        <div class="col-xs-12 col-sm-6 col-md-6 mb-3">
+                    @foreach ($banners as $key => $banner)
+                        <div class="col-xs-12 col-sm-6 col-md-6 mb-3 {{ $key == 0 ? 'pl-0' : 'pr-0' }}">
                             <a href="{{ $banner->link }}">
                                 <img src="{{ asset($banner->path_img) }}" alt="{{ $banner->path_img }}"
                                     style="width: 100%">
@@ -161,4 +163,13 @@
             @endforeach
         </div>
     </div>
+
+    <style>
+        a {
+            color: #3490dc;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+    </style>
 @endsection

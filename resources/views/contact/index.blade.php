@@ -152,7 +152,7 @@
                                     {{-- <label for="form_phone">Phone</label> --}}
                                     {{-- <input id="form_phone" type="tel" name="phone" class="form-control"
                                         placeholder="Please enter your phone"> --}}
-                                    <input type="text"  class="form-control" id="phone" name="phone" onkeypress="return numberPressed(event);" placeholder="(089)9999999" />
+                                    <input type="text"  class="form-control" id="phone" name="phone" onkeypress="return numberPressed(event);" placeholder="(089)999-9999" />
                                     {{-- <input id="phone" type="tel" class="form-control" name="phone" value="+66 (__) __-____"> --}}
                                     <div class="help-block with-errors"></div>
                                 </div>
