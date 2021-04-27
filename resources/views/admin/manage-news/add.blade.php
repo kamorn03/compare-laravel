@@ -97,6 +97,7 @@
                                 <img class="img-thumbnail"
                                     src="{{ isset($news) && $news->path_img ? asset('img/cards/' . $news->path_img) : asset('img/dist/default-thumbnail.jpg') }}"
                                     width="300" height="200" id="preview-image">
+                                <span style="color:red">( Recommended upload size of image 530 x 353 pixels )</span>
                             </div>
                         </div>
 
@@ -108,6 +109,7 @@
                                 <img class="img-thumbnail"
                                     src="{{ isset($news) && $news->path_img_detail ? asset('img/cards/' . $news->path_img_detail) : asset('img/dist/default-thumbnail.jpg') }}"
                                     width="300" height="200" id="preview-image1">
+                                <span style="color:red">( Recommended upload size of image 1090 x 539 pixels )</span>
                             </div>
                         </div>
 

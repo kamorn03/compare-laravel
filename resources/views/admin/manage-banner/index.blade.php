@@ -20,13 +20,14 @@
                                     @csrf
                                     <div class="panel-body">
                                         <div class="form-group row">
-                                            <label for="" class="col-sm-2 col-form-label text-right">picture 1</label>
+                                            <label for="" class="col-sm-2 col-form-label text-right">image 1</label>
                                             <div class="col-sm-10">
                                                 <input type="file" class="form-control" name="image1" id="image1"
                                                     value="{{ isset($banner) ? null : 'required' }}">
                                                 <img class="img-thumbnail"
                                                     src="{{ Illuminate\Support\Arr::get($banner, 0) ? asset($banner[0]->path_img) : asset('img/dist/default-thumbnail.jpg') }}"
                                                     width="300" height="200" id="preview-image1">
+                                                <span style="color:red">( Recommended upload size of image 808 x 376 pixels )</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -37,13 +38,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="" class="col-sm-2 col-form-label text-right">picture 2</label>
+                                            <label for="" class="col-sm-2 col-form-label text-right">image 2</label>
                                             <div class="col-sm-10">
                                                 <input type="file" class="form-control" name="image2" id="image2"
                                                     value="{{ isset($banner) ? null : 'required' }}">
                                                 <img class="img-thumbnail"
                                                     src="{{ Illuminate\Support\Arr::get($banner, 1) ? asset($banner[1]->path_img) : asset('img/dist/default-thumbnail.jpg') }}"
                                                     width="300" height="200" id="preview-image2">
+                                                <span style="color:red">( Recommended upload size of image 808 x 376 pixels )</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">

@@ -129,13 +129,14 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label text-right">main cover picture</label>
+                                <label for="" class="col-sm-2 col-form-label text-right">main cover image</label>
                                 <div class="col-sm-10">
                                     <input type="file" class="form-control" name="image" id="image"
                                         value="{{ isset($product) && $product->image_path ? null : 'required' }}">
                                     <img class="img-thumbnail"
                                         src="{{ isset($product) && $product->image_path ? asset('img/cards/' . $product->image_path) : asset('img/dist/default-thumbnail.jpg') }}"
                                         width="300" height="200" id="preview-image">
+                                        <span style="color:red">( Recommended upload size of image 670 x 670 pixels )</span> 
                                 </div>
                             </div>
 
